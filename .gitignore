@@ -15,6 +15,7 @@ target/
 
 # Mysql-data folder
 mysql-data/
+mysql/
 
 ### IntelliJ IDEA ###
 .idea
