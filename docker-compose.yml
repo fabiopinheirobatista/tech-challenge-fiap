@@ -1,37 +1,24 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: mysql-container
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tech_challenge_fiap
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-    ports:
-      - "3307:3306"
     volumes:
       - ./mysql:/var/lib/mysql
-    networks:
-      - app-network
-    healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD" ]
-      interval: 30s
-      timeout: 5s
-      retries: 5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: tech_challenge
+    ports:
+      - "3307:3306"
 
   app:
     build: .
     ports:
       - "8080:8080"
     depends_on:
-      mysql:
-        condition: service_healthy
+      - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/tech_challenge_fiap?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/tech_challenge?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-    networks:
-      - app-network
-networks:
-  app-network:
-    driver: bridge
