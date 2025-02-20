@@ -11,7 +11,7 @@
 
 1. Clone o repositório:
     ```sh
-    git clone https://github.com/ricardo-oamaro/tech-challenge-fiap.git
+    git clone https://github.com/fabiopinheirobatista/tech-challenge-fiap.git
     cd techchallenge
     ```
 
