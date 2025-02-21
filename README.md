@@ -14,13 +14,7 @@
     git clone https://github.com/fabiopinheirobatista/tech-challenge-fiap.git
     cd techchallenge
     ```
-
-2. Construa o projeto com Maven:
-    ```sh
-    mvn clean install
-    ```
-
-3. Construa e inicie os containers Docker:
+2. Construa e inicie os containers Docker:
     ```sh
     docker-compose up --build 
     ```
