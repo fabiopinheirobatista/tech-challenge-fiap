@@ -1,8 +1,8 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
 import br.com.techchallenge.infra.dto.donoRestaurante.request.DonoRestauranteRequestDto;
-import br.com.techchallenge.application.BuscarDonoRestaurantePorIdUseCase;
-import br.com.techchallenge.application.CadastrarDonoRestauranteUseCase;
+import br.com.techchallenge.adapters.useCaseImpl.BuscarDonoRestaurantePorIdUseCase;
+import br.com.techchallenge.adapters.useCaseImpl.CadastrarDonoRestauranteUseCase;
 import br.com.techchallenge.domain.DonoRestaurante;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

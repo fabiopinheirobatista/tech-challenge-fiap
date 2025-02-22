@@ -1,4 +1,4 @@
-package br.com.techchallenge.application;
+package br.com.techchallenge.adapters.useCaseImpl;
 
 import br.com.techchallenge.domain.DonoRestaurante;
 import java.util.Optional;
