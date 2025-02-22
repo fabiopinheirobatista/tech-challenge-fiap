@@ -1,5 +1,6 @@
 package br.com.techchallenge.adapters.controller.restaurante;
 
+import br.com.techchallenge.application.mapper.RestauranteMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/restaurante")
 @RequiredArgsConstructor
-public class CreateRestauranteController {
+public class RestauranteController {
 
-//    private final CreateRestauranteUseCase createRestauranteUseCase;
-//    private final RestauranteMapper restauranteMapper;
+    //private final CreateRestauranteUseCase createRestauranteUseCase;
+    private final RestauranteMapper restauranteMapper;
 
 
 //    @PostMapping("/cadastrar")

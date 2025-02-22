@@ -1,7 +1,7 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
 import br.com.techchallenge.adapters.useCaseImpl.BuscarDonoRestaurantePorIdUseCase;
-import br.com.techchallenge.adapters.useCaseImpl.CadastrarDonoRestauranteUseCase;
+import br.com.techchallenge.adapters.useCaseImpl.donoRestaurante.DonoRestauranteCadastrarUseCase;
 import br.com.techchallenge.application.mapper.DonoRestauranteMapper;
 import br.com.techchallenge.domain.DonoRestaurante;
 import br.com.techchallenge.infra.dto.donoRestaurante.request.DonoRestauranteRequestDto;
@@ -22,7 +22,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class DonoRestauranteController {
 
-    private final CadastrarDonoRestauranteUseCase cadastrarDonoRestauranteUseCase;
+    private final DonoRestauranteCadastrarUseCase donoRestauranteCadastrarUseCase;
     private final BuscarDonoRestaurantePorIdUseCase buscarDonoRestaurantePorIdUseCase;
     private final DonoRestauranteMapper mapper;
 
@@ -40,7 +40,7 @@ public class DonoRestauranteController {
 
             DonoRestauranteEntity entity = mapper.toDonoRestauranteEntity(dono);
 
-            DonoRestaurante donoSalvo = cadastrarDonoRestauranteUseCase.cadastrar(dono);
+            DonoRestaurante donoSalvo = donoRestauranteCadastrarUseCase.cadastrar(dono);
 
             return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
