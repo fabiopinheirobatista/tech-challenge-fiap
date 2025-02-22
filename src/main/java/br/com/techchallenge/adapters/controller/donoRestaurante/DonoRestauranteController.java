@@ -4,6 +4,7 @@ import br.com.techchallenge.infra.dto.donoRestaurante.request.DonoRestauranteReq
 import br.com.techchallenge.adapters.useCaseImpl.BuscarDonoRestaurantePorIdUseCase;
 import br.com.techchallenge.adapters.useCaseImpl.CadastrarDonoRestauranteUseCase;
 import br.com.techchallenge.domain.DonoRestaurante;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +14,11 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/api/donos-restaurante")
+@RequiredArgsConstructor
 public class DonoRestauranteController {
 
     private final CadastrarDonoRestauranteUseCase cadastrarDonoRestauranteUseCase;
     private final BuscarDonoRestaurantePorIdUseCase buscarDonoRestaurantePorIdUseCase;
-
-    public DonoRestauranteController(CadastrarDonoRestauranteUseCase cadastrarDonoRestauranteUseCase,
-                                     BuscarDonoRestaurantePorIdUseCase buscarDonoRestaurantePorIdUseCase) {
-        this.cadastrarDonoRestauranteUseCase = cadastrarDonoRestauranteUseCase;
-        this.buscarDonoRestaurantePorIdUseCase = buscarDonoRestaurantePorIdUseCase;
-    }
 
     @PostMapping
     public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDto request) {
