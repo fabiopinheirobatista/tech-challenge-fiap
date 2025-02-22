@@ -5,16 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class DonoRestauranteRequest {
-
-    private String nome;
-    private String endereco;
-    private String email;
-    private String login;
-    private String senha;
-
-}
+public record DonoRestauranteRequest(
+        String nome,
+        String endereco,
+        String email,
+        String login,
+        String senha
+) {}
