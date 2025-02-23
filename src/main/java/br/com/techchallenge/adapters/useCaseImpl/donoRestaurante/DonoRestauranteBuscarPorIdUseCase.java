@@ -1,8 +1,9 @@
-package br.com.techchallenge.adapters.useCaseImpl;
+package br.com.techchallenge.adapters.useCaseImpl.donoRestaurante;
 
 import br.com.techchallenge.domain.DonoRestaurante;
+
 import java.util.Optional;
 
-public interface BuscarDonoRestaurantePorIdUseCase {
+public interface DonoRestauranteBuscarPorIdUseCase {
     Optional<DonoRestaurante> buscarPorId(Long id);
 }

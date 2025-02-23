@@ -1,4 +1,7 @@
 package br.com.techchallenge.adapters.useCaseImpl.restaurante;
 
-public class RestauranteCadastrarUseCase {
+import br.com.techchallenge.domain.Restaurante;
+
+public interface RestauranteCadastrarUseCase {
+    Restaurante cadastrar(Restaurante restaurante);
 }

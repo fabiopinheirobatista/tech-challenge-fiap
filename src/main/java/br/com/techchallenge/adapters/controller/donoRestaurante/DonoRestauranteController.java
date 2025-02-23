@@ -1,6 +1,5 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
-import br.com.techchallenge.adapters.useCaseImpl.BuscarDonoRestaurantePorIdUseCase;
 import br.com.techchallenge.adapters.useCaseImpl.donoRestaurante.DonoRestauranteCadastrarUseCase;
 import br.com.techchallenge.application.mapper.DonoRestauranteMapper;
 import br.com.techchallenge.domain.DonoRestaurante;
@@ -23,10 +22,9 @@ import java.time.LocalDate;
 public class DonoRestauranteController {
 
     private final DonoRestauranteCadastrarUseCase donoRestauranteCadastrarUseCase;
-    private final BuscarDonoRestaurantePorIdUseCase buscarDonoRestaurantePorIdUseCase;
     private final DonoRestauranteMapper mapper;
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDto request) {
         try {
             DonoRestaurante dono = new DonoRestaurante(
