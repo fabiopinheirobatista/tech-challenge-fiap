@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/restaurante")
 @RequiredArgsConstructor
-public class RestauranteController {
+public class CadastrarRestauranteController {
 
     private final br.com.techchallenge.adapters.useCaseImpl.restaurante.CadastrarRestauranteUseCase restauranteCadastrarUseCase;
     private final RestauranteMapper mapper;
