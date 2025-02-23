@@ -2,6 +2,6 @@ package br.com.techchallenge.adapters.useCaseImpl.restaurante;
 
 import br.com.techchallenge.domain.Restaurante;
 
-public interface RestauranteCadastrarUseCase {
+public interface CadastrarRestauranteUseCase {
     Restaurante cadastrar(Restaurante restaurante);
 }

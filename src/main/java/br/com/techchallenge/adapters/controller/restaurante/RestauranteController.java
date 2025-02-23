@@ -1,6 +1,5 @@
 package br.com.techchallenge.adapters.controller.restaurante;
 
-import br.com.techchallenge.adapters.useCaseImpl.restaurante.RestauranteCadastrarUseCase;
 import br.com.techchallenge.application.mapper.RestauranteMapper;
 import br.com.techchallenge.domain.Restaurante;
 import br.com.techchallenge.infra.dto.restaurante.request.RestauranteRequestDto;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class RestauranteController {
 
-    private final RestauranteCadastrarUseCase restauranteCadastrarUseCase;
+    private final br.com.techchallenge.adapters.useCaseImpl.restaurante.CadastrarRestauranteUseCase restauranteCadastrarUseCase;
     private final RestauranteMapper mapper;
 
     @PostMapping("/cadastrar")
