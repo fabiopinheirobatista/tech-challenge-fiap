@@ -1,0 +1,48 @@
+package br.com.techchallenge.adapters.controller.donoRestaurante;
+
+import br.com.techchallenge.adapters.useCaseImpl.donoRestaurante.DonoRestauranteCadastrarUseCase;
+import br.com.techchallenge.application.mapper.DonoRestauranteMapper;
+import br.com.techchallenge.domain.DonoRestaurante;
+import br.com.techchallenge.infra.dto.donoRestaurante.request.DonoRestauranteRequestDto;
+import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
+import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
+
+@RestController
+@RequestMapping("/api/donos-restaurante")
+@RequiredArgsConstructor
+public class DonoRestauranteController {
+
+    private final DonoRestauranteCadastrarUseCase donoRestauranteCadastrarUseCase;
+    private final DonoRestauranteMapper mapper;
+
+    @PostMapping("/cadastrar")
+    public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDto request) {
+        try {
+            DonoRestaurante dono = new DonoRestaurante(
+                    request.nome(),
+                    request.endereco(),
+                    request.email(),
+                    request.login(),
+                    request.senha(),
+                    LocalDate.now()
+            );
+
+            DonoRestauranteEntity entity = mapper.toDonoRestauranteEntity(dono);
+
+            DonoRestaurante donoSalvo = donoRestauranteCadastrarUseCase.cadastrar(dono);
+
+            return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity<>("Dono de Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
+        }
+    }
+}
