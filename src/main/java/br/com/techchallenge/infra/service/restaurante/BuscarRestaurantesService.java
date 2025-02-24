@@ -19,9 +19,7 @@ public class BuscarRestaurantesService implements BuscarRestaurantesUseCase {
 
     @Override
     public List<Restaurante> buscarTodos() {
-        List<Restaurante> entities = repository.findAll();
-        System.out.println(entities);
-
-        return entities;
+        List<RestauranteEntity> entities = repository.findAll();
+        return mapper.toRestauranteList(entities);
     }
 }

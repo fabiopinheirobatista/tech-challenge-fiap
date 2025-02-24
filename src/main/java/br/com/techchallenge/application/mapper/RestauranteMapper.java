@@ -5,9 +5,12 @@ import br.com.techchallenge.infra.dto.restaurante.request.RestauranteRequestDto;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface RestauranteMapper {
     RestauranteEntity toRestauranteEntity(Restaurante restaurante);
     Restaurante toRestaurante(RestauranteEntity entity);
     Restaurante toRestauranteRequestDto(RestauranteRequestDto dto);
+    List<Restaurante> toRestauranteList(List<RestauranteEntity> entities);
 }
