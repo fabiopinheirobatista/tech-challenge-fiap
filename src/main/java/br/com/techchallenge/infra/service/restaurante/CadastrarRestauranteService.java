@@ -11,9 +11,12 @@ import org.springframework.stereotype.Service;
 public class CadastrarRestauranteService implements br.com.techchallenge.adapters.useCaseImpl.restaurante.CadastrarRestauranteUseCase {
 
     private final RestauranteRepository repository;
+    private final RestauranteMapper mapper;
 
     @Override
     public Restaurante cadastrar(Restaurante restaurante) {
-        return repository.save(restaurante);
+        var restauranteEntity = mapper.toRestauranteEntity(restaurante);
+        var restauranteEntitySaved = repository.save(restauranteEntity);
+        return mapper.toRestaurante(restauranteEntitySaved);
     }
 }

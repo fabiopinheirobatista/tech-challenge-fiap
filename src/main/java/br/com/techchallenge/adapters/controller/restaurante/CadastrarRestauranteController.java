@@ -1,9 +1,11 @@
 package br.com.techchallenge.adapters.controller.restaurante;
 
 import br.com.techchallenge.application.mapper.RestauranteMapper;
+import br.com.techchallenge.domain.Endereco;
 import br.com.techchallenge.domain.Restaurante;
 import br.com.techchallenge.infra.dto.restaurante.request.RestauranteRequestDto;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -22,21 +24,34 @@ public class CadastrarRestauranteController {
     private final RestauranteMapper mapper;
 
     @PostMapping("/cadastrar")
+    @Transactional
     public ResponseEntity<String> cadastrar(@RequestBody RestauranteRequestDto request) {
-        try {
-            Restaurante restaurante = new Restaurante(
-                    request.nome(),
-                    request.endereco(),
-                    request.tipoCozinha()
-            );
+       try{
+           Endereco endereco = new Endereco(
+                   request.endereco().getLogradouro(),
+                   request.endereco().getNumero(),
+                   request.endereco().getComplemento(),
+                   request.endereco().getBairro(),
+                   request.endereco().getCidade(),
+                   request.endereco().getEstado(),
+                   request.endereco().getCep()
+           );
 
-            RestauranteEntity entity = mapper.toRestauranteEntity(restaurante);
+           Restaurante restaurante = new Restaurante();
+           restaurante.setNome(request.nome());
+           restaurante.setTipoCozinha(request.tipoCozinha());
+           restaurante.setEndereco(endereco);
 
-            Restaurante restauranteSalvo = restauranteCadastrarUseCase.cadastrar(restaurante);
+           restaurante.setEndereco(endereco);
 
-            return new ResponseEntity<>("Restaurante cadastrado com sucesso", HttpStatus.CREATED);
-        } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>("Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
-        }
+           restauranteCadastrarUseCase.cadastrar(restaurante);
+
+           return new ResponseEntity<>("Restaurante cadastrado com sucesso", HttpStatus.CREATED);
+    } catch(
+    DataIntegrityViolationException e)
+
+    {
+        return new ResponseEntity<>("Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
     }
+}
 }

@@ -1,5 +1,6 @@
 package br.com.techchallenge.infra.entity;
 
+import br.com.techchallenge.domain.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +20,8 @@ public class RestauranteEntity {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
-    private String endereco;
+    @Embedded
+    private Endereco endereco;
 
     @Column(nullable = false)
     private String tipoCozinha;
