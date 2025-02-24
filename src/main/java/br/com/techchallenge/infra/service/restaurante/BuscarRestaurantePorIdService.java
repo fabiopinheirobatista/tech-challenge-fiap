@@ -14,9 +14,12 @@ import java.util.Optional;
 public class BuscarRestaurantePorIdService implements BuscarRestaurantePorIdUseCase {
 
     private final RestauranteRepository repository;
+    private final RestauranteMapper mapper;
 
     @Override
     public Optional<Restaurante> buscarPorId(Long id) {
-        return repository.findById(id);
+
+        var restauranteEntity = repository.findById(id);
+        return restauranteEntity.map(mapper::toRestaurante);
     }
 }
