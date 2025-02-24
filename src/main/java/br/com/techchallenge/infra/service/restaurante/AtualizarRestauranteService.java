@@ -1,7 +1,9 @@
 package br.com.techchallenge.infra.service.restaurante;
 
 import br.com.techchallenge.adapters.UseCaseImpl.restaurante.AtualizarRestauranteUseCase;
+import br.com.techchallenge.application.mapper.RestauranteMapper;
 import br.com.techchallenge.domain.Restaurante;
+import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.restaurante.RestauranteRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -14,20 +16,23 @@ import java.util.Optional;
 public class AtualizarRestauranteService implements AtualizarRestauranteUseCase {
 
     private final RestauranteRepository repository;
+    private final RestauranteMapper mapper;
 
     @Override
     public Restaurante atualizar(Restaurante restaurante) {
 
-        Optional<Restaurante> restauranteOptional = repository.findById(restaurante.getId());
+        Optional<RestauranteEntity> restauranteOptional = repository.findById(restaurante.getId());
 
         if (restauranteOptional.isPresent()) {
-            Restaurante restauranteExistente = restauranteOptional.get();
+            RestauranteEntity restauranteExistente = restauranteOptional.get();
 
             restauranteExistente.setNome(restaurante.getNome());
             restauranteExistente.setEndereco(restaurante.getEndereco());
             restauranteExistente.setTipoCozinha(restaurante.getTipoCozinha());
 
-            return repository.save(restauranteExistente);
+            var restauranteSalvo = repository.save(restauranteExistente);
+
+            return mapper.toRestaurante(restauranteSalvo);
         } else {
             throw new EntityNotFoundException("Restaurante não encontrado");
         }
