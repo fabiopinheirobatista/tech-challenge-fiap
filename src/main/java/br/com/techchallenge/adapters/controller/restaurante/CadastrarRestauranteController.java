@@ -1,0 +1,64 @@
+package br.com.techchallenge.adapters.controller.restaurante;
+
+import br.com.techchallenge.application.mapper.RestauranteMapper;
+import br.com.techchallenge.domain.DonoRestaurante;
+import br.com.techchallenge.domain.Endereco;
+import br.com.techchallenge.domain.Restaurante;
+import br.com.techchallenge.infra.dto.restaurante.request.RestauranteRequestDto;
+import br.com.techchallenge.infra.repository.donoRestaurante.DonoRestauranteRepository;
+import br.com.techchallenge.shared.InternalServerErrorException;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/restaurante")
+@RequiredArgsConstructor
+public class CadastrarRestauranteController {
+
+    private final br.com.techchallenge.adapters.useCaseImpl.restaurante.CadastrarRestauranteUseCase cadastrarRestauranteUseCase;
+    private final DonoRestauranteRepository donoRestauranteRepository;
+
+    @PostMapping("/cadastrar")
+    @Transactional
+    public ResponseEntity<String> cadastrar(@RequestBody RestauranteRequestDto request) {
+        try {
+
+            DonoRestaurante donoRestaurante = donoRestauranteRepository.findById(request.donoRestaurante())
+                    .orElseThrow(() -> new InternalServerErrorException("Dono do restaurante não encontrado"));
+
+            Endereco endereco = new Endereco(
+                    request.endereco().getLogradouro(),
+                    request.endereco().getNumero(),
+                    request.endereco().getComplemento(),
+                    request.endereco().getBairro(),
+                    request.endereco().getCidade(),
+                    request.endereco().getEstado(),
+                    request.endereco().getCep()
+            );
+
+            Restaurante restaurante = new Restaurante();
+            restaurante.setNome(request.nome());
+            restaurante.setTipoCozinha(request.tipoCozinha());
+            restaurante.setEndereco(endereco);
+            restaurante.setDonoRestaurante(donoRestaurante);
+
+            cadastrarRestauranteUseCase.cadastrar(restaurante);
+
+            return new ResponseEntity<>("Restaurante cadastrado com sucesso", HttpStatus.CREATED);
+        } catch (
+                DataIntegrityViolationException e) {
+            return new ResponseEntity<>("Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
+        } catch (InternalServerErrorException e) {
+            return new ResponseEntity<>("Dono de restaurante não encontrado", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+}

@@ -1,13 +1,17 @@
 package br.com.techchallenge.infra.entity;
 
+import br.com.techchallenge.domain.DonoRestaurante;
+import br.com.techchallenge.domain.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "restaurantes")
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class RestauranteEntity {
 
     @Id
@@ -17,10 +21,14 @@ public class RestauranteEntity {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
-    private String endereco;
+    @Embedded
+    private Endereco endereco;
 
     @Column(nullable = false)
     private String tipoCozinha;
+
+    @ManyToOne
+    @JoinColumn(name = "dono_restaurante_id")
+    private DonoRestaurante donoRestaurante;
 
 }
