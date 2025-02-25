@@ -14,5 +14,6 @@ public class Restaurante {
     private String nome;
     private Endereco endereco;
     private String tipoCozinha;
+    private DonoRestaurante donoRestaurante;
 
 }

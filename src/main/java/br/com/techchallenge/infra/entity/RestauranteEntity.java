@@ -1,5 +1,6 @@
 package br.com.techchallenge.infra.entity;
 
+import br.com.techchallenge.domain.DonoRestaurante;
 import br.com.techchallenge.domain.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,5 +26,9 @@ public class RestauranteEntity {
 
     @Column(nullable = false)
     private String tipoCozinha;
+
+    @ManyToOne
+    @JoinColumn(name = "dono_restaurante_id")
+    private DonoRestaurante donoRestaurante;
 
 }
