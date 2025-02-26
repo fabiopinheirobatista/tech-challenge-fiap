@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface DonoRestauranteMapper {
-    @Mapping(source = "endereco", target = "endereco")
+    @Mapping(source = "endereco", target = "endereco", qualifiedByName = "enderecoToString")
     DonoRestauranteEntity toDonoRestauranteEntity(DonoRestaurante dono);
 
     List<DonoRestaurante> toDonoRestauranteList(List<DonoRestauranteEntity> entities);
@@ -22,5 +22,21 @@ public interface DonoRestauranteMapper {
             return null;
         }
         return endereco.getLogradouro() + ", " + endereco.getNumero() + " - " + endereco.getCidade();
+    }
+
+    @Named("stringToEndereco")
+    default Endereco stringToEndereco(String enderecoStr) {
+        if (enderecoStr == null || enderecoStr.isEmpty()) {
+            return null;
+        }
+        String[] partes = enderecoStr.split(",");
+        if (partes.length < 2) {
+            return null;
+        }
+        String rua = partes[0].trim();
+        String[] subPartes = partes[1].split("-");
+        String numero = subPartes[0].trim();
+        String cidade = subPartes.length > 1 ? subPartes[1].trim() : "";
+        return new Endereco(rua, numero, cidade);
     }
 }
