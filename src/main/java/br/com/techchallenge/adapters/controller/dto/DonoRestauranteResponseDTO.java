@@ -1,6 +1,6 @@
-package br.com.techchallenge.infra.dto.donoRestaurante.response;
+package br.com.techchallenge.adapters.controller.dto;
 
-public record DonoRestauranteResponseDto(
+public record DonoRestauranteResponseDTO(
         String nome,
         String endereco,
         String email,

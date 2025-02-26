@@ -1,9 +1,8 @@
-package br.com.techchallenge.infra.dto.restaurante.request;
+package br.com.techchallenge.adapters.controller.dto;
 
-import br.com.techchallenge.domain.DonoRestaurante;
 import br.com.techchallenge.domain.Endereco;
 
-public record RestauranteRequestDto(
+public record RestauranteRequestDTO(
         String nome,
         Endereco endereco,
         String tipoCozinha,
