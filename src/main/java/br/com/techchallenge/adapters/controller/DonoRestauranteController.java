@@ -1,7 +1,7 @@
 package br.com.techchallenge.adapters.controller;
 
-import br.com.techchallenge.controller.converter.DonoRestauranteDTOConverter;
-import br.com.techchallenge.controller.dto.DonoRestauranteRequestDTO;
+import br.com.techchallenge.adapters.converter.DonoRestauranteDTOConverter;
+import br.com.techchallenge.adapters.dto.DonoRestauranteRequestDTO;
 import br.com.techchallenge.infra.service.DonoRestauranteService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;

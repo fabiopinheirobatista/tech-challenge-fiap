@@ -1,10 +1,10 @@
 package br.com.techchallenge.adapters.controller;
 
-import br.com.techchallenge.controller.converter.RestauranteDTOConverter;
-import br.com.techchallenge.controller.dto.RestauranteRequestDTO;
+import br.com.techchallenge.adapters.converter.RestauranteDTOConverter;
+import br.com.techchallenge.adapters.dto.RestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.RestauranteService;
-import br.com.techchallenge.shared.exception.InternalServerErrorException;
+import br.com.techchallenge.shared.InternalServerErrorException;
 import jakarta.transaction.Transactional;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

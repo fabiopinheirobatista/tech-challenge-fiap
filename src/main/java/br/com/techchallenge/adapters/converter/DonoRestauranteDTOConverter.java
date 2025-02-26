@@ -1,6 +1,6 @@
-package br.com.techchallenge.adapters.controller.converter;
+package br.com.techchallenge.adapters.converter;
 
-import br.com.techchallenge.controller.dto.DonoRestauranteRequestDTO;
+import br.com.techchallenge.adapters.dto.DonoRestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import org.springframework.stereotype.Component;
 

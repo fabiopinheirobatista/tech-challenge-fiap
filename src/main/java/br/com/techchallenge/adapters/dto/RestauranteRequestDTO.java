@@ -1,4 +1,4 @@
-package br.com.techchallenge.adapters.controller.dto;
+package br.com.techchallenge.adapters.dto;
 
 import br.com.techchallenge.domain.Endereco;
 
