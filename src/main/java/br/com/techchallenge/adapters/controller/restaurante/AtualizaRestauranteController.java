@@ -4,7 +4,6 @@ package br.com.techchallenge.adapters.controller.restaurante;
 import br.com.techchallenge.adapters.UseCaseImpl.restaurante.AtualizarRestauranteUseCase;
 import br.com.techchallenge.application.mapper.RestauranteMapper;
 import br.com.techchallenge.domain.Restaurante;
-import br.com.techchallenge.infra.dto.restaurante.request.RestauranteRequestDto;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
