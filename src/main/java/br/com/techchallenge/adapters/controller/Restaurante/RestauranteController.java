@@ -1,7 +1,7 @@
 package br.com.techchallenge.adapters.controller;
 
 import br.com.techchallenge.adapters.converter.RestauranteDTOConverter;
-import br.com.techchallenge.adapters.dto.RestauranteRequestDTO;
+import br.com.techchallenge.adapters.dto.Restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.RestauranteService;
 import br.com.techchallenge.shared.InternalServerErrorException;

@@ -1,4 +1,4 @@
-package br.com.techchallenge.adapters.dto;
+package br.com.techchallenge.adapters.dto.Restaurante;
 
 import br.com.techchallenge.domain.Endereco;
 
