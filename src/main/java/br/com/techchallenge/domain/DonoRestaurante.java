@@ -2,6 +2,7 @@ package br.com.techchallenge.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @Table(name = "donos_restaurante")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class DonoRestaurante {
 
     @Id
@@ -41,4 +43,5 @@ public class DonoRestaurante {
         this.senha = senha;
         this.dataUltimaAlteracao = createdAt;
     }
+
 }
