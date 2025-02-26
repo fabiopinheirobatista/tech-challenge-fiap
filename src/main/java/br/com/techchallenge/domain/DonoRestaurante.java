@@ -12,7 +12,7 @@ public class DonoRestaurante {
 
     private Long id;
     private String nome;
-    private String endereco;
+    private Endereco endereco;
     private String email;
     private String login;
     private String senha;

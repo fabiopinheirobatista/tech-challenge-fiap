@@ -21,7 +21,7 @@ public class DonoRestauranteControllerAtualizar {
     public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody Restaurante request) {
         try {
             request.setId(id);
-            donoRestauranteAtualizarUseCase.atualizar(request);
+            donoRestauranteAtualizarUseCase.atualizar(request.getDonoRestaurante());
             return ResponseEntity.ok("Dono de Restaurante atualizado com sucesso");
 
         } catch (EntityNotFoundException e) {
