@@ -1,4 +1,4 @@
-package br.com.techchallenge.adapters.controller;
+package br.com.techchallenge.adapters.controller.Restaurante;
 
 import br.com.techchallenge.adapters.converter.RestauranteDTOConverter;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteRequestDTO;
