@@ -2,7 +2,7 @@ package br.com.techchallenge.adapters.controller.restaurante;
 
 import br.com.techchallenge.adapters.UseCaseImpl.restaurante.BuscarRestaurantePorIdUseCase;
 import br.com.techchallenge.domain.Restaurante;
-import br.com.techchallenge.shared.InternalServerErrorException;
+import br.com.techchallenge.shared.exception.InternalServerErrorException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

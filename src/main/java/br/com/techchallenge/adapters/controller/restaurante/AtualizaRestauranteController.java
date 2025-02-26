@@ -1,7 +1,7 @@
 package br.com.techchallenge.adapters.controller.restaurante;
 
 
-import br.com.techchallenge.adapters.UseCaseImpl.restaurante.AtualizarRestauranteUseCase;
+import br.com.techchallenge.adapters.useCaseImpl.restaurante.AtualizarRestauranteUseCase;
 import br.com.techchallenge.application.mapper.RestauranteMapper;
 import br.com.techchallenge.domain.Restaurante;
 import jakarta.persistence.EntityNotFoundException;

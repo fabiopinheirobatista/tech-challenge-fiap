@@ -2,8 +2,8 @@ package br.com.techchallenge.infra.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 
@@ -11,6 +11,9 @@ import java.time.LocalDate;
 @Table(name = "donos_restaurante")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@ToString(exclude = {"senha"})
 public class DonoRestauranteEntity {
 
     @Id

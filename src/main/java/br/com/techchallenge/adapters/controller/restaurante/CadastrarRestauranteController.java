@@ -1,12 +1,11 @@
 package br.com.techchallenge.adapters.controller.restaurante;
 
-import br.com.techchallenge.application.mapper.RestauranteMapper;
 import br.com.techchallenge.domain.DonoRestaurante;
 import br.com.techchallenge.domain.Endereco;
 import br.com.techchallenge.domain.Restaurante;
 import br.com.techchallenge.infra.dto.restaurante.request.RestauranteRequestDto;
 import br.com.techchallenge.infra.repository.donoRestaurante.DonoRestauranteRepository;
-import br.com.techchallenge.shared.InternalServerErrorException;
+import br.com.techchallenge.shared.exception.InternalServerErrorException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
