@@ -42,7 +42,7 @@ public class RestauranteController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/atualizar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) throws InternalServerErrorException {
         try {
             Optional<RestauranteEntity> restaurante = service.buscarPorId(id);
