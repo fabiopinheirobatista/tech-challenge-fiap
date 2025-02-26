@@ -1,8 +1,11 @@
 package br.com.techchallenge.infra.service;
 
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
+import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DonoRestauranteService {
@@ -22,4 +25,7 @@ public class DonoRestauranteService {
         return repository.save(donoRestaurante);
     }
 
+    public List<DonoRestauranteEntity> buscarTodos() {
+        return repository.findAll();
+    }
 }

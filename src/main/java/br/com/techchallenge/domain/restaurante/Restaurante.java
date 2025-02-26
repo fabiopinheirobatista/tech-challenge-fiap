@@ -1,5 +1,7 @@
-package br.com.techchallenge.domain;
+package br.com.techchallenge.domain.restaurante;
 
+import br.com.techchallenge.domain.Endereco;
+import br.com.techchallenge.domain.donoRestaurante.DonoRestaurante;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
