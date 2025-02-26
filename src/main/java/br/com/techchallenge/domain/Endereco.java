@@ -27,7 +27,7 @@ public class Endereco {
         this.cidade = cidade;
     }
 
-    public String getRua() {
+    public String getLogradouro() {
         return logradouro;
     }
 }

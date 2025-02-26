@@ -1,19 +1,26 @@
 package br.com.techchallenge.application.mapper;
 
 import br.com.techchallenge.domain.DonoRestaurante;
-import br.com.techchallenge.domain.Restaurante;
-import br.com.techchallenge.infra.dto.restaurante.request.RestauranteRequestDto;
+import br.com.techchallenge.domain.Endereco;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
-import br.com.techchallenge.infra.entity.RestauranteEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface DonoRestauranteMapper {
+    @Mapping(source = "endereco", target = "endereco")
     DonoRestauranteEntity toDonoRestauranteEntity(DonoRestaurante dono);
-    DonoRestaurante toDonoRestaurante(DonoRestauranteEntity entity);
+
     List<DonoRestaurante> toDonoRestauranteList(List<DonoRestauranteEntity> entities);
 
-    DonoRestaurante toRestauranteRequestDto(RestauranteRequestDto dto);
+    @Named("enderecoToString")
+    default String enderecoToString(Endereco endereco) {
+        if (endereco == null) {
+            return null;
+        }
+        return endereco.getLogradouro() + ", " + endereco.getNumero() + " - " + endereco.getCidade();
+    }
 }
