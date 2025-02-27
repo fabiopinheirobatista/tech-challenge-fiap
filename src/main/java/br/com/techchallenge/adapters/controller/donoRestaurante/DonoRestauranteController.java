@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,10 +51,15 @@ public class DonoRestauranteController {
     }
 
     @GetMapping("/buscar-todos")
-    public ResponseEntity<List<DonoRestauranteListarTodosResponseDTO>> buscarTodos() {
+    public ResponseEntity<?> buscarTodos() {
         try {
             List<DonoRestauranteEntity> donos = service.buscarTodos();
+            if (donos.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Não existem Donos de Restaurante cadastrados.");
+            }
             List<DonoRestauranteListarTodosResponseDTO> response = donos.stream()
+                    .sorted(Comparator.comparing(DonoRestauranteEntity::getId))
                     .map(converter::entityParaListarTodosDto)
                     .collect(Collectors.toList());
             return ResponseEntity.ok(response);
