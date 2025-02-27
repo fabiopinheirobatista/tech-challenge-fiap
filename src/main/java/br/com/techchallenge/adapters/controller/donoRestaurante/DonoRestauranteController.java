@@ -37,7 +37,7 @@ public class DonoRestauranteController {
         }
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody DonoRestauranteRequestDTO request) {
         try {
             service.salvar(converter.dtoParaEntity(id,request));
