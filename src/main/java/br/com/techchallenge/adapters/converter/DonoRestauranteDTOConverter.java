@@ -35,6 +35,7 @@ public class DonoRestauranteDTOConverter {
 
     public DonoRestauranteListarTodosResponseDTO entityParaListarTodosDto(DonoRestauranteEntity entity) {
         return new DonoRestauranteListarTodosResponseDTO(
+                entity.getId(),
                 entity.getNome(),
                 entity.getEndereco(),
                 entity.getEmail(),
@@ -44,6 +45,7 @@ public class DonoRestauranteDTOConverter {
 
     public DonoRestauranteListarIdResponseDTO entityParaListarIdDto(DonoRestauranteEntity entity) {
         return new DonoRestauranteListarIdResponseDTO(
+                entity.getId(),
                 entity.getNome(),
                 entity.getEndereco(),
                 entity.getEmail(),
