@@ -1,6 +1,7 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
 import br.com.techchallenge.adapters.converter.DonoRestauranteDTOConverter;
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarIdResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
@@ -58,6 +59,19 @@ public class DonoRestauranteController {
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
+        try {
+            DonoRestauranteEntity dono = service.buscarPorId(id);
+            DonoRestauranteListarIdResponseDTO dto = converter.entityParaListarIdDto(dono);
+            return ResponseEntity.ok(dto);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
         }
     }
 
