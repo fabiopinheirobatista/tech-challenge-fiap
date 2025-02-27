@@ -1,6 +1,7 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
 import br.com.techchallenge.adapters.converter.DonoRestauranteDTOConverter;
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.service.DonoRestauranteService;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/donos-restaurante")
@@ -46,11 +48,19 @@ public class DonoRestauranteController {
         }
     }
 
-    @GetMapping("/buscarTodos")
-    public ResponseEntity<List<DonoRestauranteEntity>> buscarTodos() {
+    @GetMapping("/buscar-todos")
+    public ResponseEntity<List<DonoRestauranteListarTodosResponseDTO>> buscarTodos() {
         try {
             List<DonoRestauranteEntity> donos = service.buscarTodos();
-            return ResponseEntity.ok(donos);
+            List<DonoRestauranteListarTodosResponseDTO> response = donos.stream()
+                    .map(dono -> new DonoRestauranteListarTodosResponseDTO(
+                            dono.getNome(),
+                            dono.getEndereco(),
+                            dono.getEmail(),
+                            dono.getLogin()
+                    ))
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
