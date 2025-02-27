@@ -3,6 +3,7 @@ package br.com.techchallenge.infra.service;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,5 +28,12 @@ public class DonoRestauranteService {
 
     public List<DonoRestauranteEntity> buscarTodos() {
         return repository.findAll();
+    }
+
+    public void deletar(Long id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("ID informado não existe");
+        }
+        repository.deleteById(id);
     }
 }
