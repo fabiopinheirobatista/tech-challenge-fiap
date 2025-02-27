@@ -1,7 +1,6 @@
 package br.com.techchallenge.infra.service;
 
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
-import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
