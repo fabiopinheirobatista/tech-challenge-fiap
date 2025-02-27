@@ -1,48 +1,89 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
-import br.com.techchallenge.adapters.useCaseImpl.donoRestaurante.DonoRestauranteCadastrarUseCase;
-import br.com.techchallenge.application.mapper.DonoRestauranteMapper;
-import br.com.techchallenge.domain.DonoRestaurante;
-import br.com.techchallenge.infra.dto.donoRestaurante.request.DonoRestauranteRequestDto;
+import br.com.techchallenge.adapters.converter.DonoRestauranteDTOConverter;
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarIdResponseDTO;
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
-import lombok.RequiredArgsConstructor;
+import br.com.techchallenge.infra.service.DonoRestauranteService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/donos-restaurante")
-@RequiredArgsConstructor
 public class DonoRestauranteController {
 
-    private final DonoRestauranteCadastrarUseCase donoRestauranteCadastrarUseCase;
-    private final DonoRestauranteMapper mapper;
+    private final DonoRestauranteDTOConverter converter;
+    private final DonoRestauranteService service;
+
+    public DonoRestauranteController(DonoRestauranteDTOConverter converter, DonoRestauranteService service) {
+        this.converter = converter;
+        this.service = service;
+    }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDto request) {
+    public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDTO request) {
         try {
-            DonoRestaurante dono = new DonoRestaurante(
-                    request.nome(),
-                    request.endereco(),
-                    request.email(),
-                    request.login(),
-                    request.senha(),
-                    LocalDate.now()
-            );
-
-            DonoRestauranteEntity entity = mapper.toDonoRestauranteEntity(dono);
-
-            DonoRestaurante donoSalvo = donoRestauranteCadastrarUseCase.cadastrar(dono);
-
+            service.salvar(converter.dtoParaEntity(request));
             return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
             return new ResponseEntity<>("Dono de Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody DonoRestauranteRequestDTO request) {
+        try {
+            service.salvar(converter.dtoParaEntity(id,request));
+            return ResponseEntity.ok("Dono de Restaurante atualizado com sucesso");
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar Dono de Restaurante");
+        }
+    }
+
+    @GetMapping("/buscar-todos")
+    public ResponseEntity<List<DonoRestauranteListarTodosResponseDTO>> buscarTodos() {
+        try {
+            List<DonoRestauranteEntity> donos = service.buscarTodos();
+            List<DonoRestauranteListarTodosResponseDTO> response = donos.stream()
+                    .map(converter::entityParaListarTodosDto)
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
+        try {
+            DonoRestauranteEntity dono = service.buscarPorId(id);
+            DonoRestauranteListarIdResponseDTO dto = converter.entityParaListarIdDto(dono);
+            return ResponseEntity.ok(dto);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
+        try {
+            service.deletar(id);
+            return ResponseEntity.ok("Dono de Restaurante deletado com sucesso");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Erro ao deletar Dono de Restaurante");
+        }
+    }
+
 }
