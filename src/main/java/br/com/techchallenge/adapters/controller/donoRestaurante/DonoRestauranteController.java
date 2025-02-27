@@ -55,7 +55,7 @@ public class DonoRestauranteController {
             List<DonoRestauranteListarTodosResponseDTO> response = donos.stream()
                     .map(dono -> new DonoRestauranteListarTodosResponseDTO(
                             dono.getNome(),
-                            dono.getEndereco(),
+                            dono.getEndereco().toString(),
                             dono.getEmail(),
                             dono.getLogin()
                     ))
