@@ -1,5 +1,6 @@
 package br.com.techchallenge.adapters.converter;
 
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import org.springframework.stereotype.Component;
@@ -29,5 +30,14 @@ public class DonoRestauranteDTOConverter {
                     return entity;
                 })
                 .orElse(null);
+    }
+
+    public DonoRestauranteListarTodosResponseDTO entityParaListarTodosDto(DonoRestauranteEntity entity) {
+        return new DonoRestauranteListarTodosResponseDTO(
+                entity.getNome(),
+                entity.getEndereco(),
+                entity.getEmail(),
+                entity.getLogin()
+        );
     }
 }

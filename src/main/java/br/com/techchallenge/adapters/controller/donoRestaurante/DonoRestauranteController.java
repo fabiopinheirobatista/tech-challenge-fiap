@@ -53,12 +53,7 @@ public class DonoRestauranteController {
         try {
             List<DonoRestauranteEntity> donos = service.buscarTodos();
             List<DonoRestauranteListarTodosResponseDTO> response = donos.stream()
-                    .map(dono -> new DonoRestauranteListarTodosResponseDTO(
-                            dono.getNome(),
-                            dono.getEndereco().toString(),
-                            dono.getEmail(),
-                            dono.getLogin()
-                    ))
+                    .map(converter::entityParaListarTodosDto)
                     .collect(Collectors.toList());
             return ResponseEntity.ok(response);
         } catch (Exception e) {
