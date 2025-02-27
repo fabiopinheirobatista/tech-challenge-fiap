@@ -4,7 +4,7 @@ import br.com.techchallenge.adapters.converter.RestauranteDTOConverter;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.RestauranteService;
-import br.com.techchallenge.shared.InternalServerErrorException;
+import br.com.techchallenge.shared.exception.InternalServerErrorException;
 import jakarta.transaction.Transactional;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -35,8 +35,6 @@ public class RestauranteController {
         } catch (
                 DataIntegrityViolationException e) {
             return new ResponseEntity<>("Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
-        } catch (InternalServerErrorException e) {
-            return new ResponseEntity<>("Dono de restaurante não encontrado", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
