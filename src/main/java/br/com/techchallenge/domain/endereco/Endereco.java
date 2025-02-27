@@ -1,4 +1,4 @@
-package br.com.techchallenge.domain;
+package br.com.techchallenge.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

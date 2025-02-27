@@ -1,4 +1,4 @@
-package br.com.techchallenge.exception;
+package br.com.techchallenge.shared.exception;
 
 public class InternalServerErrorException extends Exception {
 

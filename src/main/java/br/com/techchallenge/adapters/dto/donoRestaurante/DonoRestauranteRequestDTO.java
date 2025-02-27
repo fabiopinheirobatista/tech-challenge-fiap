@@ -1,6 +1,6 @@
 package br.com.techchallenge.adapters.dto.donoRestaurante;
 
-import br.com.techchallenge.domain.Endereco;
+import br.com.techchallenge.domain.endereco.Endereco;
 
 public record DonoRestauranteRequestDTO(
     Long id,

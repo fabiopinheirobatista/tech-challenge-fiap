@@ -1,6 +1,6 @@
 package br.com.techchallenge.infra.entity;
 
-import br.com.techchallenge.domain.Endereco;
+import br.com.techchallenge.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
