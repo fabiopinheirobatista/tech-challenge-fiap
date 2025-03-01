@@ -19,7 +19,8 @@ public class BuscarRestaurantePorIdService implements BuscarRestaurantePorIdUseC
     @Override
     public Optional<Restaurante> buscarPorId(Long id) {
 
-        var restauranteEntity = repository.findById(id);
-        return restauranteEntity.map(mapper::toRestaurante);
+        var restauranteEntity = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Restaurante não encontrado"));
+        return Optional.of(mapper.toRestaurante(restauranteEntity));
     }
 }

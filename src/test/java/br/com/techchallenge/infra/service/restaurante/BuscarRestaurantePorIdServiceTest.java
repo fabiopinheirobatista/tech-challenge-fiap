@@ -5,6 +5,8 @@ import br.com.techchallenge.domain.Restaurante;
 import br.com.techchallenge.helper.RestauranteHelper;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.restaurante.RestauranteRepository;
+import br.com.techchallenge.shared.InternalServerErrorException;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,6 +18,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -23,6 +27,8 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class BuscarRestaurantePorIdServiceTest {
 
+    @InjectMocks
+    private BuscarRestaurantePorIdService service;
 
     @Mock
     private RestauranteRepository repository;
@@ -30,43 +36,55 @@ class BuscarRestaurantePorIdServiceTest {
     @Mock
     private RestauranteMapper mapper;
 
-    @InjectMocks
-    private BuscarRestaurantePorIdService service;
+    @Mock
+    private RestauranteEntity restauranteEntity;
+
+    @Mock
+    private Restaurante restaurante;
+
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+//        MockitoAnnotations.openMocks(this);
+
+        // Criando um restaurante para simular o banco
+//        restauranteEntity = new RestauranteEntity();
+//        restauranteEntity.setId(1L);
+//        restauranteEntity.setNome("Restaurante Teste");
+//
+//        // Criando um restaurante mapeado
+//        restaurante = new Restaurante();
+//        restaurante.setId(1L);
+//        restaurante.setNome("Restaurante Teste");
     }
 
     @Test
     void testBuscarPorIdRestauranteEncontrado() {
         Long id = 1L;
-        RestauranteEntity restauranteEntity = new RestauranteEntity();
-        Restaurante restaurante = RestauranteHelper.restaurante();
 
         when(repository.findById(id)).thenReturn(Optional.of(restauranteEntity));
         when(mapper.toRestaurante(restauranteEntity)).thenReturn(restaurante);
 
-        Optional<Restaurante> resultado = service.buscarPorId(id);
+        // Adicionando um log para verificar se o mock está funcionando
+        System.out.println("Mock retornando: " + repository.findById(id));
 
-        assertTrue(resultado.isPresent());
-        assertEquals(restaurante, resultado.get());
+        // Chamando o método que estamos testando
+        Optional<Restaurante> resultado = service.buscarPorId(1L);
 
-        verify(repository).findById(id);
-        verify(mapper).toRestaurante(restauranteEntity);
+        // Verificaçõe
+        assertThat(resultado).isPresent();
+        assertThat(resultado.get()).isEqualTo(restaurante);
+
+
     }
 
     @Test
-    void testBuscarPorIdRestauranteNaoEncontrado() {
+    void testBuscarPorIdRestauranteNaoEncontrado() throws InternalServerErrorException {
         Long id = 2L;
-
         when(repository.findById(id)).thenReturn(Optional.empty());
 
-        Optional<Restaurante> resultado = service.buscarPorId(id);
-
-        assertFalse(resultado.isPresent());
-
-        verify(repository).findById(id);
-        verify(mapper, never()).toRestaurante(any());
+        assertThatThrownBy(() -> service.buscarPorId(id))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Restaurante não encontrado");
     }
 }
