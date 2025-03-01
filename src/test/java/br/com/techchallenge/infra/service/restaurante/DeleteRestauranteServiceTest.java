@@ -24,10 +24,8 @@ class DeleteRestauranteServiceTest {
     void deveDeletarRestaurantePorId() {
         Long restauranteId = 1L;
 
-        // Executa o método a ser testado
         service.deletar(restauranteId);
 
-        // Verifica se o método deleteById foi chamado corretamente
         verify(repository, times(1)).deleteById(restauranteId);
     }
 }
