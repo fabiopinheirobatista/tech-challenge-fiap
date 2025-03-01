@@ -2,12 +2,15 @@ package br.com.techchallenge.infra.service.restaurante;
 
 import br.com.techchallenge.application.mapper.RestauranteMapper;
 import br.com.techchallenge.domain.Restaurante;
+import br.com.techchallenge.helper.RestauranteHelper;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.restaurante.RestauranteRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -20,6 +23,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class BuscarRestaurantePorIdServiceTest {
 
+
     @Mock
     private RestauranteRepository repository;
 
@@ -27,27 +31,42 @@ class BuscarRestaurantePorIdServiceTest {
     private RestauranteMapper mapper;
 
     @InjectMocks
-    private BuscarRestaurantePorIdService buscarRestaurantePorIdService;
+    private BuscarRestaurantePorIdService service;
 
-    @Test
-    void deveRetornarRestauranteQuandoBuscarPorId() {
-
-        Restaurante restaurante = new Restaurante(1L, "Restaurante A", null, "Italiana", null);
-        RestauranteEntity restauranteEntity = new RestauranteEntity(1L, "Restaurante A", null, "Italiana", null);
-
-
-        when(repository.findById(1L)).thenReturn(Optional.of(restauranteEntity));
-        when(mapper.toRestaurante(any())).thenReturn(restaurante);
-
-        Optional<Restaurante> result = buscarRestaurantePorIdService.buscarPorId(1L);
-
-        assertTrue(result.isPresent());
-        assertEquals("Restaurante A", result.get().getNome());
-        assertEquals("Italiana", result.get().getTipoCozinha());
-
-        verify(repository, times(1)).findById(1L);
-        verify(mapper, times(1)).toRestaurante(restauranteEntity);
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
     }
 
+    @Test
+    void testBuscarPorIdRestauranteEncontrado() {
+        Long id = 1L;
+        RestauranteEntity restauranteEntity = new RestauranteEntity();
+        Restaurante restaurante = RestauranteHelper.restaurante();
 
+        when(repository.findById(id)).thenReturn(Optional.of(restauranteEntity));
+        when(mapper.toRestaurante(restauranteEntity)).thenReturn(restaurante);
+
+        Optional<Restaurante> resultado = service.buscarPorId(id);
+
+        assertTrue(resultado.isPresent());
+        assertEquals(restaurante, resultado.get());
+
+        verify(repository).findById(id);
+        verify(mapper).toRestaurante(restauranteEntity);
+    }
+
+    @Test
+    void testBuscarPorIdRestauranteNaoEncontrado() {
+        Long id = 2L;
+
+        when(repository.findById(id)).thenReturn(Optional.empty());
+
+        Optional<Restaurante> resultado = service.buscarPorId(id);
+
+        assertFalse(resultado.isPresent());
+
+        verify(repository).findById(id);
+        verify(mapper, never()).toRestaurante(any());
+    }
 }

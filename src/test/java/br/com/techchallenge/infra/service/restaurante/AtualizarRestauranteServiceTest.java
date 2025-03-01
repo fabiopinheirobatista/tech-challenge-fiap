@@ -3,6 +3,7 @@ package br.com.techchallenge.infra.service.restaurante;
 import br.com.techchallenge.application.mapper.RestauranteMapper;
 import br.com.techchallenge.domain.Endereco;
 import br.com.techchallenge.domain.Restaurante;
+import br.com.techchallenge.helper.RestauranteHelper;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.restaurante.RestauranteRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -57,7 +58,7 @@ class AtualizarRestauranteServiceTest {
     @Test
     void deveLancarExcecaoQuandoRestauranteNaoEncontrado() {
         // 🔹 Arrange
-        Restaurante restaurante = new Restaurante(1L, "Novo Nome", null, "Mexicana", null);
+        Restaurante restaurante = RestauranteHelper.restaurante();
 
         when(repository.findById(anyLong())).thenReturn(Optional.empty());
 
