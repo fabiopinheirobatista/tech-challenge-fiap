@@ -42,22 +42,6 @@ class BuscarRestaurantePorIdServiceTest {
     @Mock
     private Restaurante restaurante;
 
-
-    @BeforeEach
-    void setUp() {
-//        MockitoAnnotations.openMocks(this);
-
-        // Criando um restaurante para simular o banco
-//        restauranteEntity = new RestauranteEntity();
-//        restauranteEntity.setId(1L);
-//        restauranteEntity.setNome("Restaurante Teste");
-//
-//        // Criando um restaurante mapeado
-//        restaurante = new Restaurante();
-//        restaurante.setId(1L);
-//        restaurante.setNome("Restaurante Teste");
-    }
-
     @Test
     void testBuscarPorIdRestauranteEncontrado() {
         Long id = 1L;
