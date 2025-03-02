@@ -3,10 +3,14 @@ package br.com.techchallenge.infra.entity;
 import br.com.techchallenge.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "restaurantes")
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class RestauranteEntity {
@@ -30,41 +34,5 @@ public class RestauranteEntity {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getTipoCozinha() {
-        return tipoCozinha;
-    }
-
-    public void setTipoCozinha(String tipoCozinha) {
-        this.tipoCozinha = tipoCozinha;
-    }
-
-    public DonoRestauranteEntity getDonoRestaurante() {
-        return donoRestaurante;
-    }
-
-    public void setDonoRestaurante(DonoRestauranteEntity donoRestaurante) {
-        this.donoRestaurante = donoRestaurante;
     }
 }

@@ -41,7 +41,10 @@ public class DonoRestauranteController {
     @PutMapping("/{id}")
     public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody DonoRestauranteRequestDTO request) {
         try {
-            service.salvar(converter.dtoParaEntity(id,request));
+            if (service.buscarPorId(id) == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
+            }
+            service.salvar(converter.dtoParaEntity(id, request));
             return ResponseEntity.ok("Dono de Restaurante atualizado com sucesso");
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
