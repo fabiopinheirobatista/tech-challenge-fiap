@@ -20,7 +20,7 @@ public class ClienteRestauranteService {
 
     public ClienteRestauranteEntity buscarPorId(Long id) {
         return repository.findById(id)
-                .orElse(null);
+                .orElseThrow(() -> new EntityNotFoundException("ID informado não existe"));
     }
 
     public List<ClienteRestauranteEntity> buscarTodos() {
