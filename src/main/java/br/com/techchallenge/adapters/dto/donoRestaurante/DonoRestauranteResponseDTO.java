@@ -1,7 +1,7 @@
 package br.com.techchallenge.adapters.dto.donoRestaurante;
 
 public record DonoRestauranteResponseDTO(
-        String nome,
+        Long nome,
         String endereco,
         String email,
         String login,
