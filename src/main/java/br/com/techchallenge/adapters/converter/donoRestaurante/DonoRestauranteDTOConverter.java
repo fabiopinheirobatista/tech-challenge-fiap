@@ -12,7 +12,6 @@ import java.util.Optional;
 @Component
 public class DonoRestauranteDTOConverter {
 
-
     public DonoRestauranteEntity dtoParaEntity(DonoRestauranteRequestDTO dto) {
         return dtoParaEntity(null, dto);
     }

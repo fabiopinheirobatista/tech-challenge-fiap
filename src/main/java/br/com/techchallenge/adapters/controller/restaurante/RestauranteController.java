@@ -1,12 +1,12 @@
-package br.com.techchallenge.adapters.controller.Restaurante;
+package br.com.techchallenge.adapters.controller.restaurante;
 
 import br.com.techchallenge.adapters.converter.Restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteRequestDTO;
+import br.com.techchallenge.adapters.dto.Restaurante.RestauranteResponseDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.RestauranteService;
 import br.com.techchallenge.shared.exception.InternalServerErrorException;
-import jakarta.transaction.Transactional;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,10 +30,9 @@ public class RestauranteController {
     }
 
     @PostMapping("/cadastrar")
-    @Transactional
     public ResponseEntity<String> cadastrar(@RequestBody RestauranteRequestDTO request) {
         try {
-            service.salvar(converter.converter(request), request.donoRestaurante());
+            service.salvar(converter.dtoParaEntity(request), request.donoRestaurante());
             return new ResponseEntity<>("Restaurante cadastrado com sucesso", HttpStatus.CREATED);
         } catch (
                 DataIntegrityViolationException e) {
@@ -48,7 +47,8 @@ public class RestauranteController {
         try {
             Optional<RestauranteEntity> restaurante = service.buscarPorId(id);
             if (restaurante.isPresent()) {
-                return ResponseEntity.ok(restaurante.get());
+                RestauranteResponseDTO responseDTO = converter.entityParaResponseDto(restaurante.get());
+                return ResponseEntity.ok(responseDTO);
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante não encontrado");
             }
