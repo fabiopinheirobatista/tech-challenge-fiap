@@ -1,4 +1,4 @@
-package br.com.techchallenge.adapters.converter;
+package br.com.techchallenge.adapters.converter.donoRestaurante;
 
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarIdResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;

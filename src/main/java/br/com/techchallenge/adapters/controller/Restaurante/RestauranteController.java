@@ -1,6 +1,7 @@
 package br.com.techchallenge.adapters.controller.Restaurante;
 
-import br.com.techchallenge.adapters.converter.RestauranteDTOConverter;
+import br.com.techchallenge.adapters.converter.Restaurante.RestauranteDTOConverter;
+import br.com.techchallenge.adapters.dto.Restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.RestauranteService;
@@ -11,8 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/restaurante")
@@ -40,7 +43,7 @@ public class RestauranteController {
         }
     }
 
-    @GetMapping("/atualizar/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) throws InternalServerErrorException {
         try {
             Optional<RestauranteEntity> restaurante = service.buscarPorId(id);
@@ -54,13 +57,21 @@ public class RestauranteController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<List<RestauranteEntity>> buscarTodos() {
+    @GetMapping("/listar-todos")
+    public ResponseEntity<?> buscarTodos() {
         try {
             List<RestauranteEntity> restaurantes = service.buscarTodos();
-            return ResponseEntity.ok(restaurantes);
+            if (restaurantes.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Não existem Restaurantes cadastrados.");
+            }
+            List<RestauranteListarTodosResponseDTO> response = restaurantes.stream()
+                    .sorted(Comparator.comparing(RestauranteEntity::getId))
+                    .map(converter::entityParaListarTodosDto)
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao buscar restaurantes", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
