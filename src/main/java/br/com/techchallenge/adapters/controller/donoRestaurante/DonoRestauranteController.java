@@ -1,6 +1,6 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
-import br.com.techchallenge.adapters.converter.DonoRestauranteDTOConverter;
+import br.com.techchallenge.adapters.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarIdResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
@@ -38,7 +38,7 @@ public class DonoRestauranteController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody DonoRestauranteRequestDTO request) {
         try {
             if (service.buscarPorId(id) == null) {
@@ -71,7 +71,7 @@ public class DonoRestauranteController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
         try {
             DonoRestauranteEntity dono = service.buscarPorId(id);
@@ -84,7 +84,7 @@ public class DonoRestauranteController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/excluir/{id}")
     public ResponseEntity<String> deletar(@PathVariable Long id) {
         try {
             service.deletar(id);
