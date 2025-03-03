@@ -18,13 +18,22 @@ public class Endereco {
     private String estado;
     private String cep;
 
+    public String getRua() {
+        return logradouro;
+    }
+
+    public void setRua(String rua) {
+        this.logradouro = rua;
+    }
+
     public Endereco(String rua, String numero, String cidade) {
         this.logradouro = rua;
         this.numero = numero;
         this.cidade = cidade;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public Endereco(String enderecoCompleto) {
+        String[] partes = enderecoCompleto.split(", ");
+        this.logradouro = partes[0];
     }
 }
