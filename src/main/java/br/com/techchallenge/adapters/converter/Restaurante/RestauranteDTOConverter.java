@@ -1,9 +1,7 @@
 package br.com.techchallenge.adapters.converter.Restaurante;
 
-import br.com.techchallenge.adapters.dto.Restaurante.RestauranteListarIdResponseDTO;
-import br.com.techchallenge.adapters.dto.Restaurante.RestauranteListarTodosResponseDTO;
-import br.com.techchallenge.adapters.dto.Restaurante.RestauranteRequestDTO;
-import br.com.techchallenge.adapters.dto.Restaurante.RestauranteResponseDTO;
+import br.com.techchallenge.adapters.dto.DonoRestauranteSimplesResponseDto;
+import br.com.techchallenge.adapters.dto.Restaurante.*;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteResponseDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
@@ -51,7 +49,7 @@ public class RestauranteDTOConverter {
                 entity.getNome(),
                 entity.getEndereco(),
                 entity.getTipoCozinha(),
-                donoEntityParaResponseDto(entity.getDonoRestaurante())
+                donoEntityParaSimplesResponseDto(entity.getDonoRestaurante())
         );
     }
 
@@ -65,6 +63,17 @@ public class RestauranteDTOConverter {
                 entity.getEndereco(),
                 entity.getEmail(),
                 entity.getLogin()
+        );
+    }
+
+    private DonoRestauranteSimplesResponseDto donoEntityParaSimplesResponseDto(DonoRestauranteEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+        return new DonoRestauranteSimplesResponseDto(
+                entity.getNome(),
+                entity.getEmail(),
+                entity.getEndereco()
         );
     }
 }

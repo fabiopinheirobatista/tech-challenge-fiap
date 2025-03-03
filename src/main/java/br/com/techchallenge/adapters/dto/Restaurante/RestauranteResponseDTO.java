@@ -1,5 +1,7 @@
 package br.com.techchallenge.adapters.dto.Restaurante;
 
+import br.com.techchallenge.adapters.dto.DonoRestauranteSimplesResponseDto;
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteResponseDTO;
 import br.com.techchallenge.domain.endereco.Endereco;
 
 public record RestauranteResponseDTO(
@@ -7,5 +9,5 @@ public record RestauranteResponseDTO(
         String nome,
         Endereco endereco,
         String tipoCozinha,
-        br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteResponseDTO donoRestaurante
+        DonoRestauranteSimplesResponseDto donoRestaurante
 ) {}
