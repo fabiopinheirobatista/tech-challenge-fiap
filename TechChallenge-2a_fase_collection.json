@@ -342,24 +342,6 @@
 					"response": []
 				},
 				{
-					"name": "cadastrarUsuario",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Antonio Carlos\",\r\n  \"email\": \"antonio.carlos@teste.com.br\",\r\n  \"login\": \"antonio.carlos\",\r\n  \"senha\": \"123456\",\r\n  \"endereco\": \"Rua de Teste, 5000\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseURL}}/api/usuario"
-					},
-					"response": []
-				},
-				{
 					"name": "validarLogin",
 					"request": {
 						"method": "POST",
@@ -394,49 +376,6 @@
 								}
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "deletarUsuario",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Key",
-								"value": "Content-Type",
-								"type": "text",
-								"disabled": true
-							},
-							{
-								"key": "Value",
-								"value": "application/json",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": "{{baseURL}}/api/usuario/16"
-					},
-					"response": []
-				},
-				{
-					"name": "consultarUsuario",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "{{baseURL}}/api/usuario/listar"
 					},
 					"response": []
 				}
