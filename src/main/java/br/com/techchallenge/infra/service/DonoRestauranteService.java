@@ -1,5 +1,6 @@
 package br.com.techchallenge.infra.service;
 
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -34,5 +35,9 @@ public class DonoRestauranteService {
             throw new EntityNotFoundException("ID informado não existe");
         }
         repository.deleteById(id);
+    }
+
+    public boolean existePorInformacoes(DonoRestauranteRequestDTO request) {
+        return repository.findByEmailAndLogin(request.email(), request.login()).isPresent();
     }
 }

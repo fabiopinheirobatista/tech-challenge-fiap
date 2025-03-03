@@ -31,10 +31,16 @@ public class DonoRestauranteController {
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDTO request) {
         try {
+            if (service.existePorInformacoes(request)) {
+                return new ResponseEntity<>("Dono de Restaurante já cadastrado com esse e-mail e login!", HttpStatus.CONFLICT);
+            }
+
             service.salvar(converter.dtoParaEntity(request));
-            return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
+            return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso!", HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>("Dono de Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("Dono de Restaurante já cadastrado com essas informações!", HttpStatus.CONFLICT);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Dono de Restaurante já cadastrado com essas informações!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

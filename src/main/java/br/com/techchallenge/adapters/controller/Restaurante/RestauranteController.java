@@ -7,6 +7,8 @@ import br.com.techchallenge.adapters.dto.Restaurante.RestauranteResponseDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.RestauranteService;
 import br.com.techchallenge.shared.exception.InternalServerErrorException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ public class RestauranteController {
 
     private final RestauranteService service;
     private final RestauranteDTOConverter converter;
+    private static final Logger logger = LoggerFactory.getLogger(RestauranteController.class);
 
     public RestauranteController(RestauranteService service, RestauranteDTOConverter converter) {
         this.service = service;
@@ -32,6 +35,7 @@ public class RestauranteController {
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrar(@RequestBody RestauranteRequestDTO request) {
         try {
+            logger.info("Iniciando validação para cadastro de restaurante");
             service.salvar(converter.dtoParaEntity(request), request.donoRestaurante());
             return new ResponseEntity<>("Restaurante cadastrado com sucesso", HttpStatus.CREATED);
         } catch (
