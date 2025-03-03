@@ -1,21 +1,20 @@
 package br.com.techchallenge.adapters.controller.restaurante;
 
 import br.com.techchallenge.adapters.converter.Restaurante.RestauranteDTOConverter;
-import br.com.techchallenge.adapters.dto.Restaurante.RestauranteListarTodosResponseDTO;
+import br.com.techchallenge.adapters.dto.DonoRestauranteSimplesResponseDto;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteResponseDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.RestauranteService;
 import br.com.techchallenge.shared.exception.InternalServerErrorException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/restaurante")
@@ -42,6 +41,25 @@ public class RestauranteController {
         }
     }
 
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody RestauranteRequestDTO request) {
+        try {
+            RestauranteEntity restaurante = service.buscarPorId(id)
+                    .orElseThrow(() -> new EntityNotFoundException("Restaurante não encontrado"));
+
+            restaurante.setNome(request.nome());
+            restaurante.setEndereco(request.endereco());
+            restaurante.setTipoCozinha(request.tipoCozinha());
+
+            service.salvar((restaurante), request.donoRestaurante());
+            return ResponseEntity.ok("Restaurante atualizado com sucesso");
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante não encontrado");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar restaurante");
+        }
+    }
+
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) throws InternalServerErrorException {
         try {
@@ -58,18 +76,24 @@ public class RestauranteController {
     }
 
     @GetMapping("/listar-todos")
-    public ResponseEntity<?> buscarTodos() {
+    public ResponseEntity<List<RestauranteResponseDTO>> buscarTodos() {
         try {
             List<RestauranteEntity> restaurantes = service.buscarTodos();
-            if (restaurantes.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("Não existem Restaurantes cadastrados.");
-            }
-            List<RestauranteListarTodosResponseDTO> response = restaurantes.stream()
-                    .sorted(Comparator.comparing(RestauranteEntity::getId))
-                    .map(converter::entityParaListarTodosDto)
-                    .collect(Collectors.toList());
-            return ResponseEntity.ok(response);
+
+            List<RestauranteResponseDTO> responseDtos = restaurantes.stream()
+                    .map(restaurante -> new RestauranteResponseDTO(
+                            restaurante.getId(),
+                            restaurante.getNome(),
+                            restaurante.getEndereco(),
+                            restaurante.getTipoCozinha(),
+                            restaurante.getDonoRestaurante() != null ? new DonoRestauranteSimplesResponseDto(
+                                    restaurante.getDonoRestaurante().getNome(),
+                                    restaurante.getDonoRestaurante().getEmail(),
+                                    restaurante.getDonoRestaurante().getEndereco()
+
+                            ) : null
+                    )).toList();
+            return ResponseEntity.ok(responseDtos);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }

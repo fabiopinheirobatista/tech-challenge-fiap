@@ -30,7 +30,7 @@ public class RestauranteService {
 
     public void salvar(RestauranteEntity restaurante, Long idDonoRestaurante) throws InternalServerErrorException {
         donoRestauranteRepository.findById(idDonoRestaurante)
-        .orElseThrow(() -> new InternalServerErrorException("Dono do restaurante não encontrado"));
+            .orElseThrow(() -> new InternalServerErrorException("Dono do restaurante não encontrado"));
         repository.save(restaurante);
     }
 
