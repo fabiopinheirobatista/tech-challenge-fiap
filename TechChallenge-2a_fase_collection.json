@@ -20,7 +20,7 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseURL}}/api/donos-restaurante/100"
+						"url": "{{baseURL}}/api/donos-restaurante/listar/15"
 					},
 					"response": []
 				},
@@ -179,7 +179,7 @@
 			]
 		},
 		{
-			"name": "Clientes restaurante",
+			"name": "Restaurantes",
 			"item": [
 				{
 					"name": "consultarRestaurantePorID",
@@ -437,106 +437,6 @@
 						"method": "GET",
 						"header": [],
 						"url": "{{baseURL}}/api/usuario/listar"
-					},
-					"response": []
-				},
-				{
-					"name": "cadastrarUsuario",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Key",
-								"value": "Content-Type",
-								"type": "text"
-							},
-							{
-								"key": "Value",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Pedro Galvão\",\r\n  \"email\": \"pedro.galvao@teste.com.br\",\r\n  \"login\": \"arnaldo.antunes\",\r\n  \"senha\": \"123456\",\r\n  \"endereco\": \"Rua de Teste, 5000\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseURL}}/api/usuario"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Restaurante",
-			"item": [
-				{
-					"name": "cadastrarRestaurante",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Key",
-								"value": "Content-Type",
-								"type": "text"
-							},
-							{
-								"key": "Value",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Cozinha C\",\r\n  \"endereco\": \"Rua de Teste, 5000\",\r\n  \"tipoCozinha\": \"Cozinha C\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/api/restaurante/cadastrar",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"restaurante",
-								"cadastrar"
-							],
-							"query": [
-								{
-									"key": "nome",
-									"value": "Fabio",
-									"disabled": true
-								},
-								{
-									"key": "endereco",
-									"value": "Rua de Teste, 100",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "fabio@fabio.com",
-									"disabled": true
-								},
-								{
-									"key": "login",
-									"value": "fabio",
-									"disabled": true
-								},
-								{
-									"key": "senha",
-									"value": "1234",
-									"disabled": true
-								}
-							]
-						}
 					},
 					"response": []
 				}

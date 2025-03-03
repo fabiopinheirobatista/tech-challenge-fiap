@@ -53,7 +53,7 @@ public class DonoRestauranteController {
         }
     }
 
-    @GetMapping("/buscar-todos")
+    @GetMapping("/listar-todos")
     public ResponseEntity<?> buscarTodos() {
         try {
             List<DonoRestauranteEntity> donos = service.buscarTodos();
