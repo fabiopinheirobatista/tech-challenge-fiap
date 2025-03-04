@@ -1,6 +1,7 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
 import br.com.techchallenge.adapters.converter.donoRestaurante.DonoRestauranteDTOConverter;
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteAlterarSenhaRequestDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarIdResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
@@ -97,6 +98,15 @@ public class DonoRestauranteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Erro ao deletar Dono de Restaurante");
         }
+    }
+
+    @PutMapping("/alterar-senha")
+    public ResponseEntity<String> alterarSenha(@RequestBody DonoRestauranteAlterarSenhaRequestDTO request) {
+        boolean atualizado = service.alterarSenha(request.getId(), request.getEmail(), request.getSenhaAtual(), request.getNovaSenha());
+        if (!atualizado) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Atualização não realizada pois o ID informado não foi localizado ou o email/senha estão incorretos!");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body("Atualização realizada com sucesso!");
     }
 
 }
