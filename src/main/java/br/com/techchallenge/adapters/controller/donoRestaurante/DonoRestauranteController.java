@@ -45,11 +45,15 @@ public class DonoRestauranteController {
     @PutMapping("/atualizar/{id}")
     public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody DonoRestauranteRequestDTO request) {
         try {
-            if (service.buscarPorId(id) == null) {
+            DonoRestauranteEntity existingDono = service.buscarPorId(id);
+            if (existingDono == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
             }
 
-            service.salvar(converter.dtoParaEntity(id, request));
+            DonoRestauranteEntity updatedDono = converter.dtoParaEntity(id, request);
+            updatedDono.setSenha(existingDono.getSenha());
+
+            service.salvar(updatedDono);
             return ResponseEntity.ok("Dono de Restaurante atualizado com sucesso!");
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
