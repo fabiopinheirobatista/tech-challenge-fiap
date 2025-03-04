@@ -3,9 +3,11 @@ package br.com.techchallenge.adapters.converter.clienteRestaurante;
 import br.com.techchallenge.adapters.dto.clienteRestaurante.ClienteRestauranteRequestDto;
 import br.com.techchallenge.adapters.dto.clienteRestaurante.ClienteRestauranteResponseDto;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class ClienteRestauranteDtoConverter {
 
     public ClienteRestauranteEntity dtoParaEntity(ClienteRestauranteRequestDto dto) {
