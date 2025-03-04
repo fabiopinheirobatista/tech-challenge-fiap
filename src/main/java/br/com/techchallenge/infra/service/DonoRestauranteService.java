@@ -48,4 +48,8 @@ public class DonoRestauranteService {
         repository.save(dono);
         return true;
     }
+
+    public boolean donoRestauranteExiste(String email, String login) {
+        return repository.existsByEmailOrLogin(email, login);
+    }
 }
