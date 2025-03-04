@@ -1,10 +1,7 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
 import br.com.techchallenge.adapters.converter.donoRestaurante.DonoRestauranteDTOConverter;
-import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteAlterarSenhaRequestDTO;
-import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarIdResponseDTO;
-import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
-import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
+import br.com.techchallenge.adapters.dto.donoRestaurante.*;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.service.DonoRestauranteService;
 import jakarta.persistence.EntityNotFoundException;
@@ -111,6 +108,21 @@ public class DonoRestauranteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Atualização não realizada pois o ID informado não foi localizado ou o email/senha estão incorretos!");
         }
         return ResponseEntity.status(HttpStatus.OK).body("Atualização realizada com sucesso!");
+    }
+
+    @PostMapping("/validar-login")
+    public ResponseEntity<String> validarLogin(@RequestBody DonoRestauranteValidarLoginRequestDTO request) {
+        DonoRestauranteEntity dono = service.buscarPorId(request.getId());
+        if (dono == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário inexistente!");
+        }
+
+        boolean isValid = service.validarLogin(request.getId(), request.getLogin(), request.getSenha());
+        if (!isValid) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário/senha inválidos!");
+        }
+
+        return ResponseEntity.ok("Usuário validado com sucesso!");
     }
 
 }
