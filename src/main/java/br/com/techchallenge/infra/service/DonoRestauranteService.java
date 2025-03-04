@@ -35,4 +35,8 @@ public class DonoRestauranteService {
         }
         repository.deleteById(id);
     }
+
+    public boolean donoRestauranteExiste(String email, String login) {
+        return repository.existsByEmailOrLogin(email, login);
+    }
 }
