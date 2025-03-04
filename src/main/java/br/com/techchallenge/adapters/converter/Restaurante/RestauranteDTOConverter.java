@@ -1,6 +1,6 @@
 package br.com.techchallenge.adapters.converter.Restaurante;
 
-import br.com.techchallenge.adapters.dto.DonoRestauranteSimplesResponseDto;
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteSimplesResponseDto;
 import br.com.techchallenge.adapters.dto.Restaurante.*;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteResponseDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
