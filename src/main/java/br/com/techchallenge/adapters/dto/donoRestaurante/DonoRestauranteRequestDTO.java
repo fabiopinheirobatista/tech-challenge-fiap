@@ -9,4 +9,12 @@ public record DonoRestauranteRequestDTO(
     String email,
     String login,
     String senha
-) {}
+) {
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+}

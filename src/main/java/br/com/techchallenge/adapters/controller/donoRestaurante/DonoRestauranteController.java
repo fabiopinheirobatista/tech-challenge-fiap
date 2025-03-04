@@ -30,6 +30,9 @@ public class DonoRestauranteController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDTO request) {
+        if (service.donoRestauranteExiste(request.getEmail(), request.getLogin())) {
+            return new ResponseEntity<>("Dono de Restaurante já cadastrado com esse e-mail/login", HttpStatus.CONFLICT);
+        }
         try {
             service.salvar(converter.dtoParaEntity(request));
             return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
@@ -44,8 +47,9 @@ public class DonoRestauranteController {
             if (service.buscarPorId(id) == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
             }
+
             service.salvar(converter.dtoParaEntity(id, request));
-            return ResponseEntity.ok("Dono de Restaurante atualizado com sucesso");
+            return ResponseEntity.ok("Dono de Restaurante atualizado com sucesso!");
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
         } catch (Exception e) {
