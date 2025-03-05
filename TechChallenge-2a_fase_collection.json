@@ -7,6 +7,240 @@
 	},
 	"item": [
 		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Salvar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Ricardo\",\r\n    \"email\": \"sdasd@asdad\",\r\n    \"senha\": \"123456\",\r\n    \"login\": \"rdo2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/cliente-restaurante/cadastrar",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cliente-restaurante",
+								"cadastrar"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar Todos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "nome",
+								"value": "João da Silva",
+								"type": "text"
+							},
+							{
+								"key": "email",
+								"value": "a",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "endereco",
+								"value": "a",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/cliente-restaurante/buscar-todos",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cliente-restaurante",
+								"buscar-todos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Alfredo\",\r\n    \"email\": \"alfredo@asdad\",\r\n    \"login\": \"123456\",\r\n    \"senha\": \"654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cliente-restaurante/atualizar/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar Único",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/cliente-restaurante/listar/2",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cliente-restaurante",
+								"listar",
+								"2"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de exclusão\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([204,404]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"123\",\r\n    \"email\": \"sdasd@asdad\",\r\n    \"senha\": \"123\",\r\n\r\n    \"endereco\": \"asdasdasd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cliente-restaurante/deletar/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Donos restaurante",
 			"item": [
 				{
@@ -20,7 +254,7 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseURL}}/api/donos-restaurante/listar/15"
+						"url": "{{baseURL}}/api/donos-restaurante/listar/4"
 					},
 					"response": []
 				},
@@ -51,7 +285,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Luis Roberto\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua de Teste\",\r\n    \"numero\": \"2100\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"luis.roberto@teste.com\",\r\n  \"login\": \"luis.roberto\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Giovanna Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Paraibuna\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"giovanna.batista@teste.com\",\r\n  \"login\": \"giovanna.batista\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -100,7 +334,7 @@
 					"response": []
 				},
 				{
-					"name": "alterarDonoRestaurantePorId",
+					"name": "atualizarDonoRestaurantePorID",
 					"event": [
 						{
 							"listen": "test",
@@ -131,14 +365,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Luis Roberto de Souza\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Piratininga\",\r\n    \"numero\": \"200\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"luis.souza@teste.com\",\r\n  \"login\": \"luis.souza\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Giovanna Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Piratininga\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"giovanna.batista@teste.com\",\r\n  \"login\": \"giovanna.batista\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}/api/donos-restaurante/atualizar/19"
+						"url": "{{baseURL}}/api/donos-restaurante/atualizar/5"
 					},
 					"response": []
 				},
@@ -206,7 +440,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"endereco\": \"Rua Parnaúbas, 100\",\r\n    \"nome\": \"Restaurante Barra do Una\",\r\n    \"tipoCozinha\": \"Italiana\",\r\n    \"donoRestaurante\": {\r\n        \"id\": 17,\r\n        \"nome\": \"Lívia Batista\",\r\n        \"logradouro\": \"Rua Parnaúbas, 100\",\r\n        \"email\": \"livia.batista@exemplo.com\",\r\n        \"login\": \"livia.batista\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"nome\": \"Restaurante Ososhiro\",\r\n    \"tipoCozinha\": \"Japones\",\r\n    \"endereco\": {\r\n        \"logradouro\": \"Av. Paulista\",\r\n        \"numero\": \"100\",\r\n        \"complemento\": \"Sala 100\",\r\n        \"bairro\": \"Bela Vista\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"SP\",\r\n        \"cep\": \"01310-000\"\r\n    },\r\n    \"donoRestaurante\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -249,7 +483,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Maria Clara\",\r\n  \"email\": \"maria.clara@teste.com.br\",\r\n  \"login\": \"maria.clara\"\r\n}",
+							"raw": "{\r\n        \"nome\": \"Restaurante Fumagali\",\r\n        \"endereco\": {\r\n            \"logradouro\": \"Av. Paulista\",\r\n            \"numero\": \"145\",\r\n            \"complemento\": \"Sala 100\",\r\n            \"bairro\": \"Bela Vista\",\r\n            \"cidade\": \"São Paulo\",\r\n            \"estado\": \"SP\",\r\n            \"cep\": \"01310-000\"\r\n        },\r\n        \"tipoCozinha\": \"Japonesa\",\r\n        \"donoRestaurante\": 1\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -290,7 +524,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseURL}}/api/cliente-restaurante/6"
+						"url": "{{baseURL}}/api/restaurante/6"
 					},
 					"response": []
 				}
@@ -300,13 +534,13 @@
 			"name": "Usuario",
 			"item": [
 				{
-					"name": "alterarSenha",
+					"name": "validarLogin",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Antonio Carlos\",\r\n  \"email\": \"antonio.carlos@teste.com.br\",\r\n  \"login\": \"antonio.carlos\",\r\n  \"senha\": \"123456\",\r\n  \"endereco\": \"Rua de Teste, 5000\"\r\n}",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"paulo.jose\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -314,27 +548,25 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/api/usuario/alterar-senha?login=antonio.carlos&senhaAntiga=123&novaSenha=123456",
+							"raw": "{{baseURL}}/api/donos-restaurante/validar-login",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"api",
-								"usuario",
-								"alterar-senha"
+								"donos-restaurante",
+								"validar-login"
 							],
 							"query": [
 								{
 									"key": "login",
-									"value": "antonio.carlos"
+									"value": "paulo.roberto",
+									"disabled": true
 								},
 								{
-									"key": "senhaAntiga",
-									"value": "123"
-								},
-								{
-									"key": "novaSenha",
-									"value": "123456"
+									"key": "senha",
+									"value": "123456",
+									"disabled": true
 								}
 							]
 						}
@@ -342,40 +574,45 @@
 					"response": []
 				},
 				{
-					"name": "validarLogin",
+					"name": "alterarSenha",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
-						"method": "POST",
-						"header": [],
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Key",
+								"value": "Content-Type",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Value",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Antonio Carlos\",\r\n  \"email\": \"antonio.carlos@teste.com.br\",\r\n  \"login\": \"antonio.carlos\",\r\n  \"senha\": \"123456\",\r\n  \"endereco\": \"Rua de Teste, 5000\"\r\n}",
+							"raw": "{\r\n    \"id\": 5,\r\n    \"email\": \"giovanna.batista@teste.com\",\r\n    \"senhaAtual\": \"000000\",\r\n    \"novaSenha\": \"555555\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/api/usuario/validar-login?login=paulo.roberto&senha=123456",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"usuario",
-								"validar-login"
-							],
-							"query": [
-								{
-									"key": "login",
-									"value": "paulo.roberto"
-								},
-								{
-									"key": "senha",
-									"value": "123456"
-								}
-							]
-						}
+						"url": "{{baseURL}}/api/donos-restaurante/alterar-senha"
 					},
 					"response": []
 				}
