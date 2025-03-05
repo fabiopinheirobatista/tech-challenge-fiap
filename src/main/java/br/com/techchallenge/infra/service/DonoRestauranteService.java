@@ -21,13 +21,13 @@ public class DonoRestauranteService {
                 .orElse(null);
     }
 
-//    public boolean donoRestauranteExiste(String email, String login) {
-//        return repository.existsByEmailOrLogin(email, login);
-//    }
-
     public boolean donoRestauranteExiste(String email, String login) {
-        return repository.findByEmailOrLogin(email, login) != null;
+        return repository.existsByEmailOrLogin(email, login);
     }
+
+//    public boolean donoRestauranteExiste(String email, String login) {
+//        return repository.findByEmailOrLogin(email, login) != null;
+//    }
 
     public DonoRestauranteEntity salvar(DonoRestauranteEntity donoRestaurante) {
         return repository.save(donoRestaurante);
