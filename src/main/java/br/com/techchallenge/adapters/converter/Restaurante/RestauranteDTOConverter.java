@@ -50,7 +50,7 @@ public class RestauranteDTOConverter {
                 entity.getNome(),
                 entity.getEndereco(),
                 entity.getTipoCozinha(),
-                donoEntityParaSimplesResponseDto(entity.getDonoRestaurante())
+                donoEntityParaResponseDto(entity.getDonoRestaurante())
         );
     }
 

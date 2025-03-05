@@ -4,17 +4,19 @@ import br.com.techchallenge.adapters.converter.Restaurante.RestauranteDTOConvert
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteListarIdResponseDTO;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.adapters.dto.Restaurante.RestauranteRequestDTO;
-import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.DonoRestauranteService;
 import br.com.techchallenge.infra.service.RestauranteService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/restaurante")
@@ -99,33 +101,6 @@ public class RestauranteController {
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-    }
-
-    @PutMapping("/atualizar/{id}")
-    public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody RestauranteRequestDTO request) {
-        try {
-            Optional<RestauranteEntity> restauranteOptional = service.buscarPorId(id);
-            if (restauranteOptional.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante não localizado!");
-            }
-
-            Optional<DonoRestauranteEntity> donoRestauranteOptional = Optional.ofNullable(donoRestauranteService.buscarPorId(request.donoRestaurante()));
-            if (donoRestauranteOptional.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não localizado!");
-            }
-
-            RestauranteEntity restaurante = restauranteOptional.get();
-            restaurante.setNome(request.nome());
-            restaurante.setEndereco(request.endereco());
-            restaurante.setTipoCozinha(request.tipoCozinha());
-            restaurante.setDonoRestaurante(donoRestauranteOptional.get());
-
-            service.salvar(restaurante, request.donoRestaurante());
-
-            return ResponseEntity.ok("Alteração realizada com sucesso!");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar restaurante");
         }
     }
 
