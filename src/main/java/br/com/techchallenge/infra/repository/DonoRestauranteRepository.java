@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DonoRestauranteRepository extends JpaRepository<DonoRestauranteEntity, Long> {
-    boolean existsByEmailOrLogin(String email, String login);
+    //boolean existsByEmailOrLogin(String email, String login);
+    DonoRestauranteEntity findByEmailOrLogin(String email, String login);
 }

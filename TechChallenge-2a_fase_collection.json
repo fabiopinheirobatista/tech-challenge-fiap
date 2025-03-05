@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "54053351-05ae-4172-a02d-7d25b9073c4b",
+		"_postman_id": "fd864259-6a4b-4080-8901-3e80c0cd8211",
 		"name": "TechChallenge - 2ª fase",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "4824164"
@@ -483,7 +483,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"nome\": \"Restaurante Fumagali\",\r\n        \"endereco\": {\r\n            \"logradouro\": \"Av. Paulista\",\r\n            \"numero\": \"145\",\r\n            \"complemento\": \"Sala 100\",\r\n            \"bairro\": \"Bela Vista\",\r\n            \"cidade\": \"São Paulo\",\r\n            \"estado\": \"SP\",\r\n            \"cep\": \"01310-000\"\r\n        },\r\n        \"tipoCozinha\": \"Japonesa\",\r\n        \"donoRestaurante\": 1\r\n    }",
+							"raw": "{\r\n  \"nome\": \"Maria Clara\",\r\n  \"email\": \"maria.clara@teste.com.br\",\r\n  \"login\": \"maria.clara\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -524,7 +524,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseURL}}/api/restaurante/6"
+						"url": "{{baseURL}}/api/cliente-restaurante/6"
 					},
 					"response": []
 				}
@@ -540,7 +540,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"paulo.jose\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"giovanna.batista\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -605,7 +605,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 5,\r\n    \"email\": \"giovanna.batista@teste.com\",\r\n    \"senhaAtual\": \"000000\",\r\n    \"novaSenha\": \"555555\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"email\": \"giovanna.batista@teste.com\",\r\n    \"senhaAtual\": \"123456\",\r\n    \"novaSenha\": \"000000\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
