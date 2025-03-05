@@ -10,7 +10,7 @@
 			"name": "Cliente",
 			"item": [
 				{
-					"name": "Salvar",
+					"name": "Cadastrar",
 					"event": [
 						{
 							"listen": "test",
@@ -127,40 +127,6 @@
 					"response": []
 				},
 				{
-					"name": "Atualizar",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"\r",
-									"\r",
-									"pm.test(\"Response time is less than 200ms\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Alfredo\",\r\n    \"email\": \"alfredo@asdad\",\r\n    \"login\": \"123456\",\r\n    \"senha\": \"654321\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseURL}}/api/cliente-restaurante/atualizar/1"
-					},
-					"response": []
-				},
-				{
 					"name": "Pesquisar Único",
 					"event": [
 						{
@@ -207,6 +173,40 @@
 					"response": []
 				},
 				{
+					"name": "Atualizar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Alfredo\",\r\n    \"email\": \"alfredo@asdad\",\r\n    \"login\": \"123456\",\r\n    \"senha\": \"654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cliente-restaurante/atualizar/2"
+					},
+					"response": []
+				},
+				{
 					"name": "Excluir",
 					"event": [
 						{
@@ -234,7 +234,7 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/api/cliente-restaurante/deletar/2"
+						"url": "{{baseURL}}/api/cliente-restaurante/deletar/3"
 					},
 					"response": []
 				}
@@ -254,7 +254,7 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseURL}}/api/donos-restaurante/listar/4"
+						"url": "{{baseURL}}/api/donos-restaurante/listar/1"
 					},
 					"response": []
 				},
@@ -285,7 +285,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Giovanna Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Paraibuna\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"giovanna.batista@teste.com\",\r\n  \"login\": \"giovanna.batista\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Lívia Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Paraibuna\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"livia.batista@teste.com\",\r\n  \"login\": \"livia.batista\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -365,14 +365,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Giovanna Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Piratininga\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"giovanna.batista@teste.com\",\r\n  \"login\": \"giovanna.batista\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Valdira Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Piratininga\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"valdira.batista@teste.com\",\r\n  \"login\": \"vadira.batista\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}/api/donos-restaurante/atualizar/5"
+						"url": "{{baseURL}}/api/donos-restaurante/atualizar/2"
 					},
 					"response": []
 				},
@@ -406,7 +406,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseURL}}/api/donos-restaurante/excluir/100"
+						"url": "{{baseURL}}/api/donos-restaurante/excluir/2"
 					},
 					"response": []
 				}
@@ -420,7 +420,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/api/restaurante/listar/1"
+						"url": "{{baseURL}}/api/restaurante/listar/2"
 					},
 					"response": []
 				},
@@ -483,14 +483,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Maria Clara\",\r\n  \"email\": \"maria.clara@teste.com.br\",\r\n  \"login\": \"maria.clara\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Murisoka\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}/api/restaurante/atualizar/6"
+						"url": "{{baseURL}}/api/restaurante/atualizar/2"
 					},
 					"response": []
 				},
@@ -524,7 +524,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseURL}}/api/cliente-restaurante/6"
+						"url": "{{baseURL}}/api/restaurante/2"
 					},
 					"response": []
 				}
@@ -540,7 +540,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"giovanna.batista\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"giovanna.batista\",\r\n  \"senha\": \"000000\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
