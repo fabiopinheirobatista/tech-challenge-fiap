@@ -26,6 +26,7 @@ public class RestauranteDTOConverter {
 
     public RestauranteListarTodosResponseDTO entityParaListarTodosDto(RestauranteEntity entity) {
         return new RestauranteListarTodosResponseDTO(
+                entity.getId(),
                 entity.getNome(),
                 entity.getEndereco().toString(),
                 entity.getTipoCozinha()

@@ -60,4 +60,5 @@ public class DonoRestauranteService {
         }
         return dono.getLogin().equals(login) && dono.getSenha().equals(senha);
     }
+
 }

@@ -32,6 +32,9 @@ public class DonoRestauranteController {
             return new ResponseEntity<>("Dono de Restaurante já cadastrado com esse e-mail/login", HttpStatus.CONFLICT);
         }
         try {
+            if (service.donoRestauranteExiste(request.getEmail(), request.getLogin())) {
+                return new ResponseEntity<>("Dono de Restaurante já cadastrado com esse e-mail/login", HttpStatus.CONFLICT);
+            }
             service.salvar(converter.dtoParaEntity(request));
             return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {

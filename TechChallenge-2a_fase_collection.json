@@ -1,11 +1,245 @@
 {
 	"info": {
-		"_postman_id": "54053351-05ae-4172-a02d-7d25b9073c4b",
+		"_postman_id": "fd864259-6a4b-4080-8901-3e80c0cd8211",
 		"name": "TechChallenge - 2ª fase",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "4824164"
 	},
 	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Cadastrar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Ricardo\",\r\n    \"email\": \"sdasd@asdad\",\r\n    \"senha\": \"123456\",\r\n    \"login\": \"rdo2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/cliente-restaurante/cadastrar",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cliente-restaurante",
+								"cadastrar"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar Todos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "nome",
+								"value": "João da Silva",
+								"type": "text"
+							},
+							{
+								"key": "email",
+								"value": "a",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "endereco",
+								"value": "a",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/cliente-restaurante/buscar-todos",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cliente-restaurante",
+								"buscar-todos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar Único",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/cliente-restaurante/listar/2",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cliente-restaurante",
+								"listar",
+								"2"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Alfredo\",\r\n    \"email\": \"alfredo@asdad\",\r\n    \"login\": \"123456\",\r\n    \"senha\": \"654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cliente-restaurante/atualizar/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de exclusão\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([204,404]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"123\",\r\n    \"email\": \"sdasd@asdad\",\r\n    \"senha\": \"123\",\r\n\r\n    \"endereco\": \"asdasdasd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cliente-restaurante/deletar/3"
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "Donos restaurante",
 			"item": [
@@ -20,7 +254,7 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseURL}}/api/donos-restaurante/listar/4"
+						"url": "{{baseURL}}/api/donos-restaurante/listar/1"
 					},
 					"response": []
 				},
@@ -138,7 +372,7 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/api/donos-restaurante/atualizar/5"
+						"url": "{{baseURL}}/api/donos-restaurante/atualizar/2"
 					},
 					"response": []
 				},
@@ -172,7 +406,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseURL}}/api/donos-restaurante/excluir/100"
+						"url": "{{baseURL}}/api/donos-restaurante/excluir/2"
 					},
 					"response": []
 				}
@@ -186,7 +420,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/api/restaurante/listar/1"
+						"url": "{{baseURL}}/api/restaurante/listar/2"
 					},
 					"response": []
 				},
@@ -249,14 +483,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Maria Clara\",\r\n  \"email\": \"maria.clara@teste.com.br\",\r\n  \"login\": \"maria.clara\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Murisoka\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}/api/restaurante/atualizar/6"
+						"url": "{{baseURL}}/api/restaurante/atualizar/2"
 					},
 					"response": []
 				},
@@ -290,7 +524,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseURL}}/api/cliente-restaurante/6"
+						"url": "{{baseURL}}/api/restaurante/2"
 					},
 					"response": []
 				}
@@ -371,7 +605,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 5,\r\n    \"email\": \"giovanna.batista@teste.com\",\r\n    \"senhaAtual\": \"000000\",\r\n    \"novaSenha\": \"555555\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"email\": \"giovanna.batista@teste.com\",\r\n    \"senhaAtual\": \"123456\",\r\n    \"novaSenha\": \"000000\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
