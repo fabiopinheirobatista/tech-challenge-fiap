@@ -1,7 +1,10 @@
 package br.com.techchallenge.adapters.dto.itensCardapio;
 
 public record ItensCardapioRequestDTO(
-    Long id,
-    String nome,
-    String descricao
-) {}
+        String nome,
+        String descricao,
+        Double preco,
+        String disponibilidade,
+        String fotoprato,
+        Long idRestaurante) {
+}

@@ -1,6 +1,5 @@
 package br.com.techchallenge.infra.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,5 +29,9 @@ public class ItensCardapioEntity {
 
     @Column(nullable = false)
     private String fotoPrato;
+
+    @OneToOne
+    @JoinColumn(name = "restaurante_id")
+    private RestauranteEntity Restaurante;
 
 }
