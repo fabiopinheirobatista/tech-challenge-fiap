@@ -24,6 +24,10 @@ public class RestauranteService {
         return repository.findById(id);
     }
 
+    public boolean nomeRestauranteExiste(String nome) {
+        return repository.existsByNome(nome);
+    }
+
     public List<RestauranteEntity> buscarTodos() {
         return repository.findAll();
     }
