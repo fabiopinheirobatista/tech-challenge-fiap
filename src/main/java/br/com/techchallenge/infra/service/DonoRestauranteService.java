@@ -21,6 +21,10 @@ public class DonoRestauranteService {
                 .orElse(null);
     }
 
+    public boolean donoRestauranteExiste(String email, String login) {
+        return repository.existsByEmailOrLogin(email, login);
+    }
+
     public DonoRestauranteEntity salvar(DonoRestauranteEntity donoRestaurante) {
         return repository.save(donoRestaurante);
     }
@@ -35,4 +39,26 @@ public class DonoRestauranteService {
         }
         repository.deleteById(id);
     }
+
+    public boolean alterarSenha(Long id, String email, String senhaAtual, String novaSenha) {
+        DonoRestauranteEntity dono = repository.findById(id).orElse(null);
+        if (dono == null) {
+            return false;
+        }
+        if (!dono.getEmail().equals(email) || !dono.getSenha().equals(senhaAtual)) {
+            return false;
+        }
+        dono.setSenha(novaSenha);
+        repository.save(dono);
+        return true;
+    }
+
+    public boolean validarLogin(Long id, String login, String senha) {
+        DonoRestauranteEntity dono = repository.findById(id).orElse(null);
+        if (dono == null) {
+            return false;
+        }
+        return dono.getLogin().equals(login) && dono.getSenha().equals(senha);
+    }
+
 }

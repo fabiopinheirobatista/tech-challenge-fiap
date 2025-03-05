@@ -1,9 +1,7 @@
 package br.com.techchallenge.adapters.controller.donoRestaurante;
 
 import br.com.techchallenge.adapters.converter.donoRestaurante.DonoRestauranteDTOConverter;
-import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarIdResponseDTO;
-import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
-import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteRequestDTO;
+import br.com.techchallenge.adapters.dto.donoRestaurante.*;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.service.DonoRestauranteService;
 import jakarta.persistence.EntityNotFoundException;
@@ -30,6 +28,9 @@ public class DonoRestauranteController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDTO request) {
+        if (service.donoRestauranteExiste(request.getEmail(), request.getLogin())) {
+            return new ResponseEntity<>("Dono de Restaurante já cadastrado com esse e-mail/login", HttpStatus.CONFLICT);
+        }
         try {
             service.salvar(converter.dtoParaEntity(request));
             return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
@@ -41,11 +42,16 @@ public class DonoRestauranteController {
     @PutMapping("/atualizar/{id}")
     public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody DonoRestauranteRequestDTO request) {
         try {
-            if (service.buscarPorId(id) == null) {
+            DonoRestauranteEntity existingDono = service.buscarPorId(id);
+            if (existingDono == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
             }
-            service.salvar(converter.dtoParaEntity(id, request));
-            return ResponseEntity.ok("Dono de Restaurante atualizado com sucesso");
+
+            DonoRestauranteEntity updatedDono = converter.dtoParaEntity(id, request);
+            updatedDono.setSenha(existingDono.getSenha());
+
+            service.salvar(updatedDono);
+            return ResponseEntity.ok("Dono de Restaurante atualizado com sucesso!");
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dono de Restaurante não encontrado");
         } catch (Exception e) {
@@ -93,6 +99,30 @@ public class DonoRestauranteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Erro ao deletar Dono de Restaurante");
         }
+    }
+
+    @PutMapping("/alterar-senha")
+    public ResponseEntity<String> alterarSenha(@RequestBody DonoRestauranteAlterarSenhaRequestDTO request) {
+        boolean atualizado = service.alterarSenha(request.getId(), request.getEmail(), request.getSenhaAtual(), request.getNovaSenha());
+        if (!atualizado) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Atualização não realizada pois o ID informado não foi localizado ou o email/senha estão incorretos!");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body("Atualização realizada com sucesso!");
+    }
+
+    @PostMapping("/validar-login")
+    public ResponseEntity<String> validarLogin(@RequestBody DonoRestauranteValidarLoginRequestDTO request) {
+        DonoRestauranteEntity dono = service.buscarPorId(request.getId());
+        if (dono == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário inexistente!");
+        }
+
+        boolean isValid = service.validarLogin(request.getId(), request.getLogin(), request.getSenha());
+        if (!isValid) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário/senha inválidos!");
+        }
+
+        return ResponseEntity.ok("Usuário validado com sucesso!");
     }
 
 }

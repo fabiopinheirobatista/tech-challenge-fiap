@@ -25,7 +25,6 @@ public class DonoRestauranteDTOConverter {
                     entity.setEmail(dto.email());
                     entity.setEndereco(dto.endereco().toString());
                     entity.setLogin(dto.login());
-                    entity.setSenha(dto.senha());
                     entity.setDataUltimaAlteracao(LocalDate.now());
                     return entity;
                 })

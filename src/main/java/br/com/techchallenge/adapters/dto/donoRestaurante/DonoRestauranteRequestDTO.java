@@ -7,6 +7,13 @@ public record DonoRestauranteRequestDTO(
     String nome,
     Endereco endereco,
     String email,
-    String login,
-    String senha
-) {}
+    String login
+) {
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+}
