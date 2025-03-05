@@ -1,5 +1,6 @@
 package br.com.techchallenge.adapters.dto.Restaurante;
 
+import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteSimplesResponseDto;
 import br.com.techchallenge.domain.endereco.Endereco;
 import br.com.techchallenge.adapters.dto.donoRestaurante.DonoRestauranteResponseDTO;
 

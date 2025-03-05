@@ -13,10 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/restaurante")
@@ -45,6 +43,25 @@ public class RestauranteController {
             return new ResponseEntity<>("Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody RestauranteRequestDTO request) {
+        try {
+            RestauranteEntity restaurante = service.buscarPorId(id)
+                    .orElseThrow(() -> new EntityNotFoundException("Restaurante não encontrado"));
+
+            restaurante.setNome(request.nome());
+            restaurante.setEndereco(request.endereco());
+            restaurante.setTipoCozinha(request.tipoCozinha());
+
+            service.salvar((restaurante), request.donoRestaurante());
+            return ResponseEntity.ok("Restaurante atualizado com sucesso");
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante não encontrado");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar restaurante");
         }
     }
 

@@ -285,7 +285,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Lívia Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Paraibuna\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"livia.batista@teste.com\",\r\n  \"login\": \"livia.batista\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Giovanna Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Paraibuna\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"giovanna.batista@teste.com\",\r\n  \"login\": \"giovanna.batista\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -365,7 +365,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Valdira Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Piratininga\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"valdira.batista@teste.com\",\r\n  \"login\": \"vadira.batista\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Giovanna Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Piratininga\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"giovanna.batista@teste.com\",\r\n  \"login\": \"giovanna.batista\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -540,7 +540,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"giovanna.batista\",\r\n  \"senha\": \"000000\"\r\n}",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"paulo.jose\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
