@@ -27,19 +27,9 @@ public class DonoRestauranteController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteRequestDTO request) {
-        if (service.donoRestauranteExiste(request.getEmail(), request.getLogin())) {
-            return new ResponseEntity<>("Dono de Restaurante já cadastrado com esse e-mail/login", HttpStatus.CONFLICT);
-        }
-        try {
-            if (service.donoRestauranteExiste(request.getEmail(), request.getLogin())) {
-                return new ResponseEntity<>("Dono de Restaurante já cadastrado com esse e-mail/login", HttpStatus.CONFLICT);
-            }
-            service.salvar(converter.dtoParaEntity(request));
-            return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
-        } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>("Dono de Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
-        }
+    public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteCadastrarRequestDTO request) {
+        service.salvar(converter.dtoComSenhaParaEntity(request));
+        return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
     }
 
     @PutMapping("/atualizar/{id}")
