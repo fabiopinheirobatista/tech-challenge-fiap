@@ -36,7 +36,7 @@ public class DonoRestauranteDTOConverter {
         return new DonoRestauranteListarTodosResponseDTO(
                 entity.getId(),
                 entity.getNome(),
-                entity.getEndereco(),
+                entity.getEndereco().toString(),
                 entity.getEmail(),
                 entity.getLogin()
         );

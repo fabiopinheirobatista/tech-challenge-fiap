@@ -7,5 +7,24 @@ public record DonoRestauranteListarTodosResponseDTO(
         String email,
         String login
 ) {
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
 }
 
