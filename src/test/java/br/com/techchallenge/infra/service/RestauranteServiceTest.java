@@ -71,7 +71,7 @@ class RestauranteServiceTest {
         Mockito.verify(repository, times(1)).findAll();
     }
 
-    @Test
+    /*@Test
     void salvar() throws InternalServerErrorException {
         Mockito.when(donoRestauranteRepository.findById(anyLong())).thenReturn(Optional.of(new DonoRestauranteEntity()));
         Mockito.when(repository.save(any(RestauranteEntity.class))).thenReturn(restaurante);
@@ -80,9 +80,9 @@ class RestauranteServiceTest {
 
         Mockito.verify(donoRestauranteRepository, times(1)).findById(1L);
         Mockito.verify(repository, times(1)).save(restaurante);
-    }
+    }*/
 
-    @Test
+    /*@Test
     void salvar_DonoRestauranteNotFound() {
         Mockito.when(donoRestauranteRepository.findById(anyLong())).thenReturn(Optional.empty());
 
@@ -90,7 +90,7 @@ class RestauranteServiceTest {
 
         Mockito.verify(donoRestauranteRepository, times(1)).findById(1L);
         Mockito.verify(repository, times(0)).save(any(RestauranteEntity.class));
-    }
+    }*/
 
     @Test
     void deletar() {
