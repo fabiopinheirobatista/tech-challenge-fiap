@@ -28,6 +28,10 @@ public class DonoRestauranteController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrar(@RequestBody DonoRestauranteCadastrarRequestDTO request) {
+        if (service.donoRestauranteExiste(request.getEmail(), request.getLogin())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Cadastro não realizado pois já existe um registro com esse email/login!");
+        }
         service.salvar(converter.dtoComSenhaParaEntity(request));
         return new ResponseEntity<>("Dono de Restaurante cadastrado com sucesso", HttpStatus.CREATED);
     }
