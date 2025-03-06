@@ -6,9 +6,13 @@ public record RestauranteRequestDTO(
         String nome,
         Endereco endereco,
         String tipoCozinha,
-        Long donoRestaurante
+        Long idDonoRestaurante
 ) {
     public String getNome() {
         return nome;
+    }
+
+    public Long getIdDonoRestaurante() {
+        return idDonoRestaurante;
     }
 }
