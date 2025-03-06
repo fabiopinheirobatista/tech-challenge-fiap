@@ -56,24 +56,24 @@ public class RestauranteController {
         }
     }
 
-//    @PutMapping("/atualizar/{id}")
-//    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody RestauranteRequestDTO request) {
-//        try {
-//            RestauranteEntity restaurante = service.buscarPorId(id)
-//                    .orElseThrow(() -> new EntityNotFoundException("Restaurante não encontrado"));
-//
-//            restaurante.setNome(request.nome());
-//            restaurante.setEndereco(request.endereco());
-//            restaurante.setTipoCozinha(request.tipoCozinha());
-//
-//            service.salvar((restaurante), request.donoRestaurante());
-//            return ResponseEntity.ok("Restaurante atualizado com sucesso");
-//        } catch (EntityNotFoundException e) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante não encontrado");
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar restaurante");
-//        }
-//    }
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody RestauranteRequestDTO request) {
+        try {
+            RestauranteEntity restaurante = service.buscarPorId(id)
+                    .orElseThrow(() -> new EntityNotFoundException("Restaurante não encontrado"));
+
+            restaurante.setNome(request.getNome());
+            restaurante.setEndereco(request.endereco());
+            restaurante.setTipoCozinha(request.tipoCozinha());
+
+            service.salvar(restaurante);
+            return ResponseEntity.ok("Restaurante atualizado com sucesso");
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante não encontrado");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar restaurante");
+        }
+    }
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
