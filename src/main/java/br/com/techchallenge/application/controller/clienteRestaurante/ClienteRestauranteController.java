@@ -48,20 +48,7 @@ public class ClienteRestauranteController {
         }
     }
 
-    @GetMapping("/listar/{id}")
-    public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
-        try {
-            ClienteRestauranteEntity cliente = clienteRestauranteService.buscarPorId(id);
-            if (cliente == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("Cliente de Restaurante não encontrado");
-            }
-            ClienteRestauranteResponseDto response = converter.entityParaDto(cliente);
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao buscar Cliente de Restaurante");
-        }
-    }
+
 
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<String> deletar(@PathVariable Long id) {

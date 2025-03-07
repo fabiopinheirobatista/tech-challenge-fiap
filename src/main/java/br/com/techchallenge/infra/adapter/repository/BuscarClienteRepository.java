@@ -16,6 +16,20 @@ public class BuscarClienteRepository implements BuscarClienteInterface {
     private final ClienteRestauranteRepository clienteRestauranteRepository;
 
     @Override
+    public ClienteRestaurante buscarPorId(Long id) {
+        ClienteRestauranteEntity clienteEntity = clienteRestauranteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente de Restaurante não encontrado"));
+
+        return new ClienteRestaurante(
+                clienteEntity.getId(),
+                clienteEntity.getNome(),
+                clienteEntity.getEmail(),
+                clienteEntity.getLogin(),
+                clienteEntity.getSenha()
+        );
+    }
+
+    @Override
     public List<ClienteRestaurante> buscarTodos() {
         List<ClienteRestauranteEntity> listaClientesEntity = clienteRestauranteRepository.findAll();
         List<ClienteRestaurante> listaClienteRestaurante = new ArrayList<>();
