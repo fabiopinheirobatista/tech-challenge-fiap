@@ -1,12 +1,10 @@
 package br.com.techchallenge.infra.service;
 
-import br.com.techchallenge.domain.restaurante.Restaurante;
+import br.com.techchallenge.domain.useCase.restaurante.Restaurante;
 import br.com.techchallenge.helper.RestauranteHelper;
-import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
-import br.com.techchallenge.shared.exception.InternalServerErrorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

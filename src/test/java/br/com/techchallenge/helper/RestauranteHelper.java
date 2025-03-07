@@ -1,6 +1,6 @@
 package br.com.techchallenge.helper;
 
-import br.com.techchallenge.domain.restaurante.Restaurante;
+import br.com.techchallenge.domain.useCase.restaurante.Restaurante;
 
 public abstract class RestauranteHelper {
 
