@@ -1,18 +1,16 @@
 package br.com.techchallenge.infra.service;
 
-import br.com.techchallenge.domain.clienteRestaurante.ClienteRestaurante;
+import br.com.techchallenge.domain.useCase.clienteRestaurante.ClienteRestaurante;
 import br.com.techchallenge.helper.ClienteRestauranteHelper;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
