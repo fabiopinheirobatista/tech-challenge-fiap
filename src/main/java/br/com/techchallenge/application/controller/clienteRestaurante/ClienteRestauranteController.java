@@ -48,17 +48,5 @@ public class ClienteRestauranteController {
         }
     }
 
-
-
-    @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<String> deletar(@PathVariable Long id) {
-        try {
-            clienteRestauranteService.deletar(id);
-            return ResponseEntity.ok("Cliente de Restaurante deletado com sucesso");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao deletar Cliente de Restaurante");
-        }
-    }
-
 }
 

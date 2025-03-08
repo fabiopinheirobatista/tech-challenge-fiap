@@ -1,6 +1,6 @@
 package br.com.techchallenge.domain.restaurante;
 
-import br.com.techchallenge.domain.donoRestaurante.DonoRestaurante;
+import br.com.techchallenge.domain.entity.donoRestaurante.DonoRestaurante;
 import br.com.techchallenge.domain.endereco.Endereco;
 import lombok.AllArgsConstructor;
 import lombok.Data;

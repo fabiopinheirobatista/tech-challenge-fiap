@@ -1,36 +1,34 @@
 package br.com.techchallenge.application.controller.clienteRestaurante;
 
 
-import br.com.techchallenge.domain.dto.clienteRestaurante.ClienteRestauranteResponseDto;
-import br.com.techchallenge.domain.useCase.cliente.BuscarTodosOsClientesUseCase;
+import br.com.techchallenge.domain.useCase.cliente.DeleteClienteUseCase;
 import br.com.techchallenge.infra.adapter.repository.ClienteRestauranteRepositoryImpl;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/cliente-restaurante")
 @RequiredArgsConstructor
-public class BuscarTodosOsClientesController {
+public class DeletarClienteController {
 
     private final ClienteRestauranteRepository clienteRestauranteRepository;
 
-    @GetMapping("/buscar-todos")
-    public ResponseEntity<?> buscarTodos() {
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
         try {
-            BuscarTodosOsClientesUseCase useCase = new BuscarTodosOsClientesUseCase(
+            DeleteClienteUseCase useCase = new DeleteClienteUseCase(
                     new ClienteRestauranteRepositoryImpl(clienteRestauranteRepository)
             );
-            List<ClienteRestauranteResponseDto> clientes = useCase.execute();
-            return ResponseEntity.ok(clientes);
+            useCase.execute(id);
+            return ResponseEntity.ok("Cliente de Restaurante deletado com sucesso");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao buscar Clientes de Restaurante");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao deletar Cliente de Restaurante");
         }
     }
 }

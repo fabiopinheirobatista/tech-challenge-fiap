@@ -1,9 +1,9 @@
 package br.com.techchallenge.domain.useCase.cliente;
 
 
-import br.com.techchallenge.domain.clienteRestaurante.ClienteRestaurante;
+import br.com.techchallenge.domain.entity.clienteRestaurante.ClienteRestaurante;
 import br.com.techchallenge.domain.dto.clienteRestaurante.ClienteRestauranteResponseDto;
-import br.com.techchallenge.domain.gateway.BuscarClienteInterface;
+import br.com.techchallenge.domain.gateway.ClienteRestauranteInterface;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -11,14 +11,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BuscarClientePorIdUseCase {
 
-    private final BuscarClienteInterface buscarClienteInterface;
+    private final ClienteRestauranteInterface clienteRestauranteInterface;
 
     public ClienteRestauranteResponseDto execute(Long id) {
 
         ClienteRestauranteResponseDto clienteDTO = null;
 
         try {
-            ClienteRestaurante cliente = buscarClienteInterface.buscarPorId(id);
+            ClienteRestaurante cliente = clienteRestauranteInterface.buscarPorId(id);
             clienteDTO = new ClienteRestauranteResponseDto(
                     cliente.getId(),
                     cliente.getNome(),

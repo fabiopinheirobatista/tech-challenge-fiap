@@ -1,7 +1,8 @@
 package br.com.techchallenge.infra.adapter.repository;
 
-import br.com.techchallenge.domain.clienteRestaurante.ClienteRestaurante;
-import br.com.techchallenge.domain.gateway.BuscarClienteInterface;
+import br.com.techchallenge.domain.entity.clienteRestaurante.ClienteRestaurante;
+import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
+import br.com.techchallenge.domain.gateway.ClienteRestauranteInterface;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,14 +12,25 @@ import java.util.List;
 
 
 @RequiredArgsConstructor
-public class BuscarClienteRepository implements BuscarClienteInterface {
+public class ClienteRestauranteRepositoryImpl implements ClienteRestauranteInterface {
 
     private final ClienteRestauranteRepository clienteRestauranteRepository;
 
     @Override
-    public ClienteRestaurante buscarPorId(Long id) {
+    public Boolean delete(Long id) throws ClienteNaoEncontradoException {
+        try {
+            clienteRestauranteRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            throw new ClienteNaoEncontradoException("Cliente de Restaurante não encontrado");
+        }
+
+    }
+
+    @Override
+    public ClienteRestaurante buscarPorId(Long id) throws ClienteNaoEncontradoException {
         ClienteRestauranteEntity clienteEntity = clienteRestauranteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente de Restaurante não encontrado"));
+                .orElseThrow(() -> new ClienteNaoEncontradoException("Cliente de Restaurante não encontrado"));
 
         return new ClienteRestaurante(
                 clienteEntity.getId(),

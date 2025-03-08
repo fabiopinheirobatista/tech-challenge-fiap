@@ -6,7 +6,7 @@ import br.com.techchallenge.domain.dto.Restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.domain.dto.Restaurante.RestauranteResponseDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.service.RestauranteService;
-import br.com.techchallenge.shared.exception.InternalServerErrorException;
+import br.com.techchallenge.domain.exception.InternalServerErrorException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
