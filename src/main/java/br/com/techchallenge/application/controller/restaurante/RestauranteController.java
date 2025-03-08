@@ -1,6 +1,6 @@
 package br.com.techchallenge.application.controller.restaurante;
 
-import br.com.techchallenge.infra.converter.Restaurante.RestauranteDTOConverter;
+import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarIdResponseDTO;
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.domain.input.restaurante.RestauranteRequestDTO;
@@ -33,29 +33,6 @@ public class RestauranteController {
         this.converter = converter;
     }
 
-    @PostMapping("/cadastrar")
-    public ResponseEntity<String> cadastrar(@RequestBody RestauranteRequestDTO request) {
-        try {
-            if (service.nomeRestauranteExiste(request.getNome())) {
-                return new ResponseEntity<>("Restaurante já cadastrado com esse nome!", HttpStatus.CONFLICT);
-            }
-
-            Optional<DonoRestauranteEntity> donoRestaurante = Optional.ofNullable(donoRestauranteService.buscarPorId(request.getIdDonoRestaurante()));
-            if (donoRestaurante.isEmpty()) {
-                return new ResponseEntity<>("Dono de Restaurante informado não existe!", HttpStatus.BAD_REQUEST);
-            }
-
-            RestauranteEntity restaurante = converter.dtoParaEntity(request);
-            restaurante.setDonoRestaurante(donoRestaurante.get());
-            service.salvar(restaurante);
-            return new ResponseEntity<>("Cadastro realizado com sucesso", HttpStatus.CREATED);
-        } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>("Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @PutMapping("/atualizar/{id}")
     public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody RestauranteRequestDTO request) {
         try {
@@ -86,29 +63,6 @@ public class RestauranteController {
             return ResponseEntity.ok(responseDTO);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao buscar restaurante por id");
-        }
-    }
-
-    @GetMapping("/listar-todos")
-    public ResponseEntity<?> buscarTodos() {
-        try {
-            List<RestauranteEntity> restaurantes = service.buscarTodos();
-            if (restaurantes.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("Não existem Restaurantes cadastrados.");
-            }
-            List<RestauranteListarTodosResponseDTO> response = restaurantes.stream()
-                    .sorted(Comparator.comparing(RestauranteEntity::getId))
-                    .map(restaurante -> new RestauranteListarTodosResponseDTO(
-                            restaurante.getId(),
-                            restaurante.getNome(),
-                            restaurante.getEndereco().toString(),
-                            restaurante.getTipoCozinha()
-                    ))
-                    .collect(Collectors.toList());
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 

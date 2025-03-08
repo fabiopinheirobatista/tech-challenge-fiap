@@ -1,4 +1,4 @@
-package br.com.techchallenge.domain.useCase.restaurante;
+package br.com.techchallenge.domain.entity;
 
 import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 import br.com.techchallenge.domain.useCase.endereco.Endereco;
@@ -15,6 +15,6 @@ public class Restaurante {
     private String nome;
     private Endereco endereco;
     private String tipoCozinha;
-    private DonoRestaurante donoRestaurante;
+    //private DonoRestaurante donoRestaurante;//tirei para testar
 
 }
