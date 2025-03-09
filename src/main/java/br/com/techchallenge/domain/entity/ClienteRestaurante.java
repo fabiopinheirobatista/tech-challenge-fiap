@@ -1,4 +1,4 @@
-package br.com.techchallenge.domain.useCase.clienteRestaurante;
+package br.com.techchallenge.domain.entity;
 
 
 import lombok.AllArgsConstructor;
