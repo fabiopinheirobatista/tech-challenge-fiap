@@ -1,6 +1,6 @@
 package br.com.techchallenge.infra.entity;
 
-import br.com.techchallenge.domain.useCase.endereco.Endereco;
+import br.com.techchallenge.domain.entity.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,7 +32,4 @@ public class RestauranteEntity {
     @JoinColumn(name = "dono_restaurante_id")
     private DonoRestauranteEntity donoRestaurante;
 
-    public Long getId() {
-        return id;
-    }
 }

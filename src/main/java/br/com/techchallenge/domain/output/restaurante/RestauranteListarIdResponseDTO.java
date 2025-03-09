@@ -1,8 +1,10 @@
 package br.com.techchallenge.domain.output.restaurante;
 
+import br.com.techchallenge.domain.entity.Endereco;
+
 public record RestauranteListarIdResponseDTO(
         String nome,
-        String endereco,
+        Endereco endereco,
         String tipoCozinha
 ) {
 }

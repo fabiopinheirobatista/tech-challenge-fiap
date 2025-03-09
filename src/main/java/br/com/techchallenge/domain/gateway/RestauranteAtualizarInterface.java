@@ -3,8 +3,8 @@ package br.com.techchallenge.domain.gateway;
 import br.com.techchallenge.domain.entity.Restaurante;
 
 
-public interface RestauranteSalvarInterface {
+public interface RestauranteAtualizarInterface {
 
-    Restaurante salvar(Restaurante restaurante);
+    Restaurante update(Restaurante restaurante);
 
 }

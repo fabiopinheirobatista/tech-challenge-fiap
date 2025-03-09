@@ -1,6 +1,6 @@
 package br.com.techchallenge.domain.useCase.donoRestaurante;
 
-import br.com.techchallenge.domain.useCase.endereco.Endereco;
+import br.com.techchallenge.domain.entity.Endereco;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

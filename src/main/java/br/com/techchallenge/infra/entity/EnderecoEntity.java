@@ -1,4 +1,4 @@
-package br.com.techchallenge.domain.useCase.endereco;
+package br.com.techchallenge.infra.entity;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Endereco {
+public class EnderecoEntity {
     private String logradouro;
     private String numero;
     private String complemento;
@@ -26,13 +26,13 @@ public class Endereco {
         this.logradouro = rua;
     }
 
-    public Endereco(String rua, String numero, String cidade) {
+    public EnderecoEntity(String rua, String numero, String cidade) {
         this.logradouro = rua;
         this.numero = numero;
         this.cidade = cidade;
     }
 
-    public Endereco(String enderecoCompleto) {
+    public EnderecoEntity(String enderecoCompleto) {
         String[] partes = enderecoCompleto.split(", ");
         this.logradouro = partes[0];
     }

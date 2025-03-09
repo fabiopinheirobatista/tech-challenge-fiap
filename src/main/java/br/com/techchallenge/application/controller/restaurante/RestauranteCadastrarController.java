@@ -1,6 +1,8 @@
 package br.com.techchallenge.application.controller.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
+import br.com.techchallenge.domain.exception.RestauranteJaCadastradoException;
+import br.com.techchallenge.domain.gateway.RestauranteBuscarTodosInterface;
 import br.com.techchallenge.domain.gateway.RestauranteSalvarInterface;
 import br.com.techchallenge.domain.input.restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.domain.useCase.restaurante.CadastrarRestauranteUseCase;
@@ -13,7 +15,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResponseDTO;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -29,18 +33,21 @@ public class RestauranteCadastrarController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<String> cadastrar(@RequestBody RestauranteRequestDTO request) {
+    public ResponseEntity<?> cadastrar(@RequestBody RestauranteRequestDTO request) {
         try {
 
-            CadastrarRestauranteUseCase cadastrarRestauranteUseCase = new CadastrarRestauranteUseCase(new RestauranteCadastrarRepositoryImp(restauranteRepository,converter));
-            Restaurante restaurante = converter.dtoToRestaurante(request);
-            cadastrarRestauranteUseCase.execute(restaurante);
+            CadastrarRestauranteUseCase cadastrarRestauranteUseCase = new CadastrarRestauranteUseCase(
+                    new RestauranteCadastrarRepositoryImp(restauranteRepository, converter));
 
-            return new ResponseEntity<>("Cadastro realizado com sucesso", HttpStatus.CREATED);
-        } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>("Restaurante já cadastrado com essas informações", HttpStatus.CONFLICT);
+            Restaurante restaurante = converter.dtoToRestaurante(request);
+            Restaurante restauranteRetorno = cadastrarRestauranteUseCase.execute(restaurante);
+            RestauranteListarTodosResponseDTO responseDTO = converter.restauranteParaResponseDto(restauranteRetorno);
+            return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
+
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (RestauranteJaCadastradoException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
 

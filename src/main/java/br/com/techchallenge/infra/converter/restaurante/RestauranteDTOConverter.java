@@ -8,7 +8,6 @@ import br.com.techchallenge.domain.output.restaurante.RestauranteListarIdRespons
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.domain.output.restaurante.RestauranteResponseDTO;
 import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
-import br.com.techchallenge.domain.useCase.endereco.Endereco;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import org.springframework.stereotype.Component;
@@ -37,7 +36,7 @@ public class RestauranteDTOConverter {
         return new RestauranteListarTodosResponseDTO(
                 entity.getId(),
                 entity.getNome(),
-                entity.getEndereco().toString(),
+                entity.getEndereco(),
                 entity.getTipoCozinha()
         );
     }
@@ -45,7 +44,7 @@ public class RestauranteDTOConverter {
     public RestauranteListarIdResponseDTO entityParaListarIdDto(RestauranteEntity entity) {
         return new RestauranteListarIdResponseDTO(
                 entity.getNome(),
-                entity.getEndereco().toString(),
+                entity.getEndereco(),
                 entity.getTipoCozinha()
         );
     }
@@ -86,21 +85,37 @@ public class RestauranteDTOConverter {
                 entity.getEndereco()
         );
     }
-    private Long id;
-    private String nome;
-    private Endereco endereco;
-    private String tipoCozinha;
-    private DonoRestaurante donoRestaurante;
+
     public Restaurante restauranteEntityToRestaurante(RestauranteEntity restauranteEntity) {
+
+        DonoRestauranteEntity donoRestauranteEntity = restauranteEntity.getDonoRestaurante();
+
+       // DonoRestaurante donodonoRestaurante = donoRestauranteEntity;
+        DonoRestaurante donodonoRestaurante = convertToDonoRestaurante(donoRestauranteEntity);
         return new Restaurante(
                 restauranteEntity.getId(),
                 restauranteEntity.getNome(),
                 restauranteEntity.getEndereco(),
-                restauranteEntity.getTipoCozinha()
+                restauranteEntity.getTipoCozinha(),
+                donodonoRestaurante
         );
 
     }
 
+    private DonoRestaurante convertToDonoRestaurante(DonoRestauranteEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+        return new DonoRestaurante(
+                entity.getId(),
+                entity.getNome(),
+                null,
+                entity.getEmail(),
+                entity.getLogin(),
+                entity.getSenha(),
+                entity.getDataUltimaAlteracao()
+        );
+    }
     public RestauranteEntity restauranteParaEntity(Restaurante restaurante) {
         RestauranteEntity restauranteEntity = new RestauranteEntity();
         restauranteEntity.setId(restaurante.getId());
@@ -115,7 +130,18 @@ public class RestauranteDTOConverter {
                 null,
                 request.nome(),
                 request.endereco(),
-                request.tipoCozinha()
+                request.tipoCozinha(),
+                new DonoRestaurante()
         );
+    }
+
+    public RestauranteListarTodosResponseDTO restauranteParaResponseDto(Restaurante restaurante) {
+        return new RestauranteListarTodosResponseDTO(
+                restaurante.getId(),
+                restaurante.getNome(),
+                restaurante.getEndereco(),
+                restaurante.getTipoCozinha()
+        );
+
     }
 }

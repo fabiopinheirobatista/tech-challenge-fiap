@@ -1,9 +1,11 @@
 package br.com.techchallenge.domain.output.restaurante;
 
+import br.com.techchallenge.domain.entity.Endereco;
+
 public record RestauranteListarTodosResponseDTO(
         Long id,
         String nome,
-        String endereco,
+        Endereco endereco,
         String tipoCozinha
 ) {
 }

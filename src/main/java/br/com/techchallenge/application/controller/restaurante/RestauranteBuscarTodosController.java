@@ -38,11 +38,10 @@ public class RestauranteBuscarTodosController {
             }
 
             List<RestauranteListarTodosResponseDTO> response = restaurantes.stream()
-
                     .map(restaurante -> new RestauranteListarTodosResponseDTO(
                             restaurante.getId(),
                             restaurante.getNome(),
-                            restaurante.getEndereco() != null ? restaurante.getEndereco().toString() : "Endereço não disponível",
+                            restaurante.getEndereco() != null ? restaurante.getEndereco() : null,
                             restaurante.getTipoCozinha()
                     ))
                     .collect(Collectors.toList());
