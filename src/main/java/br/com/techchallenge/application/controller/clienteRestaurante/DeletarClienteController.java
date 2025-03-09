@@ -1,8 +1,7 @@
 package br.com.techchallenge.application.controller.clienteRestaurante;
 
 
-import br.com.techchallenge.domain.useCase.cliente.DeleteClienteUseCase;
-import br.com.techchallenge.infra.adapter.repository.DeleteClienteRepositoryImpl;
+import br.com.techchallenge.domain.useCase.clienteRestaurante.DeleteClienteUseCase;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

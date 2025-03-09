@@ -6,11 +6,13 @@ import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarTodosOsClien
 import br.com.techchallenge.domain.output.clienteRestaurante.ClienteRestauranteResponseDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Component
 @RequiredArgsConstructor
 public class BuscarTodosOsClientesUseCase {
 

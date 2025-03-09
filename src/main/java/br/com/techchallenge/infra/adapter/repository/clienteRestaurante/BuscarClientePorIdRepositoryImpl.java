@@ -1,4 +1,4 @@
-package br.com.techchallenge.infra.adapter.repository;
+package br.com.techchallenge.infra.adapter.repository.clienteRestaurante;
 
 import br.com.techchallenge.domain.entity.ClienteRestaurante;
 import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
@@ -6,7 +6,9 @@ import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarClientePorId
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class BuscarClientePorIdRepositoryImpl implements BuscarClientePorIdInterface {
 

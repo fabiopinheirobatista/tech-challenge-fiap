@@ -1,10 +1,12 @@
-package br.com.techchallenge.infra.adapter.repository;
+package br.com.techchallenge.infra.adapter.repository.clienteRestaurante;
 
 import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
 import br.com.techchallenge.domain.gateway.clienteRestaurante.DeleteClienteInterface;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class DeleteClienteRepositoryImpl implements DeleteClienteInterface {
 
