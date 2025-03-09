@@ -1,15 +1,11 @@
 package br.com.techchallenge.infra.adapter.repository;
 
-import br.com.techchallenge.domain.entity.clienteRestaurante.ClienteRestaurante;
+import br.com.techchallenge.domain.entity.ClienteRestaurante;
 import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
 import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarClientePorIdInterface;
-import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarTodosOsClientesInterface;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RequiredArgsConstructor
 public class BuscarClientePorIdRepositoryImpl implements BuscarClientePorIdInterface {

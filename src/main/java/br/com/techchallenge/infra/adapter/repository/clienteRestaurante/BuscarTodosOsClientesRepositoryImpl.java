@@ -1,6 +1,6 @@
 package br.com.techchallenge.infra.adapter.repository;
 
-import br.com.techchallenge.domain.entity.clienteRestaurante.ClienteRestaurante;
+import br.com.techchallenge.domain.entity.ClienteRestaurante;
 import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarTodosOsClientesInterface;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
