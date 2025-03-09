@@ -2,8 +2,9 @@ package br.com.techchallenge.application.controller.clienteRestaurante;
 
 
 import br.com.techchallenge.domain.dto.clienteRestaurante.ClienteRestauranteResponseDto;
+import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarClientePorIdInterface;
 import br.com.techchallenge.domain.useCase.cliente.BuscarClientePorIdUseCase;
-import br.com.techchallenge.infra.adapter.repository.ClienteRestauranteRepositoryImpl;
+import br.com.techchallenge.infra.adapter.repository.BuscarClientePorIdRepositoryImpl;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,9 +25,8 @@ public class BuscarClientePorIdController {
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
         try {
             BuscarClientePorIdUseCase useCase = new BuscarClientePorIdUseCase(
-                    new ClienteRestauranteRepositoryImpl(clienteRestauranteRepository)
+                    new BuscarClientePorIdRepositoryImpl(clienteRestauranteRepository)
             );
-
             ClienteRestauranteResponseDto cliente = useCase.execute(id);
             return ResponseEntity.ok(cliente);
         } catch (Exception e) {

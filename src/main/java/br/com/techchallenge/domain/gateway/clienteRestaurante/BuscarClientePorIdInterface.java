@@ -1,15 +1,9 @@
-package br.com.techchallenge.domain.gateway;
+package br.com.techchallenge.domain.gateway.clienteRestaurante;
 
 import br.com.techchallenge.domain.entity.clienteRestaurante.ClienteRestaurante;
 import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
 
-import java.util.List;
-
-public interface ClienteRestauranteInterface {
-
-    Boolean delete(Long id) throws ClienteNaoEncontradoException;
+public interface BuscarClientePorIdInterface {
 
     ClienteRestaurante buscarPorId(Long id) throws ClienteNaoEncontradoException;
-
-    List<ClienteRestaurante> buscarTodos();
 }

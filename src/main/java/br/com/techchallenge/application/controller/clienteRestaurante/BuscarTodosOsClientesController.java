@@ -3,7 +3,7 @@ package br.com.techchallenge.application.controller.clienteRestaurante;
 
 import br.com.techchallenge.domain.dto.clienteRestaurante.ClienteRestauranteResponseDto;
 import br.com.techchallenge.domain.useCase.cliente.BuscarTodosOsClientesUseCase;
-import br.com.techchallenge.infra.adapter.repository.ClienteRestauranteRepositoryImpl;
+import br.com.techchallenge.infra.adapter.repository.BuscarTodosOsClientesRepositoryImpl;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,7 @@ public class BuscarTodosOsClientesController {
     public ResponseEntity<?> buscarTodos() {
         try {
             BuscarTodosOsClientesUseCase useCase = new BuscarTodosOsClientesUseCase(
-                    new ClienteRestauranteRepositoryImpl(clienteRestauranteRepository)
+                    new BuscarTodosOsClientesRepositoryImpl(clienteRestauranteRepository)
             );
             List<ClienteRestauranteResponseDto> clientes = useCase.execute();
             return ResponseEntity.ok(clientes);

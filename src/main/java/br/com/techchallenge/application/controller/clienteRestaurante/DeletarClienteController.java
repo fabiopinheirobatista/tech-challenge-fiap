@@ -2,7 +2,7 @@ package br.com.techchallenge.application.controller.clienteRestaurante;
 
 
 import br.com.techchallenge.domain.useCase.cliente.DeleteClienteUseCase;
-import br.com.techchallenge.infra.adapter.repository.ClienteRestauranteRepositoryImpl;
+import br.com.techchallenge.infra.adapter.repository.DeleteClienteRepositoryImpl;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class DeletarClienteController {
     public ResponseEntity<String> deletar(@PathVariable Long id) {
         try {
             DeleteClienteUseCase useCase = new DeleteClienteUseCase(
-                    new ClienteRestauranteRepositoryImpl(clienteRestauranteRepository)
+                    new DeleteClienteRepositoryImpl(clienteRestauranteRepository)
             );
             useCase.execute(id);
             return ResponseEntity.ok("Cliente de Restaurante deletado com sucesso");

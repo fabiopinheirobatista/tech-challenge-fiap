@@ -3,7 +3,8 @@ package br.com.techchallenge.domain.useCase.cliente;
 
 import br.com.techchallenge.domain.entity.clienteRestaurante.ClienteRestaurante;
 import br.com.techchallenge.domain.dto.clienteRestaurante.ClienteRestauranteResponseDto;
-import br.com.techchallenge.domain.gateway.ClienteRestauranteInterface;
+import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarClientePorIdInterface;
+import br.com.techchallenge.infra.adapter.repository.BuscarClientePorIdRepositoryImpl;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BuscarClientePorIdUseCase {
 
-    private final ClienteRestauranteInterface clienteRestauranteInterface;
+    private final BuscarClientePorIdInterface clienteRestauranteInterface;
 
     public ClienteRestauranteResponseDto execute(Long id) {
 

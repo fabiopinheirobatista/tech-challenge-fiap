@@ -3,7 +3,7 @@ package br.com.techchallenge.domain.useCase.cliente;
 
 import br.com.techchallenge.domain.entity.clienteRestaurante.ClienteRestaurante;
 import br.com.techchallenge.domain.dto.clienteRestaurante.ClienteRestauranteResponseDto;
-import br.com.techchallenge.domain.gateway.ClienteRestauranteInterface;
+import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarTodosOsClientesInterface;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -14,14 +14,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BuscarTodosOsClientesUseCase {
 
-    private final ClienteRestauranteInterface buscarClienteInterface;
+    private final BuscarTodosOsClientesInterface buscarClientesInterface;
 
     public List<ClienteRestauranteResponseDto> execute() {
 
         List<ClienteRestauranteResponseDto> listaClienteDTO = new ArrayList<>();
 
         try {
-            List<ClienteRestaurante> listaCliente = buscarClienteInterface.buscarTodos();
+            List<ClienteRestaurante> listaCliente = buscarClientesInterface.buscarTodos();
 
             for (ClienteRestaurante cliente : listaCliente) {
                 listaClienteDTO.add(new ClienteRestauranteResponseDto(
