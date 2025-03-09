@@ -20,17 +20,11 @@ import java.util.List;
 public class BuscarTodosOsClientesController {
 
     private final ClienteRestauranteRepository clienteRestauranteRepository;
+    private final BuscarTodosOsClientesUseCase buscarTodosOsClientesUseCase;
 
     @GetMapping("/buscar-todos")
     public ResponseEntity<?> buscarTodos() {
-        try {
-            BuscarTodosOsClientesUseCase useCase = new BuscarTodosOsClientesUseCase(
-                    new BuscarTodosOsClientesRepositoryImpl(clienteRestauranteRepository)
-            );
-            List<ClienteRestauranteResponseDto> clientes = useCase.execute();
-            return ResponseEntity.ok(clientes);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao buscar Clientes de Restaurante");
-        }
+        List<ClienteRestauranteResponseDto> clientes = buscarTodosOsClientesUseCase.execute();
+        return ResponseEntity.ok(clientes);
     }
 }

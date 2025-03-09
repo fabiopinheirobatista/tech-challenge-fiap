@@ -18,17 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeletarClienteController {
 
     private final ClienteRestauranteRepository clienteRestauranteRepository;
+    private final DeleteClienteUseCase deleteClienteUseCase;
 
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<String> deletar(@PathVariable Long id) {
-        try {
-            DeleteClienteUseCase useCase = new DeleteClienteUseCase(
-                    new DeleteClienteRepositoryImpl(clienteRestauranteRepository)
-            );
-            useCase.execute(id);
-            return ResponseEntity.ok("Cliente de Restaurante deletado com sucesso");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao deletar Cliente de Restaurante");
-        }
+         deleteClienteUseCase.execute(id);
+        return ResponseEntity.ok("Cliente de Restaurante deletado com sucesso");
     }
 }

@@ -19,17 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class BuscarClientePorIdController {
 
     private final ClienteRestauranteRepository clienteRestauranteRepository;
+    private final BuscarClientePorIdUseCase buscarClientePorIdUseCase;
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
-        try {
-            BuscarClientePorIdUseCase useCase = new BuscarClientePorIdUseCase(
-                    new BuscarClientePorIdRepositoryImpl(clienteRestauranteRepository)
-            );
-            ClienteRestauranteResponseDto cliente = useCase.execute(id);
-            return ResponseEntity.ok(cliente);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao buscar Cliente de Restaurante");
-        }
+
+        ClienteRestauranteResponseDto cliente = buscarClientePorIdUseCase.execute(id);
+        return ResponseEntity.ok(cliente);
     }
 }
