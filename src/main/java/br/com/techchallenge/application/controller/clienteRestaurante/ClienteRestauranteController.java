@@ -1,8 +1,8 @@
 package br.com.techchallenge.application.controller.clienteRestaurante;
 
-import br.com.techchallenge.infra.converter.clienteRestaurante.ClienteRestauranteDtoConverter;
 import br.com.techchallenge.domain.input.clienteRestaurante.ClienteRestauranteRequestDto;
 import br.com.techchallenge.domain.output.clienteRestaurante.ClienteRestauranteResponseDto;
+import br.com.techchallenge.infra.converter.clienteRestaurante.ClienteRestauranteDtoConverter;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.service.ClienteRestauranteService;
 import lombok.RequiredArgsConstructor;

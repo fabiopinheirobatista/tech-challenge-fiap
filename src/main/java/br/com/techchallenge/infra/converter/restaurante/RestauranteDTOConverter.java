@@ -2,8 +2,8 @@ package br.com.techchallenge.infra.converter.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.input.restaurante.RestauranteRequestDTO;
-import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteSimplesResponseDto;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteResponseDTO;
+import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteSimplesResponseDto;
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarIdResponseDTO;
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.domain.output.restaurante.RestauranteResponseDTO;
@@ -126,12 +126,14 @@ public class RestauranteDTOConverter {
     }
 
     public Restaurante dtoToRestaurante(RestauranteRequestDTO request) {
+        DonoRestaurante donoRestaurante = new DonoRestaurante();
+        donoRestaurante.setId(request.getIdDonoRestaurante());
         return new Restaurante(
                 null,
                 request.nome(),
                 request.endereco(),
                 request.tipoCozinha(),
-                new DonoRestaurante()
+                donoRestaurante
         );
     }
 

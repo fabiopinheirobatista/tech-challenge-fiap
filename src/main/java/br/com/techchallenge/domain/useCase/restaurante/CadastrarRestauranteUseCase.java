@@ -1,9 +1,12 @@
 package br.com.techchallenge.domain.useCase.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
+import br.com.techchallenge.domain.exception.DonoRestauranteNaoExisteException;
 import br.com.techchallenge.domain.exception.RestauranteJaCadastradoException;
-import br.com.techchallenge.domain.gateway.RestauranteBuscarTodosInterface;
 import br.com.techchallenge.domain.gateway.RestauranteSalvarInterface;
+import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
+
+import java.util.Optional;
 
 public class CadastrarRestauranteUseCase {
 
@@ -15,24 +18,18 @@ public class CadastrarRestauranteUseCase {
 
     }
 
-    public Restaurante execute(Restaurante restaurante) throws RestauranteJaCadastradoException {
+    public Restaurante execute(Restaurante restaurante) throws RestauranteJaCadastradoException, DonoRestauranteNaoExisteException {
 
         // Verifica se já existe um restaurante com o mesmo nome
-        /*
-            boolean nomeJaExiste = repositoryBuscarPorNome.buscarPorNome(restaurante.getNome()).isPresent();
-            if (nomeJaExiste) {
-            throw new RestauranteJaCadastradoException("Restaurante já cadastrado com esse nome!");
-        }
-         */
+        boolean nomeJaExiste = repositorySalvar.buscarPorNome(restaurante.getNome());
+
+        if (nomeJaExiste) throw new RestauranteJaCadastradoException("Restaurante já cadastrado com esse nome!");
 
         // Verifica se o dono do restaurante existe
-        /*
-        Optional<DonoRestaurante> dono = donoRestauranteRepository.buscarPorId(restaurante.getDonoId());
+        Optional<DonoRestaurante> dono = repositorySalvar.buscarPorIdDonoRestaurante(restaurante.getDonoRestaurante().getId());
         if (dono.isEmpty()) {
-            throw new Exception("Dono de Restaurante informado não existe!");
+            throw new DonoRestauranteNaoExisteException("Dono de Restaurante informado não existe!");
         }
-        */
-
 
        return repositorySalvar.salvar(restaurante);
     }
