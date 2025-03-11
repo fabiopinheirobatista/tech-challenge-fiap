@@ -1,5 +1,6 @@
 package br.com.techchallenge.infra.converter.restaurante;
 
+import br.com.techchallenge.domain.entity.ItensCardapio;
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.input.restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteResponseDTO;
@@ -9,6 +10,7 @@ import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResp
 import br.com.techchallenge.domain.output.restaurante.RestauranteResponseDTO;
 import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
+import br.com.techchallenge.infra.entity.ItensCardapioEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import org.springframework.stereotype.Component;
 

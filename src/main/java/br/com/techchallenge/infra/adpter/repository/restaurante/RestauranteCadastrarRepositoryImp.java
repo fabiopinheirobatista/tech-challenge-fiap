@@ -1,7 +1,7 @@
-package br.com.techchallenge.infra.adpter.repository;
+package br.com.techchallenge.infra.adpter.repository.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
-import br.com.techchallenge.domain.gateway.RestauranteSalvarInterface;
+import br.com.techchallenge.domain.gateway.restaurante.RestauranteSalvarInterface;
 import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;

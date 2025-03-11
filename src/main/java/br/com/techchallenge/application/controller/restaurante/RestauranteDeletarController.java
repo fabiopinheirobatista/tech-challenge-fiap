@@ -2,8 +2,8 @@ package br.com.techchallenge.application.controller.restaurante;
 
 import br.com.techchallenge.domain.exception.RestauranteNaoEncontradoException;
 import br.com.techchallenge.domain.useCase.restaurante.ExcluirRestauranteUseCase;
-import br.com.techchallenge.infra.adpter.repository.RestauranteBuscarPorIdRepositoryImp;
-import br.com.techchallenge.infra.adpter.repository.RestauranteDeletarRepositoryImp;
+import br.com.techchallenge.infra.adpter.repository.restaurante.RestauranteBuscarPorIdRepositoryImp;
+import br.com.techchallenge.infra.adpter.repository.restaurante.RestauranteDeletarRepositoryImp;
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
 import org.springframework.http.HttpStatus;

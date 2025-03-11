@@ -1,4 +1,4 @@
-package br.com.techchallenge.domain.gateway;
+package br.com.techchallenge.domain.gateway.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;

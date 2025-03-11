@@ -1,4 +1,4 @@
-package br.com.techchallenge.domain.gateway;
+package br.com.techchallenge.domain.gateway.restaurante;
 
 public interface RestauranteDeletarInterface {
 

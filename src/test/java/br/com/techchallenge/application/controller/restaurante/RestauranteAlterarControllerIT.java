@@ -22,7 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = TechChallengeApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Transactional // Garante que as transações sejam revertidas após cada teste
+@Transactional
+@ActiveProfiles("test")
 public class RestauranteAlterarControllerIT {
 
     @Autowired
@@ -60,4 +61,24 @@ public class RestauranteAlterarControllerIT {
                 .andExpect(jsonPath("$.nome").value("Restaurante Atualizado"))
                 .andExpect(jsonPath("$.tipoCozinha").value("Japonesa"));
     }
+
+    @Test
+    void deveRetornar404_QuandoAtualizarRestauranteInexistente() throws Exception {
+        RestauranteRequestDTO requestDTO = new RestauranteRequestDTO("Restaurante Atualizado", null, "Japonesa", 999L);
+
+        mockMvc.perform(put("/api/restaurante/atualizar/999")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestDTO)))
+                .andExpect(status().isNotFound());
+    }
+
+//    @Test
+//    void deveRetornar400_QuandoAtualizarComDadosInvalidos() throws Exception {
+//        RestauranteRequestDTO requestDTO = new RestauranteRequestDTO(null, null, null, null);
+//
+//        mockMvc.perform(put("/api/restaurante/atualizar/" + requestDTO.getId())
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(objectMapper.writeValueAsString(requestDTO)))
+//                .andExpect(status().isBadRequest());
+//    }
 }

@@ -1,7 +1,7 @@
 package br.com.techchallenge.domain.useCase.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
-import br.com.techchallenge.domain.gateway.RestauranteBuscarPorIdInterface;
+import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;
 
 import java.util.Optional;
 

@@ -2,8 +2,8 @@ package br.com.techchallenge.domain.useCase.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.exception.RestauranteNaoEncontradoException;
-import br.com.techchallenge.domain.gateway.RestauranteBuscarPorIdInterface;
-import br.com.techchallenge.domain.gateway.RestauranteDeletarInterface;
+import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;
+import br.com.techchallenge.domain.gateway.restaurante.RestauranteDeletarInterface;
 
 import java.util.Optional;
 
@@ -21,6 +21,7 @@ public class ExcluirRestauranteUseCase {
         Optional<Restaurante> restauranteOptional = repositoryPorId.buscarPorId(id);
 
         if (restauranteOptional.isEmpty()) throw new RestauranteNaoEncontradoException("Restaurante não encontrado");
+
         repositoryDeletar.deletar(id);
 
     }

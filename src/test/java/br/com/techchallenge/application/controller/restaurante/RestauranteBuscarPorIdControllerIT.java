@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Transactional
+@ActiveProfiles("test")
 public class RestauranteBuscarPorIdControllerIT {
 
     @Autowired
@@ -33,5 +35,11 @@ public class RestauranteBuscarPorIdControllerIT {
         mockMvc.perform(get("/api/restaurante/listar/" + restaurante.getId()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.nome").value("Restaurante Teste"));
+    }
+
+    @Test
+    void deveRetornar404_QuandoBuscarPorIdInexistente() throws Exception {
+        mockMvc.perform(get("/api/restaurante/listar/999"))
+                .andExpect(status().isNotFound());
     }
 }

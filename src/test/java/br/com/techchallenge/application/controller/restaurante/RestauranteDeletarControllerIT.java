@@ -25,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Transactional
+@ActiveProfiles("test")
 public class RestauranteDeletarControllerIT {
 
     @Autowired
@@ -43,5 +44,11 @@ public class RestauranteDeletarControllerIT {
         mockMvc.perform(delete("/api/restaurante/" + restaurante.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Restaurante excluído com sucesso"));
+    }
+
+    @Test
+    void deveRetornar404_QuandoDeletarRestauranteInexistente() throws Exception {
+        mockMvc.perform(delete("/api/restaurante/999"))
+                .andExpect(status().isNotFound());
     }
 }
