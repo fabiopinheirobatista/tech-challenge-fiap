@@ -27,5 +27,4 @@ public class BuscarClientePorIdController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado");
         }
     }
-
 }
