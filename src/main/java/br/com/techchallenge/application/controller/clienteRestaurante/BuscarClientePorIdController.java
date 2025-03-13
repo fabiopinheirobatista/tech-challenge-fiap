@@ -5,6 +5,7 @@ import br.com.techchallenge.domain.output.clienteRestaurante.ClienteRestauranteR
 import br.com.techchallenge.domain.useCase.clienteRestaurante.BuscarClientePorIdUseCase;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,13 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class BuscarClientePorIdController {
 
-    private final ClienteRestauranteRepository clienteRestauranteRepository;
     private final BuscarClientePorIdUseCase buscarClientePorIdUseCase;
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
-
-        ClienteRestauranteResponseDto cliente = buscarClientePorIdUseCase.execute(id);
-        return ResponseEntity.ok(cliente);
+        try {
+            ClienteRestauranteResponseDto cliente = buscarClientePorIdUseCase.execute(id);
+            return ResponseEntity.ok(cliente);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado");
+        }
     }
 }
