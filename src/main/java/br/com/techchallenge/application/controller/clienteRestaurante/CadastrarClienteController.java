@@ -25,7 +25,5 @@ public class CadastrarClienteController {
 
         salvarClienteUseCase.cadastrar(converter.dtoParaEntity(request));
         return ResponseEntity.ok("Cliente de Restaurante cadastrado com sucesso");
-
-
     }
 }
