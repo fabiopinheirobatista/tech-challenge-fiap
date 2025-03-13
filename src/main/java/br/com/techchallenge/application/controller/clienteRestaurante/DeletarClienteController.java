@@ -1,6 +1,5 @@
 package br.com.techchallenge.application.controller.clienteRestaurante;
 
-
 import br.com.techchallenge.domain.useCase.clienteRestaurante.DeleteClienteUseCase;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
