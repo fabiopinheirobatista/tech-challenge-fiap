@@ -1,6 +1,5 @@
 package br.com.techchallenge.application.controller.restaurante;
 
-
 import br.com.techchallenge.TechChallengeApplication;
 import br.com.techchallenge.domain.input.restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
@@ -36,24 +35,21 @@ public class RestauranteAlterarControllerIT {
 
     @BeforeEach
     void setUp() {
-        // Limpa o banco de dados antes de cada teste
         restauranteRepository.deleteAll();
     }
 
     @Test
     void deveRetornar200_QuandoAtualizarComSucesso() throws Exception {
-        // Cria um restaurante no banco de dados
+
         RestauranteEntity restaurante = new RestauranteEntity();
         restaurante.setNome("Restaurante Teste");
         restaurante.setTipoCozinha("Italiana");
         restaurante = restauranteRepository.save(restaurante);
 
-        // Cria o DTO de atualização
         RestauranteRequestDTO requestDTO = new RestauranteRequestDTO(
                 "Restaurante Atualizado", null, "Japonesa", restaurante.getId()
         );
 
-        // Executa a requisição PUT
         mockMvc.perform(put("/api/restaurante/atualizar/" + restaurante.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestDTO)))
@@ -72,13 +68,4 @@ public class RestauranteAlterarControllerIT {
                 .andExpect(status().isNotFound());
     }
 
-//    @Test
-//    void deveRetornar400_QuandoAtualizarComDadosInvalidos() throws Exception {
-//        RestauranteRequestDTO requestDTO = new RestauranteRequestDTO(null, null, null, null);
-//
-//        mockMvc.perform(put("/api/restaurante/atualizar/" + requestDTO.getId())
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(requestDTO)))
-//                .andExpect(status().isBadRequest());
-//    }
 }

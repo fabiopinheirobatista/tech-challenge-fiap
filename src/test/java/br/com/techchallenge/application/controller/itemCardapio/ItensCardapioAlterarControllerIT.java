@@ -1,8 +1,6 @@
 package br.com.techchallenge.application.controller.itemCardapio;
 
 import br.com.techchallenge.TechChallengeApplication;
-import br.com.techchallenge.domain.entity.ItensCardapio;
-import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.input.itensCardapio.ItensCardapioRequestDTO;
 import br.com.techchallenge.infra.entity.ItensCardapioEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
@@ -19,8 +17,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @SpringBootTest(classes = TechChallengeApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

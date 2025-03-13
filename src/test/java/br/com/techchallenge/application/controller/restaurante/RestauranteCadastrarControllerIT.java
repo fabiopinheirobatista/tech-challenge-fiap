@@ -40,11 +40,9 @@ public class RestauranteCadastrarControllerIT {
 
     @BeforeEach
     void setUp() {
-        // Limpa e prepara dados antes de cada teste
         restauranteRepository.deleteAll();
         donoRestauranteRepository.deleteAll();
 
-        // Cria um dono válido com endereço
         DonoRestauranteEntity dono = new DonoRestauranteEntity();
         dono.setNome("Dono Válido");
         dono.setEmail("dono@teste.com");
@@ -74,7 +72,6 @@ public class RestauranteCadastrarControllerIT {
 
     @Test
     void deveRetornar409_QuandoNomeDuplicado() throws Exception {
-        // Primeiro cadastro
         RestauranteRequestDTO request1 = new RestauranteRequestDTO(
                 "Restaurante Duplicado",
                 null,
@@ -85,7 +82,6 @@ public class RestauranteCadastrarControllerIT {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request1)));
 
-        // Segundo cadastro com mesmo nome
         RestauranteRequestDTO request2 = new RestauranteRequestDTO(
                 "Restaurante Duplicado",
                 null,

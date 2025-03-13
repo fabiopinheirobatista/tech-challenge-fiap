@@ -1,8 +1,6 @@
 package br.com.techchallenge.application.controller.itemCardapio;
 
-
 import br.com.techchallenge.TechChallengeApplication;
-import br.com.techchallenge.domain.entity.ItensCardapio;
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.ItensCardapioRepository;
@@ -48,7 +46,6 @@ public class ItensCardapioCadastrarControllerIT {
         itensCardapioRepository.deleteAll();
         restauranteRepository.deleteAll();
 
-        // Criando um restaurante para ser associado ao item do cardápio
         RestauranteEntity restauranteEntity = new RestauranteEntity();
         restauranteEntity.setNome("Restaurante Teste");
         restauranteEntity.setTipoCozinha("Italiana");
@@ -77,6 +74,5 @@ public class ItensCardapioCadastrarControllerIT {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.nome").value("Hamburguer Artesanal"));
     }
-
 
 }

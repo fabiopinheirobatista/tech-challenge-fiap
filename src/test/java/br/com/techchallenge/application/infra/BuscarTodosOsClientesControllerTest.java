@@ -15,8 +15,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.doThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 
@@ -38,13 +37,10 @@ class BuscarTodosOsClientesControllerTest {
 
     @Test
     void deveRetornarClientesComSucesso() {
-        // Arrange
         when(buscarTodosOsClientesUseCase.execute()).thenReturn(clientes);
 
-        // Act
         ResponseEntity<?> response = buscarTodosOsClientesController.buscarTodos();
 
-        // Assert
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(clientes, response.getBody());
     }
