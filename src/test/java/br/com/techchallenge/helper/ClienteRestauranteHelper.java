@@ -1,6 +1,7 @@
 package br.com.techchallenge.helper;
 
-import br.com.techchallenge.domain.useCase.clienteRestaurante.ClienteRestaurante;
+
+import br.com.techchallenge.domain.entity.ClienteRestaurante;
 
 public abstract class ClienteRestauranteHelper {
 
