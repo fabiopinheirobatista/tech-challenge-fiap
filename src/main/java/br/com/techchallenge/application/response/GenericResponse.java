@@ -1,4 +1,4 @@
-package br.com.techchallenge.application.controller.response;
+package br.com.techchallenge.application.response;
 
 import br.com.techchallenge.domain.generic.OutputInterface;
 import org.springframework.http.HttpStatus;
