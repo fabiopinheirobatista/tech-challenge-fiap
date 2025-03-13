@@ -1,38 +1,46 @@
 package br.com.techchallenge.application.controller.clienteRestaurante;
 
+import br.com.techchallenge.domain.useCase.clienteRestaurante.DeleteClienteUseCase;
+import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
+import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
 class DeletarClienteControllerTest {
 
+    @Mock
+    private ClienteRestauranteRepository clienteRestauranteRepository;
+
+    @Mock
+    private DeleteClienteUseCase deleteClienteUseCase;
+
     @InjectMocks
     private DeletarClienteController deletarClienteController;
 
-    @Mock
-    private br.com.techchallenge.domain.useCase.cliente.DeleteClienteUseCase deleteClienteUseCase;
-
-    private final Long clienteId = 1L;
-
     @Test
     void deveDeletarClienteComSucesso() {
-        ResponseEntity<String> response = deletarClienteController.deletar(clienteId);
+        Long id = 1L;
+        ClienteRestauranteEntity cliente = new ClienteRestauranteEntity();
+        when(clienteRestauranteRepository.findById(id)).thenReturn(Optional.of(cliente));
 
-        verify(deleteClienteUseCase).execute(clienteId);
+        ResponseEntity<String> response = deletarClienteController.deletar(id);
 
-        // Verifica se o retorno é 200 OK
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Cliente de Restaurante deletado com sucesso", response.getBody());
     }
-
 
 }
