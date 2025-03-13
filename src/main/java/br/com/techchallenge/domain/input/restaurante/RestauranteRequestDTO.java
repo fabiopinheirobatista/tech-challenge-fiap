@@ -1,6 +1,6 @@
 package br.com.techchallenge.domain.input.restaurante;
 
-import br.com.techchallenge.domain.useCase.endereco.Endereco;
+import br.com.techchallenge.domain.entity.Endereco;
 
 public record RestauranteRequestDTO(
         String nome,

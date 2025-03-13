@@ -1,9 +1,11 @@
 package br.com.techchallenge.infra.converter.donoRestaurante;
 
+import br.com.techchallenge.domain.entity.Endereco;
+import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteCadastrarRequestDTO;
+import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteRequestDTO;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteListarIdResponseDTO;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
-import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteRequestDTO;
-import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteCadastrarRequestDTO;
+import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import org.springframework.stereotype.Component;
 
@@ -65,5 +67,27 @@ public class DonoRestauranteDTOConverter {
                     return entity;
                 })
                 .orElse(null);
+    }
+
+    public DonoRestauranteListarIdResponseDTO entityParaDonoRestaurante2(DonoRestauranteEntity donoRestauranteEntity) {
+        return new DonoRestauranteListarIdResponseDTO(
+                donoRestauranteEntity.getId(),
+                donoRestauranteEntity.getNome(),
+                donoRestauranteEntity.getEndereco(),
+                donoRestauranteEntity.getEmail(),
+                donoRestauranteEntity.getLogin()
+        );
+    }
+
+    public DonoRestaurante entityParaDonoRestaurante(DonoRestauranteEntity donoRestauranteEntity) {
+        return new DonoRestaurante(
+                donoRestauranteEntity.getId(),
+                donoRestauranteEntity.getNome(),
+                new Endereco(donoRestauranteEntity.getEndereco()),
+                donoRestauranteEntity.getEmail(),
+                donoRestauranteEntity.getLogin(),
+                donoRestauranteEntity.getSenha(),
+                donoRestauranteEntity.getDataUltimaAlteracao()
+        );
     }
 }
