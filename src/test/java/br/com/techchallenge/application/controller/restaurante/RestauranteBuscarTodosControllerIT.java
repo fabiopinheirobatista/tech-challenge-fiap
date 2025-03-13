@@ -5,7 +5,6 @@ import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResp
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

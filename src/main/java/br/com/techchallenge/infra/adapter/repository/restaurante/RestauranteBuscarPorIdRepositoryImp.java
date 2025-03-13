@@ -1,4 +1,4 @@
-package br.com.techchallenge.infra.adpter.repository.restaurante;
+package br.com.techchallenge.infra.adapter.repository.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;

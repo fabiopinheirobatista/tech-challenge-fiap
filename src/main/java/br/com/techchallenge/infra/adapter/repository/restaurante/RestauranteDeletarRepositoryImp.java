@@ -1,4 +1,4 @@
-package br.com.techchallenge.infra.adpter.repository.restaurante;
+package br.com.techchallenge.infra.adapter.repository.restaurante;
 
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteDeletarInterface;
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;

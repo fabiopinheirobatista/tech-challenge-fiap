@@ -1,4 +1,4 @@
-package br.com.techchallenge.infra.adpter.repository.itensCardapio;
+package br.com.techchallenge.infra.adapter.repository.itensCardapio;
 
 
 import br.com.techchallenge.domain.entity.ItensCardapio;

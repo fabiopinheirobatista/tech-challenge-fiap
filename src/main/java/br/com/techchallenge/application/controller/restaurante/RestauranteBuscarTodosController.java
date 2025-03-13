@@ -3,7 +3,7 @@ package br.com.techchallenge.application.controller.restaurante;
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.domain.useCase.restaurante.BuscarTodosRestauranteUseCase;
-import br.com.techchallenge.infra.adpter.repository.restaurante.RestauranteBuscarTodosRepositoryImp;
+import br.com.techchallenge.infra.adapter.repository.restaurante.RestauranteBuscarTodosRepositoryImp;
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
 import org.springframework.http.HttpStatus;

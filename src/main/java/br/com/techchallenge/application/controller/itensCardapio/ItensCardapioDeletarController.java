@@ -1,9 +1,8 @@
 package br.com.techchallenge.application.controller.itensCardapio;
 
 import br.com.techchallenge.domain.exception.ItemCardapioNaoEncontradoException;
-import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioDeletarInterface;
 import br.com.techchallenge.domain.useCase.itensCardapio.ExcluirItensCardapioUseCase;
-import br.com.techchallenge.infra.adpter.repository.itensCardapio.ItensCardapioDeletarRepositoryImp;
+import br.com.techchallenge.infra.adapter.repository.itensCardapio.ItensCardapioDeletarRepositoryImp;
 import br.com.techchallenge.infra.converter.itensCardapio.ItensCardapioDTOConverter;
 import br.com.techchallenge.infra.repository.ItensCardapioRepository;
 import org.springframework.http.HttpStatus;

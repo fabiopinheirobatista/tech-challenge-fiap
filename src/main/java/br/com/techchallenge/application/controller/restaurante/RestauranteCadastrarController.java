@@ -6,7 +6,7 @@ import br.com.techchallenge.domain.exception.RestauranteJaCadastradoException;
 import br.com.techchallenge.domain.input.restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.domain.useCase.restaurante.CadastrarRestauranteUseCase;
-import br.com.techchallenge.infra.adpter.repository.restaurante.RestauranteCadastrarRepositoryImp;
+import br.com.techchallenge.infra.adapter.repository.restaurante.RestauranteCadastrarRepositoryImp;
 import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;

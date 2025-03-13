@@ -1,4 +1,4 @@
-package br.com.techchallenge.infra.adpter.repository.itensCardapio;
+package br.com.techchallenge.infra.adapter.repository.itensCardapio;
 
 import br.com.techchallenge.domain.entity.ItensCardapio;
 
@@ -8,7 +8,7 @@ import br.com.techchallenge.infra.converter.itensCardapio.ItensCardapioDTOConver
 import br.com.techchallenge.infra.entity.ItensCardapioEntity;
 import br.com.techchallenge.infra.repository.ItensCardapioRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,11 +1,9 @@
 package br.com.techchallenge.application.controller.itensCardapio;
 
 import br.com.techchallenge.domain.entity.ItensCardapio;
-import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioBuscarTodosInterface;
 import br.com.techchallenge.domain.output.itensCardapio.ItensCardapioResponseDTO;
 import br.com.techchallenge.domain.useCase.itensCardapio.BuscarTodosItensCardapioUseCase;
-import br.com.techchallenge.infra.adpter.repository.itensCardapio.ItensCardapioBuscarPorIdRepositoryImp;
-import br.com.techchallenge.infra.adpter.repository.itensCardapio.ItensCardapioBuscarTodosRepositoryImp;
+import br.com.techchallenge.infra.adapter.repository.itensCardapio.ItensCardapioBuscarTodosRepositoryImp;
 import br.com.techchallenge.infra.converter.itensCardapio.ItensCardapioDTOConverter;
 import br.com.techchallenge.infra.repository.ItensCardapioRepository;
 import org.springframework.http.HttpStatus;
