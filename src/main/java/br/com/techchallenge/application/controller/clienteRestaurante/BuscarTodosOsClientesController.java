@@ -23,6 +23,10 @@ public class BuscarTodosOsClientesController {
     @GetMapping("/buscar-todos")
     public ResponseEntity<?> buscarTodos() {
         List<ClienteRestauranteResponseDto> clientes = buscarTodosOsClientesUseCase.execute();
+        if (clientes.isEmpty()) {
+            return ResponseEntity.status(404).body("Não existem Clientes cadastrados.");
+        }
         return ResponseEntity.ok(clientes);
     }
+
 }

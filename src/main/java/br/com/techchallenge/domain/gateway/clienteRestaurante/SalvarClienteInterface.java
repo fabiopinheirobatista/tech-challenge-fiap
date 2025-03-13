@@ -5,8 +5,6 @@ import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 public interface SalvarClienteInterface {
 

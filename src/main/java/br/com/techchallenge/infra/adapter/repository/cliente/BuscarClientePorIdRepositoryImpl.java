@@ -1,4 +1,4 @@
-package br.com.techchallenge.infra.adapter.repository.clienteRestaurante;
+package br.com.techchallenge.infra.adapter.repository.cliente;
 
 import br.com.techchallenge.domain.entity.ClienteRestaurante;
 import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
