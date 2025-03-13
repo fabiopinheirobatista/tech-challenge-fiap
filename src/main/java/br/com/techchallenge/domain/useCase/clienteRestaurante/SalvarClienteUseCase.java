@@ -16,16 +16,16 @@ public class SalvarClienteUseCase {
     private final SalvarClienteInterface clienteRestauranteInterface;
     private final ClienteRestauranteRepository clienteRestauranteRepository;
 
-   public ClienteRestaurante atualizar(ClienteRestauranteEntity clienteRestauranteEntity) throws ClienteNaoEncontradoException {
-       ClienteRestauranteEntity clienteExistente = clienteRestauranteRepository.findById(clienteRestauranteEntity.getId())
-               .orElseThrow(() -> new ClienteNaoEncontradoException("Cliente de Restaurante não encontrado"));
+    public ClienteRestaurante atualizar(ClienteRestauranteEntity clienteRestauranteEntity) throws ClienteNaoEncontradoException {
+        ClienteRestauranteEntity clienteExistente = clienteRestauranteRepository.findById(clienteRestauranteEntity.getId())
+                .orElseThrow(() -> new ClienteNaoEncontradoException("Cliente de Restaurante não encontrado"));
 
-       clienteExistente.setNome(clienteRestauranteEntity.getNome());
-       clienteExistente.setEmail(clienteRestauranteEntity.getEmail());
-       clienteExistente.setLogin(clienteRestauranteEntity.getLogin());
-       clienteExistente.setSenha(clienteRestauranteEntity.getSenha());
+        clienteExistente.setNome(clienteRestauranteEntity.getNome());
+        clienteExistente.setEmail(clienteRestauranteEntity.getEmail());
+        clienteExistente.setLogin(clienteRestauranteEntity.getLogin());
+        clienteExistente.setSenha(clienteRestauranteEntity.getSenha());
 
-         return clienteRestauranteInterface.atualizar(clienteExistente);
+        return clienteRestauranteInterface.atualizar(clienteExistente);
     }
 
     public ClienteRestaurante cadastrar(ClienteRestauranteEntity clienteRestauranteEntity) throws ClienteJaCadastradoException {
