@@ -2,7 +2,7 @@ package br.com.techchallenge.application.controller.donoRestaurante;
 
 import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteCadastrarRequestDTO;
 import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
-import br.com.techchallenge.infra.service.DonoRestauranteService;
+import br.com.techchallenge.infra.DonoRestauranteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

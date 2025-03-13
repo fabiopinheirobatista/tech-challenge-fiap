@@ -1,8 +1,8 @@
-package br.com.techchallenge.application.controller.clienteRestaurante;
+package br.com.techchallenge.application.infra;
 
+import br.com.techchallenge.application.BuscarTodosOsClientesController;
 import br.com.techchallenge.domain.output.clienteRestaurante.ClienteRestauranteResponseDto;
 import br.com.techchallenge.domain.useCase.clienteRestaurante.BuscarTodosOsClientesUseCase;
-import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

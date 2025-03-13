@@ -2,6 +2,7 @@ package br.com.techchallenge.infra.service;
 
 import br.com.techchallenge.domain.useCase.restaurante.Restaurante;
 import br.com.techchallenge.helper.RestauranteHelper;
+import br.com.techchallenge.infra.RestauranteService;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
 import br.com.techchallenge.infra.repository.RestauranteRepository;

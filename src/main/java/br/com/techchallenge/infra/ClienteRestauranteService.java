@@ -1,4 +1,4 @@
-package br.com.techchallenge.infra.service;
+package br.com.techchallenge.infra;
 
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;

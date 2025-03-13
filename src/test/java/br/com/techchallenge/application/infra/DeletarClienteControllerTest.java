@@ -1,14 +1,13 @@
-package br.com.techchallenge.application.controller.clienteRestaurante;
+package br.com.techchallenge.application.infra;
 
+import br.com.techchallenge.application.DeletarClienteController;
 import br.com.techchallenge.domain.useCase.clienteRestaurante.DeleteClienteUseCase;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -2,6 +2,7 @@ package br.com.techchallenge.infra.service;
 
 import br.com.techchallenge.domain.entity.ClienteRestaurante;
 import br.com.techchallenge.helper.ClienteRestauranteHelper;
+import br.com.techchallenge.infra.ClienteRestauranteService;
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import jakarta.persistence.EntityNotFoundException;

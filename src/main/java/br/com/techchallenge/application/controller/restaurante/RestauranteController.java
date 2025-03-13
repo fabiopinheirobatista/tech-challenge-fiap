@@ -6,8 +6,8 @@ import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResp
 import br.com.techchallenge.domain.input.restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
-import br.com.techchallenge.infra.service.DonoRestauranteService;
-import br.com.techchallenge.infra.service.RestauranteService;
+import br.com.techchallenge.infra.DonoRestauranteService;
+import br.com.techchallenge.infra.RestauranteService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
