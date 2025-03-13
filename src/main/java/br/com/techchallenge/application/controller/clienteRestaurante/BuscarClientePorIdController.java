@@ -3,7 +3,6 @@ package br.com.techchallenge.application.controller.clienteRestaurante;
 
 import br.com.techchallenge.domain.output.clienteRestaurante.ClienteRestauranteResponseDto;
 import br.com.techchallenge.domain.useCase.clienteRestaurante.BuscarClientePorIdUseCase;
-import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
