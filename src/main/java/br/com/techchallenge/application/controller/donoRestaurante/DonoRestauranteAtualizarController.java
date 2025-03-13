@@ -3,7 +3,7 @@ package br.com.techchallenge.application.controller.donoRestaurante;
 import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteRequestDTO;
 import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
-import br.com.techchallenge.infra.DonoRestauranteService;
+import br.com.techchallenge.infra.service.DonoRestauranteService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
