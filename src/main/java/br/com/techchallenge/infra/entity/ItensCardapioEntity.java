@@ -1,6 +1,5 @@
 package br.com.techchallenge.infra.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

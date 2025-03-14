@@ -17,8 +17,8 @@ public class ItensCardapioBuscarPorIdRepositoryImp implements br.com.techchallen
     @Override
     public Optional<ItensCardapio> buscarPorId(Long id) {
         Optional<ItensCardapioEntity> buscarItemCardapio = repository.findById(id);
-        if (buscarItemCardapio.isEmpty()){
-
+        if (buscarItemCardapio.isEmpty()) {
+            return Optional.empty();
         }
 
         return buscarItemCardapio

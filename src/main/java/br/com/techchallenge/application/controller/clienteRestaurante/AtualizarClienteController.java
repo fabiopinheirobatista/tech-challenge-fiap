@@ -1,6 +1,5 @@
 package br.com.techchallenge.application.controller.clienteRestaurante;
 
-
 import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
 import br.com.techchallenge.domain.input.clienteRestaurante.ClienteRestauranteRequestDto;
 import br.com.techchallenge.domain.useCase.clienteRestaurante.SalvarClienteUseCase;

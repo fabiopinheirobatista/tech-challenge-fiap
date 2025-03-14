@@ -7,12 +7,14 @@ import br.com.techchallenge.domain.gateway.clienteRestaurante.SalvarClienteInter
 import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
 import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
 public class SalvarClienteUseCase {
 
+    @Qualifier("salvarClienteInterface")
     private final SalvarClienteInterface clienteRestauranteInterface;
     private final ClienteRestauranteRepository clienteRestauranteRepository;
 

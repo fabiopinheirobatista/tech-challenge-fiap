@@ -1,6 +1,6 @@
 package br.com.techchallenge.application.infra;
 
-import br.com.techchallenge.application.AtualizarClienteController;
+import br.com.techchallenge.application.controller.clienteRestaurante.AtualizarClienteController;
 import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
 import br.com.techchallenge.domain.input.clienteRestaurante.ClienteRestauranteRequestDto;
 import br.com.techchallenge.domain.useCase.clienteRestaurante.SalvarClienteUseCase;

@@ -1,6 +1,6 @@
 package br.com.techchallenge.application.infra;
 
-import br.com.techchallenge.application.BuscarClientePorIdController;
+import br.com.techchallenge.application.controller.clienteRestaurante.BuscarClientePorIdController;
 import br.com.techchallenge.domain.output.clienteRestaurante.ClienteRestauranteResponseDto;
 import br.com.techchallenge.domain.useCase.clienteRestaurante.BuscarClientePorIdUseCase;
 import org.junit.jupiter.api.BeforeEach;
