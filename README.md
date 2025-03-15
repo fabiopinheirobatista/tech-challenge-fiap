@@ -30,11 +30,11 @@
     mvn spring-boot:run
     ```
 
-2. A aplicação estará disponível na porta `9090`
+2. A aplicação estará disponível na porta `9091`
 
 ## Portas
 
-- **API local**: `9090`
+- **API local**: `9091`
 - **Banco de Dados (MySQL)**: `3307`
 
 ## Acesso ao BD
