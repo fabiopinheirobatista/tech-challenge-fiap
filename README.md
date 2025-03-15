@@ -44,19 +44,19 @@
 
 ## Endpoints
 
-- `GET http://localhost:9090/api/donos-restaurante/ids`: Lista todos os donos de restaurante ordenados pelo ID de forma crescente.
-- `GET http://localhost:9090/api/donos-restaurante/nome/{nome}`: Busca o dono do restaurante pelo nome desejado.
-- `GET http://localhost:9090/api/donos-restaurante/nomes`: Lista todos os donos de restaurante ordenados pelo nome de forma crescente.
-- `POST http://localhost:9090/api/donos-restaurante`: Cria um novo dono de restaurante.
-- `PUT http://localhost:9090/api/donos-restaurante/{id}`: Atualiza um dono de restaurante existente informando o ID. Mas, os campos atualizados serão somente os campos informados na requisição.
-- `DELETE http://localhost:9090/api/donos-restaurante/{id}`: Exclui um dono de restaurante.
+- `GET http://localhost:9091/api/donos-restaurante/ids`: Lista todos os donos de restaurante ordenados pelo ID de forma crescente.
+- `GET http://localhost:9091/api/donos-restaurante/nome/{nome}`: Busca o dono do restaurante pelo nome desejado.
+- `GET http://localhost:9091/api/donos-restaurante/nomes`: Lista todos os donos de restaurante ordenados pelo nome de forma crescente.
+- `POST http://localhost:9091/api/donos-restaurante`: Cria um novo dono de restaurante.
+- `PUT http://localhost:9091/api/donos-restaurante/{id}`: Atualiza um dono de restaurante existente informando o ID. Mas, os campos atualizados serão somente os campos informados na requisição.
+- `DELETE http://localhost:9091/api/donos-restaurante/{id}`: Exclui um dono de restaurante.
 
-- `GET http://localhost:9090/api/clientes-restaurante/ids`: Lista todos os clientes do restaurante ordenados pelo ID de forma crescente.
-- `GET http://localhost:9090/api/clientes-restaurante/nome/{nome}`: Busca o cliente do restaurante pelo nome desejado.
-- `GET http://localhost:9090/api/clientes-restaurante/nomes`: Lista todos os clientes do restaurante ordenados pelo nome de forma crescente.
-- `POST http://localhost:9090/api/clientes-restaurante`: Cria um novo cliente do restaurante.
-- `PUT http://localhost:9090/api/clientes-restaurante/{id}`: Atualiza um cliente do restaurante existente informando o ID. Mas, os campos atualizados serão somente os campos informados na requisição.
-- `DELETE http://localhost:9090/api/clientes-restaurante/{id}`: Exclui um cliente do restaurante.
+- `GET http://localhost:9091/api/clientes-restaurante/ids`: Lista todos os clientes do restaurante ordenados pelo ID de forma crescente.
+- `GET http://localhost:9091/api/clientes-restaurante/nome/{nome}`: Busca o cliente do restaurante pelo nome desejado.
+- `GET http://localhost:9091/api/clientes-restaurante/nomes`: Lista todos os clientes do restaurante ordenados pelo nome de forma crescente.
+- `POST http://localhost:9091/api/clientes-restaurante`: Cria um novo cliente do restaurante.
+- `PUT http://localhost:9091/api/clientes-restaurante/{id}`: Atualiza um cliente do restaurante existente informando o ID. Mas, os campos atualizados serão somente os campos informados na requisição.
+- `DELETE http://localhost:9091/api/clientes-restaurante/{id}`: Exclui um cliente do restaurante.
 ## Tecnologias utilizadas
 
 - Java
