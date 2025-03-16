@@ -4,6 +4,7 @@ import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteValidarL
 import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.service.DonoRestauranteService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,15 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/donos-restaurante")
+@RequiredArgsConstructor
 public class DonoRestauranteValidarLoginController {
 
     private final DonoRestauranteDTOConverter converter;
     private final DonoRestauranteService service;
-
-    public DonoRestauranteValidarLoginController(DonoRestauranteDTOConverter converter, DonoRestauranteService service) {
-        this.converter = converter;
-        this.service = service;
-    }
 
     @PostMapping("/validar-login")
     public ResponseEntity<String> validarLogin(@RequestBody DonoRestauranteValidarLoginRequestDTO request) {

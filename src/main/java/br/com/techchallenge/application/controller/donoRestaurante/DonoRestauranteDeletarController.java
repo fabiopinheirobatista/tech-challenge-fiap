@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/donos-restaurante")
 @RequiredArgsConstructor
-public class DonoRestauranteExcluirController {
+public class DonoRestauranteDeletarController {
 
     private final DonoRestauranteDTOConverter converter;
     private final DeletarDonoRestauranteUseCase deletarDonoRestauranteUseCase;

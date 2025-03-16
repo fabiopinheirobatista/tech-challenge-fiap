@@ -4,6 +4,7 @@ import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteListarT
 import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.service.DonoRestauranteService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +17,11 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/donos-restaurante")
+@RequiredArgsConstructor
 public class DonoRestauranteListarTodosController {
 
     private final DonoRestauranteDTOConverter converter;
     private final DonoRestauranteService service;
-
-    public DonoRestauranteListarTodosController(DonoRestauranteDTOConverter converter, DonoRestauranteService service) {
-        this.converter = converter;
-        this.service = service;
-    }
 
     @GetMapping("/listar-todos")
     public ResponseEntity<?> buscarTodos() {
