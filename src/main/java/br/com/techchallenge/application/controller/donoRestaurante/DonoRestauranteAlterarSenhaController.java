@@ -2,7 +2,6 @@ package br.com.techchallenge.application.controller.donoRestaurante;
 
 import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteAlterarSenhaRequestDTO;
 import br.com.techchallenge.domain.useCase.donoRestaurante.AlterarSenhaDonoRestauranteUseCase;
-import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class DonoRestauranteAlterarSenhaController {
 
-    private final DonoRestauranteDTOConverter converter;
     private final AlterarSenhaDonoRestauranteUseCase alterarSenhaUseCase;
 
     @PutMapping("/alterar-senha")
