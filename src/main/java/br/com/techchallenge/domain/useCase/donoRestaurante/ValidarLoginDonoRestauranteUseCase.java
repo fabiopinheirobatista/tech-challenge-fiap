@@ -1,24 +1,37 @@
 package br.com.techchallenge.domain.useCase.donoRestaurante;
 
+import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteValidarLoginRequestDTO;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
+@RequiredArgsConstructor
 public class ValidarLoginDonoRestauranteUseCase {
 
-    private final DonoRestauranteRepository repository;
+    private final DonoRestauranteRepository donoRestauranteRepository;
 
-    public ValidarLoginDonoRestauranteUseCase(DonoRestauranteRepository repository) {
-        this.repository = repository;
+    public enum ResultadoValidacao {
+        SUCESSO,
+        USUARIO_NAO_ENCONTRADO,
+        CREDENCIAIS_INVALIDAS
     }
 
-    public boolean validarLogin(Long id, String login, String senha) {
-        DonoRestauranteEntity dono = repository.findById(id).orElse(null);
-        if (dono == null) {
-            return false;
+    public ResultadoValidacao execute(DonoRestauranteValidarLoginRequestDTO request) {
+        Optional<DonoRestauranteEntity> donoOpt = donoRestauranteRepository.findById(request.getId());
+
+        if (donoOpt.isEmpty()) {
+            return ResultadoValidacao.USUARIO_NAO_ENCONTRADO;
         }
-        return dono.getLogin().equals(login) && dono.getSenha().equals(senha);
-    }
 
+        DonoRestauranteEntity dono = donoOpt.get();
+        if (!dono.getLogin().equals(request.getLogin()) || !dono.getSenha().equals(request.getSenha())) {
+            return ResultadoValidacao.CREDENCIAIS_INVALIDAS;
+        }
+
+        return ResultadoValidacao.SUCESSO;
+    }
 }

@@ -1,9 +1,7 @@
 package br.com.techchallenge.application.controller.donoRestaurante;
 
 import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteValidarLoginRequestDTO;
-import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
-import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
-import br.com.techchallenge.infra.service.DonoRestauranteService;
+import br.com.techchallenge.domain.useCase.donoRestaurante.ValidarLoginDonoRestauranteUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,22 +15,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class DonoRestauranteValidarLoginController {
 
-    private final DonoRestauranteDTOConverter converter;
-    private final DonoRestauranteService service;
+    private final ValidarLoginDonoRestauranteUseCase validarLoginDonoRestauranteUseCase;
 
     @PostMapping("/validar-login")
     public ResponseEntity<String> validarLogin(@RequestBody DonoRestauranteValidarLoginRequestDTO request) {
-        DonoRestauranteEntity dono = service.buscarPorId(request.getId());
-        if (dono == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário inexistente!");
-        }
+        ValidarLoginDonoRestauranteUseCase.ResultadoValidacao resultado =
+                validarLoginDonoRestauranteUseCase.execute(request);
 
-        boolean isValid = service.validarLogin(request.getId(), request.getLogin(), request.getSenha());
-        if (!isValid) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário/senha inválidos!");
+        switch (resultado) {
+            case USUARIO_NAO_ENCONTRADO:
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body("Usuário inexistente!");
+            case CREDENCIAIS_INVALIDAS:
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body("Usuário/senha inválidos!");
+            case SUCESSO:
+                return ResponseEntity.ok("Usuário validado com sucesso!");
+            default:
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                        .body("Erro ao validar usuário!");
         }
-
-        return ResponseEntity.ok("Usuário validado com sucesso!");
     }
-
 }
