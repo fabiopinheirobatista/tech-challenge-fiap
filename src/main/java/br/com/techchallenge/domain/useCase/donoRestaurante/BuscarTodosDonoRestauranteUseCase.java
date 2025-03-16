@@ -1,5 +1,6 @@
 package br.com.techchallenge.domain.useCase.donoRestaurante;
 
+import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.gateway.donoRestaurante.BuscarTodosDonoRestauranteInterface;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
 import lombok.Getter;

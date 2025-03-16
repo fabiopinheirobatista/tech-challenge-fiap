@@ -1,6 +1,7 @@
 package br.com.techchallenge.domain.useCase.donoRestaurante;
 
 import br.com.techchallenge.domain.entity.ClienteRestaurante;
+import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.exception.ClienteJaCadastradoException;
 import br.com.techchallenge.domain.exception.DonoRestauranteJaCadastradoException;
 import br.com.techchallenge.domain.exception.DonoRestauranteNaoEncontradoException;

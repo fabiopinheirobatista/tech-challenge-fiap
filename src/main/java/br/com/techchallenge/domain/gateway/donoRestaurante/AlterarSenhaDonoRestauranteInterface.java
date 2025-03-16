@@ -1,7 +1,7 @@
 package br.com.techchallenge.domain.gateway.donoRestaurante;
 
+import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.exception.DonoRestauranteNaoEncontradoException;
-import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 
 public interface AlterarSenhaDonoRestauranteInterface {
 

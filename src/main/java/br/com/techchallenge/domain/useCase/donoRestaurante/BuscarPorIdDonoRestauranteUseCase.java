@@ -1,5 +1,6 @@
 package br.com.techchallenge.domain.useCase.donoRestaurante;
 
+import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.exception.DonoRestauranteNaoEncontradoException;
 import br.com.techchallenge.domain.gateway.donoRestaurante.BuscarPorIdDonoRestauranteInterface;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteListarIdResponseDTO;
