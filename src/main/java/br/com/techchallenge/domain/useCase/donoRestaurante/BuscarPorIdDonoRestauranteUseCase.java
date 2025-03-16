@@ -4,6 +4,9 @@ import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.exception.DonoRestauranteNaoEncontradoException;
 import br.com.techchallenge.domain.gateway.donoRestaurante.BuscarPorIdDonoRestauranteInterface;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteListarIdResponseDTO;
+import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
+import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Component;
 public class BuscarPorIdDonoRestauranteUseCase {
 
     private final BuscarPorIdDonoRestauranteInterface donoRestauranteInterface;
+    private final DonoRestauranteRepository repository;
 
     public DonoRestauranteListarIdResponseDTO execute(Long id) {
         DonoRestauranteListarIdResponseDTO donoRestauranteDTO = null;
@@ -31,6 +35,11 @@ public class BuscarPorIdDonoRestauranteUseCase {
         }
 
         return donoRestauranteDTO;
+    }
+
+    public DonoRestauranteEntity findById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Dono de Restaurante não encontrado"));
     }
 
 }
