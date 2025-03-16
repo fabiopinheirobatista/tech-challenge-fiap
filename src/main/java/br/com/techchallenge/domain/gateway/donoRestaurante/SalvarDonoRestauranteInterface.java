@@ -8,6 +8,6 @@ public interface SalvarDonoRestauranteInterface {
 
     DonoRestaurante atualizar(DonoRestauranteEntity donoRestaurante) throws DonoRestauranteNaoEncontradoException;
 
-    DonoRestaurante salvar(DonoRestauranteEntity donoRestaurante);
+    DonoRestaurante cadastrar(DonoRestauranteEntity donoRestaurante);
 
 }
