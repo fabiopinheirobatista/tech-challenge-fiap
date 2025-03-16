@@ -1,4 +1,4 @@
-package br.com.techchallenge.application.infra;
+package br.com.techchallenge.application.controller.cliente;
 
 import br.com.techchallenge.application.controller.clienteRestaurante.AtualizarClienteController;
 import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
@@ -12,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -48,6 +49,7 @@ class AtualizarClienteControllerTest {
         ResponseEntity<String> response = atualizarClienteController.atualizar(clienteId, clienteRequest);
 
         assertEquals(ResponseEntity.ok("Cliente de Restaurante atualizado com sucesso"), response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         verify(salvarClienteUseCase).atualizar(any(ClienteRestauranteEntity.class));
     }
 

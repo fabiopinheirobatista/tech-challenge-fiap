@@ -1,4 +1,4 @@
-package br.com.techchallenge.application.infra;
+package br.com.techchallenge.application.controller.cliente;
 
 import br.com.techchallenge.application.controller.clienteRestaurante.CadastrarClienteController;
 import br.com.techchallenge.domain.exception.ClienteJaCadastradoException;

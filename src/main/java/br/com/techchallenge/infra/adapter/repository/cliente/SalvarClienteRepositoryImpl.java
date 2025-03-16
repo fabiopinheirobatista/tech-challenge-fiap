@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AtualizarClienteRepositoryImpl implements SalvarClienteInterface {
+public class SalvarClienteRepositoryImpl implements SalvarClienteInterface {
 
     private final ClienteRestauranteRepository clienteRestauranteRepository;
 

@@ -4,6 +4,8 @@ import br.com.techchallenge.domain.entity.ItensCardapio;
 import br.com.techchallenge.domain.exception.RestauranteNaoEncontradoException;
 import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioSalvarInterface;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
+import br.com.techchallenge.infra.repository.ItensCardapioRepository;
+import br.com.techchallenge.infra.repository.RestauranteRepository;
 
 import java.util.Optional;
 
@@ -22,6 +24,8 @@ public class CadastrarItensCardapioUseCase {
         if (restauranteEntity.isEmpty()) {
             throw new RestauranteNaoEncontradoException("Id do Restaurante não encontrado");
         }
+
+
         return repositorySalvar.salvar(restaurante);
     }
 }
