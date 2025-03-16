@@ -5,7 +5,6 @@ import br.com.techchallenge.domain.useCase.donoRestaurante.BuscarPorIdDonoRestau
 import br.com.techchallenge.domain.useCase.donoRestaurante.SalvarDonoRestauranteUseCase;
 import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
-import br.com.techchallenge.infra.service.DonoRestauranteService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

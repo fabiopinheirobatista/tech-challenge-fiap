@@ -13,7 +13,7 @@ public class DeletarDonoRestauranteUseCase {
 
     private final DeletarDonoRestauranteInterface donoRestauranteInterface;
 
-    public void execute(Long id) {
+    public void deletar(Long id) {
         try {
             donoRestauranteInterface.deletar(id);
         } catch (Exception | DonoRestauranteNaoEncontradoException e) {
