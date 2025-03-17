@@ -10,9 +10,11 @@ import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 @RequiredArgsConstructor
 public class RestauranteCadastrarRepositoryImp implements RestauranteSalvarInterface {
 

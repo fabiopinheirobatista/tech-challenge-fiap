@@ -2,9 +2,11 @@ package br.com.techchallenge.domain.useCase.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarTodosInterface;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class BuscarTodosRestauranteUseCase {
 
     private final RestauranteBuscarTodosInterface repository;

@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ItensCardapioRepository extends JpaRepository<ItensCardapioEntity, Long> {}
+public interface ItensCardapioRepository extends JpaRepository<ItensCardapioEntity, Long> {
+}

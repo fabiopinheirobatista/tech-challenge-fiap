@@ -20,30 +20,22 @@ import java.util.Optional;
 @RequestMapping("/api/itens-cardapio")
 public class ItensCardapioBuscarPorIdController {
 
-    private final ItensCardapioRepository itensCardapioRepository;
+    private final BuscarPorIdItensCardapioUseCase useCase;
     private final ItensCardapioDTOConverter converter;
 
-    public ItensCardapioBuscarPorIdController(ItensCardapioRepository itensCardapioRepository, ItensCardapioDTOConverter converter) {
-        this.itensCardapioRepository = itensCardapioRepository;
+    public ItensCardapioBuscarPorIdController(ItensCardapioDTOConverter converter, BuscarPorIdItensCardapioUseCase useCase) {
         this.converter = converter;
+        this.useCase = useCase;
     }
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
-        try {
+        Optional<ItensCardapio> item = useCase.execute(id);
 
-            BuscarPorIdItensCardapioUseCase useCase = new BuscarPorIdItensCardapioUseCase(new ItensCardapioBuscarPorIdRepositoryImp(itensCardapioRepository,converter));
-            Optional<ItensCardapio> item = useCase.execute(id);
-
-            if (item.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item do Cardapio com o ID informado não foi encontrado");
-            }
-            return ResponseEntity.ok(converter.domainToDto(item.get()));
-
-        } catch (ItemCardapioNaoEncontradoException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao buscar item");
+        if (item.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item do Cardapio com o ID informado não foi encontrado");
         }
+        return ResponseEntity.ok(converter.domainToDto(item.get()));
+
     }
 }

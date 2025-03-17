@@ -8,6 +8,7 @@ import br.com.techchallenge.infra.adapter.repository.itensCardapio.ItensCardapio
 import br.com.techchallenge.infra.converter.itensCardapio.ItensCardapioDTOConverter;
 import br.com.techchallenge.infra.repository.ItensCardapioRepository;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,32 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/itens-cardapio")
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class ItensCardapioCadastrarController {
 
-    private final ItensCardapioRepository itensCardapioRepository;
-    private final RestauranteRepository restauranteRepository;
     private final ItensCardapioDTOConverter converter;
+    private final CadastrarItensCardapioUseCase cadastrarUseCase;
 
-    public ItensCardapioCadastrarController(ItensCardapioRepository itensCardapioRepository, RestauranteRepository restauranteRepository, ItensCardapioDTOConverter converter) {
-        this.itensCardapioRepository = itensCardapioRepository;
-        this.restauranteRepository = restauranteRepository;
-        this.converter = converter;
-    }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrar(@RequestBody ItensCardapioRequestDTO request) {
-        try {
+    public ResponseEntity<?> cadastrar(@RequestBody ItensCardapioRequestDTO request) throws RestauranteNaoEncontradoException {
+        ItensCardapio item = cadastrarUseCase.execute(converter.dtoToDomain(request));
+        return ResponseEntity.status(HttpStatus.CREATED).body(converter.domainToDto(item));
 
-            CadastrarItensCardapioUseCase cadastrarUseCase = new CadastrarItensCardapioUseCase(
-                    new ItensCardapioCadastrarRepositoryImp(itensCardapioRepository,restauranteRepository,converter));
-            ItensCardapio item = converter.dtoToDomain(request);
-            ItensCardapio itemSalvo = cadastrarUseCase.execute(item);
-            return ResponseEntity.status(HttpStatus.CREATED).body(converter.domainToDto(itemSalvo));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao cadastrar item");
-        } catch (RestauranteNaoEncontradoException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Id do Restaurante não localizado!");
-        }
     }
 }

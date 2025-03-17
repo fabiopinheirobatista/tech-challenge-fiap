@@ -4,9 +4,11 @@ import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.exception.RestauranteNaoEncontradoException;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteAtualizarInterface;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class AtualizarRestauranteUseCase {
 
     private final RestauranteAtualizarInterface atualizarRepository;

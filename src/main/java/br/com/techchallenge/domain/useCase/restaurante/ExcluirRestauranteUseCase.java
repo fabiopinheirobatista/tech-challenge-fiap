@@ -4,9 +4,11 @@ import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.exception.RestauranteNaoEncontradoException;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteDeletarInterface;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class ExcluirRestauranteUseCase {
 
     private final RestauranteDeletarInterface repositoryDeletar;

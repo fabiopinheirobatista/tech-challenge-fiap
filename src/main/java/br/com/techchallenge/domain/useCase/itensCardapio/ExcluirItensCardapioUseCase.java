@@ -9,9 +9,11 @@ import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioDeletarInt
 import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioSalvarInterface;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteDeletarInterface;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class ExcluirItensCardapioUseCase {
 
 

@@ -9,9 +9,12 @@ import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.ItensCardapioRepository;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Component
 @RequiredArgsConstructor
 public class ItensCardapioCadastrarRepositoryImp implements ItensCardapioSalvarInterface {
 

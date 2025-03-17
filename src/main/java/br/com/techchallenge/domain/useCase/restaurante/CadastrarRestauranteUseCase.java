@@ -5,9 +5,11 @@ import br.com.techchallenge.domain.exception.DonoRestauranteNaoExisteException;
 import br.com.techchallenge.domain.exception.RestauranteJaCadastradoException;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteSalvarInterface;
 import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class CadastrarRestauranteUseCase {
 
     private final RestauranteSalvarInterface repositorySalvar;

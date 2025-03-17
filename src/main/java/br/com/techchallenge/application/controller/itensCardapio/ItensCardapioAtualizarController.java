@@ -25,20 +25,14 @@ public class ItensCardapioAtualizarController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<?> atualizar(@PathVariable Long id,@RequestBody ItensCardapioRequestDTO request    ) {
-        try {
-            ItensCardapio item = converter.dtoToDomain(request);
-            item.setId(id);
-            AtualizarItensCardapioUseCase useCase = new AtualizarItensCardapioUseCase(
-                    new ItensCardapioAtualizarRepositoryImp(itensCardapioRepository,converter),
-                    new ItensCardapioBuscarPorIdRepositoryImp(itensCardapioRepository,converter)
-            );
-            ItensCardapio itemAtualizado = useCase.execute(item);
-            return ResponseEntity.ok(converter.domainToDto(itemAtualizado));
-        } catch (ItemCardapioNaoEncontradoException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar item");
-        }
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody ItensCardapioRequestDTO request) {
+        ItensCardapio item = converter.dtoToDomain(request);
+        item.setId(id);
+        AtualizarItensCardapioUseCase useCase = new AtualizarItensCardapioUseCase(
+                new ItensCardapioAtualizarRepositoryImp(itensCardapioRepository, converter),
+                new ItensCardapioBuscarPorIdRepositoryImp(itensCardapioRepository, converter)
+        );
+        ItensCardapio itemAtualizado = useCase.execute(item);
+        return ResponseEntity.ok(converter.domainToDto(itemAtualizado));
     }
 }

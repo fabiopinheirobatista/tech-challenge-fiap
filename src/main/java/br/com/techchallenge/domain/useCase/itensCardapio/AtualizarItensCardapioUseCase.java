@@ -8,9 +8,11 @@ import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioAtualizarI
 import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioBuscarPorIdInterface;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteAtualizarInterface;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class AtualizarItensCardapioUseCase {
 
     private final ItensCardapioAtualizarInterface atualizarRepository;

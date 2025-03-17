@@ -4,7 +4,9 @@ import br.com.techchallenge.domain.gateway.restaurante.RestauranteDeletarInterfa
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class RestauranteDeletarRepositoryImp implements RestauranteDeletarInterface {
 

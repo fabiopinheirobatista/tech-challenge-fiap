@@ -5,10 +5,12 @@ import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarTodosInt
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 @RequiredArgsConstructor
 public class RestauranteBuscarTodosRepositoryImp implements RestauranteBuscarTodosInterface {
 

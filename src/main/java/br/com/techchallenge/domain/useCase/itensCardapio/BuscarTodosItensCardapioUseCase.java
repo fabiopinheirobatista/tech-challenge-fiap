@@ -4,9 +4,11 @@ import br.com.techchallenge.domain.entity.ItensCardapio;
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioBuscarTodosInterface;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarTodosInterface;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class BuscarTodosItensCardapioUseCase {
 
     private final ItensCardapioBuscarTodosInterface repository;

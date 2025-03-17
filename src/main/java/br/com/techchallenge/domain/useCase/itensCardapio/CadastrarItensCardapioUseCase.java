@@ -6,10 +6,12 @@ import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioSalvarInte
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import br.com.techchallenge.infra.repository.ItensCardapioRepository;
 import br.com.techchallenge.infra.repository.RestauranteRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 
+@Component
 public class CadastrarItensCardapioUseCase {
 
     private final ItensCardapioSalvarInterface repositorySalvar;
