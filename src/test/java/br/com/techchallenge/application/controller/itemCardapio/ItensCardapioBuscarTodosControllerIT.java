@@ -13,8 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = TechChallengeApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -32,8 +32,12 @@ public class ItensCardapioBuscarTodosControllerIT {
     @Autowired
     private RestauranteRepository restauranteRepository;
 
+    private Long idItem;
+
     @BeforeEach
     void setUp() {
+        itensCardapioRepository.deleteAll();
+
         RestauranteEntity restauranteEntity = new RestauranteEntity();
         restauranteEntity.setNome("Restaurante Teste");
         restauranteEntity.setTipoCozinha("Italiana");
@@ -41,20 +45,19 @@ public class ItensCardapioBuscarTodosControllerIT {
 
         ItensCardapioEntity item = new ItensCardapioEntity(null, "Hamburguer", "Saboroso", 25.90, "disponível", "url_foto", restauranteEntity);
         ItensCardapioEntity itensCardapioEntity = itensCardapioRepository.save(item);
+        idItem = itensCardapioEntity.getId();
     }
 
     @Test
-    void deveRetornar200_QuandoBuscarTodos() throws Exception {
-        mockMvc.perform(get("/api/itens-cardapio/listar-todos"))
-                .andExpect(status().isOk());
-               //.andExpect(jsonPath("$[0].nome").value("Hamburguer"));
+    void deveRetornar200_QuandoBuscarPorId() throws Exception {
+        mockMvc.perform(get("/api/itens-cardapio/listar/" + idItem))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.nome").value("Hamburguer"));
     }
 
     @Test
-    void deveRetornar404_QuandoNenhumItemCadastrado() throws Exception {
-        itensCardapioRepository.deleteAll();
-
-        mockMvc.perform(get("/api/itens-cardapio/listar-todos"))
+    void deveRetornar404_QuandoBuscarPorIdInexistente() throws Exception {
+        mockMvc.perform(get("/api/itens-cardapio/listar/999"))
                 .andExpect(status().isNotFound());
     }
 }

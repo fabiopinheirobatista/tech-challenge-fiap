@@ -22,7 +22,7 @@ services:
   app:
     build: .
     ports:
-      - "9090:9090"
+      - "9093:9093"
     depends_on:
       mysql:
         condition: service_healthy
@@ -30,6 +30,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/tech_challenge?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=true
       SPRING_DATASOURCE_USERNAME: root2
       SPRING_DATASOURCE_PASSWORD: root2
+      JAVA_TOOL_OPTIONS: "--add-opens=java.base/java.io=ALL-UNNAMED"
     networks:
       - app-network
 networks:

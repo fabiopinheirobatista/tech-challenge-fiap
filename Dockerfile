@@ -12,5 +12,5 @@ ENV TZ=America/Sao_Paulo
 WORKDIR /app
 COPY --from=MAVEN_BUILD /build/target/*.jar /app/app.jar
 
-EXPOSE 9090
+EXPOSE 9093
 ENTRYPOINT ["java", "--add-opens", "java.base/java.io=ALL-UNNAMED", "-jar", "/app/app.jar"]
