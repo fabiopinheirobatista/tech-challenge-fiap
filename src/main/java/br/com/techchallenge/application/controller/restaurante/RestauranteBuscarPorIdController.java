@@ -19,31 +19,25 @@ import java.util.Optional;
 @RequestMapping("/api/restaurante")
 public class RestauranteBuscarPorIdController {
 
-
-    private final RestauranteRepository restauranteRepository;
     private final RestauranteDTOConverter converter;
+    private final BuscarRestaurantePorIdUseCase useCase;
 
-    public RestauranteBuscarPorIdController(RestauranteRepository restauranteRepository, RestauranteDTOConverter converter) {
-        this.restauranteRepository = restauranteRepository;
+    public RestauranteBuscarPorIdController(RestauranteDTOConverter converter, BuscarRestaurantePorIdUseCase useCase) {
         this.converter = converter;
+        this.useCase = useCase;
     }
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
-        try {//RestauranteBuscarTodosRepositoryImp
-            BuscarRestaurantePorIdUseCase useCase = new BuscarRestaurantePorIdUseCase(new RestauranteBuscarPorIdRepositoryImp(restauranteRepository,converter));
-            Optional<Restaurante> restauranteOptional = useCase.execute(id);
+        Optional<Restaurante> restauranteOptional = useCase.execute(id);
 
-            if (restauranteOptional.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante com o ID informado não foi encontrado");
-            }
-
-            RestauranteListarTodosResponseDTO responseDTO = converter.restauranteParaResponseDto(restauranteOptional.get());
-            return ResponseEntity.ok(responseDTO);
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        if (restauranteOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante com o ID informado não foi encontrado");
         }
+
+        RestauranteListarTodosResponseDTO responseDTO = converter.restauranteParaResponseDto(restauranteOptional.get());
+        return ResponseEntity.ok(responseDTO);
+
     }
 
 }

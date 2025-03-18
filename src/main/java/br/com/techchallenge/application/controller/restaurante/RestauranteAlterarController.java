@@ -17,34 +17,24 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/restaurante")
 public class RestauranteAlterarController {
 
-    private final RestauranteRepository restauranteRepository;
     private final RestauranteDTOConverter converter;
+    private final AtualizarRestauranteUseCase useCase;
 
 
-    public RestauranteAlterarController(RestauranteRepository restauranteRepository, RestauranteDTOConverter converter) {
-        this.restauranteRepository = restauranteRepository;
+    public RestauranteAlterarController(RestauranteDTOConverter converter, AtualizarRestauranteUseCase useCase) {
         this.converter = converter;
+        this.useCase = useCase;
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody RestauranteRequestDTO request) {
-        try {
-            Restaurante restaurante1 = converter.dtoToRestaurante(request);
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody RestauranteRequestDTO request) throws RestauranteNaoEncontradoException {
+        Restaurante restaurante1 = converter.dtoToRestaurante(request);
 
-            AtualizarRestauranteUseCase useCase = new AtualizarRestauranteUseCase(
-                    new RestauranteAtualizarRepositoryImp(restauranteRepository,converter),
-                    new RestauranteBuscarPorIdRepositoryImp(restauranteRepository,converter)
-            );
-            restaurante1.setId(id);
-            Restaurante restaurante = useCase.execute(id, restaurante1);
-            RestauranteListarTodosResponseDTO responseDTO = converter.restauranteParaResponseDto(restaurante);
-            return ResponseEntity.ok(responseDTO);
+        restaurante1.setId(id);
+        Restaurante restaurante = useCase.execute(id, restaurante1);
+        RestauranteListarTodosResponseDTO responseDTO = converter.restauranteParaResponseDto(restaurante);
+        return ResponseEntity.ok(responseDTO);
 
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar restaurante");
-        } catch (RestauranteNaoEncontradoException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Restaurante não encontrado");
-        }
     }
 
 

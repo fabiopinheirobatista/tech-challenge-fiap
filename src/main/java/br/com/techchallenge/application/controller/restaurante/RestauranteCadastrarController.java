@@ -26,39 +26,27 @@ public class RestauranteCadastrarController {
     private final RestauranteDTOConverter restaurantesConverter;
     private final DonoRestauranteRepository donoRestauranteRepository;
     private final DonoRestauranteDTOConverter donoRestauranteConverter;
+    private final CadastrarRestauranteUseCase cadastrarRestauranteUseCase;
 
-    public RestauranteCadastrarController(RestauranteRepository restauranteRepository, RestauranteDTOConverter restaurantesConverter, DonoRestauranteRepository donoRestauranteRepository, DonoRestauranteDTOConverter donoRestauranteConverter) {
+    public RestauranteCadastrarController(RestauranteRepository restauranteRepository, RestauranteDTOConverter restaurantesConverter,
+                                          DonoRestauranteRepository donoRestauranteRepository, DonoRestauranteDTOConverter donoRestauranteConverter,
+                                          CadastrarRestauranteUseCase cadastrarRestauranteUseCase) {
         this.restauranteRepository = restauranteRepository;
         this.restaurantesConverter = restaurantesConverter;
         this.donoRestauranteRepository = donoRestauranteRepository;
         this.donoRestauranteConverter = donoRestauranteConverter;
+        this.cadastrarRestauranteUseCase = cadastrarRestauranteUseCase;
     }
 
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrar(@RequestBody RestauranteRequestDTO request) {
-        try {
+    public ResponseEntity<?> cadastrar(@RequestBody RestauranteRequestDTO request) throws RestauranteJaCadastradoException, DonoRestauranteNaoExisteException {
+        Restaurante restaurante = restaurantesConverter.dtoToRestaurante(request);
+        Restaurante restauranteRetorno = cadastrarRestauranteUseCase.execute(restaurante);
+        RestauranteListarTodosResponseDTO responseDTO = restaurantesConverter.restauranteParaResponseDto(restauranteRetorno);
 
-            CadastrarRestauranteUseCase cadastrarRestauranteUseCase = new CadastrarRestauranteUseCase(
-                    new RestauranteCadastrarRepositoryImp(
-                            restauranteRepository,
-                            donoRestauranteRepository,
-                            restaurantesConverter,
-                            donoRestauranteConverter));
+        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
 
-            Restaurante restaurante = restaurantesConverter.dtoToRestaurante(request);
-            Restaurante restauranteRetorno = cadastrarRestauranteUseCase.execute(restaurante);
-            RestauranteListarTodosResponseDTO responseDTO = restaurantesConverter.restauranteParaResponseDto(restauranteRetorno);
-
-            return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
-
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (RestauranteJaCadastradoException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        } catch (DonoRestauranteNaoExisteException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Dono do Restaurante não localizado!");
-        }
     }
 
 }
