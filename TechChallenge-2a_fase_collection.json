@@ -30,7 +30,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Ricardo\",\r\n    \"email\": \"sdasd@asdad\",\r\n    \"senha\": \"123456\",\r\n    \"login\": \"rdo2025\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Patrícia\",\r\n    \"email\": \"patricia@teste.com\",\r\n    \"senha\": \"123456\",\r\n    \"login\": \"patricia\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -146,7 +146,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/api/cliente-restaurante/listar/2",
+							"raw": "{{baseURL}}/api/cliente-restaurante/listar/1",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -154,7 +154,7 @@
 								"api",
 								"cliente-restaurante",
 								"listar",
-								"2"
+								"1"
 							],
 							"query": [
 								{
@@ -195,7 +195,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Alfredo\",\r\n    \"email\": \"alfredo@asdad\",\r\n    \"login\": \"123456\",\r\n    \"senha\": \"654321\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Vanessa\",\r\n    \"email\": \"vanessa@teste.com\",\r\n    \"login\": \"vanessa\",\r\n    \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -234,7 +234,7 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/api/cliente-restaurante/deletar/3"
+						"url": "{{baseURL}}/api/cliente-restaurante/deletar/2"
 					},
 					"response": []
 				}
@@ -254,7 +254,7 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseURL}}/api/donos-restaurante/listar/1"
+						"url": "{{baseURL}}/api/donos-restaurante/listar/3"
 					},
 					"response": []
 				},
@@ -285,7 +285,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Giovanna Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Paraibuna\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"giovanna.batista@teste.com\",\r\n  \"login\": \"giovanna.batista\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Joã Canabrava\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Paraibuna\",\r\n    \"numero\": \"300\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"cep\": \"11.321-000\"\r\n  },\r\n  \"email\": \"joao.canabrava@teste.com\",\r\n  \"login\": \"joao.canabrava\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -365,14 +365,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Giovanna Batista\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Piratininga\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"giovanna.batista@teste.com\",\r\n  \"login\": \"giovanna.batista\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Paulo de Almeida\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Piratininga\",\r\n    \"numero\": \"100\",\r\n    \"complemento\": \"N/A\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Bertioga\",\r\n    \"estado\": \"São Paulo\",\r\n    \"CEP\": \"11.321-000\"\r\n  },\r\n  \"email\": \"paulo.almeida@teste.com\",\r\n  \"login\": \"paulo.almeida\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}/api/donos-restaurante/atualizar/2"
+						"url": "{{baseURL}}/api/donos-restaurante/atualizar/3"
 					},
 					"response": []
 				},
@@ -406,7 +406,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseURL}}/api/donos-restaurante/excluir/2"
+						"url": "{{baseURL}}/api/donos-restaurante/excluir/3"
 					},
 					"response": []
 				}
@@ -420,18 +420,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/api/restaurante/listar/2",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"restaurante",
-								"listar",
-								"2"
-							]
-						}
+						"url": "{{baseURL}}/api/restaurante/listar/2"
 					},
 					"response": []
 				},
@@ -440,17 +429,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/api/restaurante/listar-todos",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"restaurante",
-								"listar-todos"
-							]
-						}
+						"url": "{{baseURL}}/api/restaurante/listar-todos"
 					},
 					"response": []
 				},
@@ -458,33 +437,17 @@
 					"name": "cadastrarRestaurante",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json;charset=UTF-8",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Restaurante Ososhiro7\",\r\n    \"idDonoRestaurante\": 1,\r\n    \"tipoCozinha\": \"oriental\",\r\n    \"endereco\": {\r\n        \"rua\": \"Rua Exemplo\",\r\n        \"numero\": \"123\",\r\n        \"complemento\": \"complemento\",\r\n        \"bairro\": \"bairro\",\r\n        \"cidade\": \"Cidade Exemplo\",\r\n        \"estado\": \"Estado Exemplo\",\r\n        \"cep\": \"12345-678\"\r\n  \r\n    }\r\n}",
+							"raw": "{\r\n    \"nome\": \"Restaurante Ajinoshoyu\",\r\n    \"endereco\": {\r\n      \"logradouro\": \"Rua Paraibuna\",\r\n      \"numero\": \"300\",\r\n      \"complemento\": \"N/A\",\r\n      \"bairro\": \"Centro\",\r\n      \"cidade\": \"Bertioga\",\r\n      \"estado\": \"São Paulo\",\r\n      \"cep\": \"11.321-000\"\r\n    },\r\n    \"tipoCozinha\": \"Japonês\",\r\n    \"idDonoRestaurante\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/api/restaurante/cadastrar",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"restaurante",
-								"cadastrar"
-							]
-						}
+						"url": "{{baseURL}}/api/restaurante/cadastrar"
 					},
 					"response": []
 				},
@@ -520,25 +483,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"nome\": \"Restaurante Ososhiro2\",\r\n    \"endereco\": {\r\n        \"logradouro\": \"Rua Exemplo2\",\r\n        \"numero\": \"1232\",\r\n        \"complemento\": \"complemento2\",\r\n        \"bairro\": \"bairro2\",\r\n        \"cidade\": \"Cidade Exemplo2\",\r\n        \"estado\": \"Estado Exemplo2\",\r\n        \"cep\": \"12345-6782\",\r\n        \"rua\": \"Rua Exemplo2\"\r\n    },\r\n    \"tipoCozinha\": \"oriental2\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Restaurante Punta Del Leste\",\r\n    \"endereco\": {\r\n      \"logradouro\": \"Rua Paraibuna\",\r\n      \"numero\": \"300\",\r\n      \"complemento\": \"N/A\",\r\n      \"bairro\": \"Centro\",\r\n      \"cidade\": \"Bertioga\",\r\n      \"estado\": \"São Paulo\",\r\n      \"cep\": \"11.321-000\"\r\n    },\r\n    \"tipoCozinha\": \"Argentino\",\r\n    \"idDonoRestaurante\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/api/restaurante/atualizar/15",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"restaurante",
-								"atualizar",
-								"15"
-							]
-						}
+						"url": "{{baseURL}}/api/restaurante/atualizar/2"
 					},
 					"response": []
 				},
@@ -572,17 +524,7 @@
 								"disabled": true
 							}
 						],
-						"url": {
-							"raw": "{{baseURL}}/api/restaurante/33",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"restaurante",
-								"33"
-							]
-						}
+						"url": "{{baseURL}}/api/restaurante/2"
 					},
 					"response": []
 				}
@@ -598,7 +540,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"paulo.jose\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"login\": \"paula.fernandes\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -663,7 +605,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"email\": \"giovanna.batista@teste.com\",\r\n    \"senhaAtual\": \"123456\",\r\n    \"novaSenha\": \"000000\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"email\": \"paula.fernandes@teste.com\",\r\n    \"senhaAtual\": \"000000\",\r\n    \"novaSenha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -675,189 +617,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Itens Cardapio",
-			"item": [
-				{
-					"name": "Buscar Todos",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/api/itens-cardapio/listar-todos",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"itens-cardapio",
-								"listar-todos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Buscar Por ID",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/api/itens-cardapio/listar/1",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"itens-cardapio",
-								"listar",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Deletar",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/api/itens-cardapio/deletar/10",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"itens-cardapio",
-								"deletar",
-								"10"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cadastrar",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Pizza Margherita\",\r\n  \"descricao\": \"Pizza com molho de tomate, mussarela e manjericão\",\r\n  \"preco\": 29.99,\r\n  \"disponibilidade\": \"true\",\r\n  \"fotoPrato\": \"url_da_foto\",\r\n  \"idRestaurante\": 8\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/api/itens-cardapio/cadastrar",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"itens-cardapio",
-								"cadastrar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Atualizar",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Pizza Margherita\",\r\n  \"descricao\": \"Pizza com molho de tomate, mussarela e manjericão\",\r\n  \"preco\": 29.99,\r\n  \"disponibilidade\": \"true\",\r\n  \"fotoPrato\": \"url_da_foto\",\r\n  \"idRestaurante\": 8\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/api/itens-cardapio/atualizar/10",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"api",
-								"itens-cardapio",
-								"atualizar",
-								"10"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "baseURL",
-			"value": "http://localhost:9091",
-			"type": "default"
 		}
 	]
 }
