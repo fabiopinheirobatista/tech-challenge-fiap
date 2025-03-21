@@ -1,0 +1,1 @@
+Arquivo utilizado para garantir nomenclatura sem abreviações de nomes das packages.
