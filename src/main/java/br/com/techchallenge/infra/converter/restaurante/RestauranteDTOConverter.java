@@ -1,5 +1,6 @@
 package br.com.techchallenge.infra.converter.restaurante;
 
+import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.input.restaurante.RestauranteRequestDTO;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteResponseDTO;
@@ -7,7 +8,6 @@ import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteSimples
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarIdResponseDTO;
 import br.com.techchallenge.domain.output.restaurante.RestauranteListarTodosResponseDTO;
 import br.com.techchallenge.domain.output.restaurante.RestauranteResponseDTO;
-import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import br.com.techchallenge.infra.entity.RestauranteEntity;
 import org.springframework.stereotype.Component;
@@ -90,7 +90,6 @@ public class RestauranteDTOConverter {
 
         DonoRestauranteEntity donoRestauranteEntity = restauranteEntity.getDonoRestaurante();
 
-       // DonoRestaurante donodonoRestaurante = donoRestauranteEntity;
         DonoRestaurante donodonoRestaurante = convertToDonoRestaurante(donoRestauranteEntity);
         return new Restaurante(
                 restauranteEntity.getId(),

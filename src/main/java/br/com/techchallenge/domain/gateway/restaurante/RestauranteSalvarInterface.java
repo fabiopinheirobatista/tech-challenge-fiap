@@ -1,10 +1,9 @@
 package br.com.techchallenge.domain.gateway.restaurante;
 
+import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.entity.Restaurante;
-import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 
 import java.util.Optional;
-
 
 public interface RestauranteSalvarInterface {
 

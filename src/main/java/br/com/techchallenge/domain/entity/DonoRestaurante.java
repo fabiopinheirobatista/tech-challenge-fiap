@@ -1,6 +1,5 @@
-package br.com.techchallenge.domain.useCase.donoRestaurante;
+package br.com.techchallenge.domain.entity;
 
-import br.com.techchallenge.domain.entity.Endereco;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +18,5 @@ public class DonoRestaurante {
     private String login;
     private String senha;
     private LocalDate dataUltimaAlteracao;
+
 }

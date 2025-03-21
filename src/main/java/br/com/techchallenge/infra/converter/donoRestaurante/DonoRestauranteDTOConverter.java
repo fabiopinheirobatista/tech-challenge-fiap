@@ -1,11 +1,11 @@
 package br.com.techchallenge.infra.converter.donoRestaurante;
 
+import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.entity.Endereco;
 import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteCadastrarRequestDTO;
 import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteRequestDTO;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteListarIdResponseDTO;
 import br.com.techchallenge.domain.output.donoRestaurante.DonoRestauranteListarTodosResponseDTO;
-import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
 import org.springframework.stereotype.Component;
 
