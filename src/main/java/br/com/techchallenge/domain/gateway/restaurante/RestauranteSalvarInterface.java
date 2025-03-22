@@ -5,7 +5,6 @@ import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 
 import java.util.Optional;
 
-
 public interface RestauranteSalvarInterface {
 
     Restaurante salvar(Restaurante restaurante);
