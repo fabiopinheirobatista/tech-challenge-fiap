@@ -20,12 +20,10 @@ public class CadastrarRestauranteUseCase {
 
     public Restaurante execute(Restaurante restaurante) throws RestauranteJaCadastradoException, DonoRestauranteNaoExisteException {
 
-        // Verifica se já existe um restaurante com o mesmo nome
         boolean nomeJaExiste = repositorySalvar.buscarPorNome(restaurante.getNome());
 
         if (nomeJaExiste) throw new RestauranteJaCadastradoException("Restaurante já cadastrado com esse nome!");
 
-        // Verifica se o dono do restaurante existe
         Optional<DonoRestaurante> dono = repositorySalvar.buscarPorIdDonoRestaurante(restaurante.getDonoRestaurante().getId());
         if (dono.isEmpty()) {
             throw new DonoRestauranteNaoExisteException("Dono de Restaurante informado não existe!");

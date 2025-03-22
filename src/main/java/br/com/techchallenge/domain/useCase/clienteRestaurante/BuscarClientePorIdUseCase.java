@@ -1,6 +1,5 @@
 package br.com.techchallenge.domain.useCase.clienteRestaurante;
 
-
 import br.com.techchallenge.domain.entity.ClienteRestaurante;
 import br.com.techchallenge.domain.gateway.clienteRestaurante.BuscarClientePorIdInterface;
 import br.com.techchallenge.domain.output.clienteRestaurante.ClienteRestauranteResponseDto;

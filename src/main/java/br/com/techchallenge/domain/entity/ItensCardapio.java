@@ -15,4 +15,10 @@ public class ItensCardapio {
     private String disponibilidade;
     private String fotoPrato;
     private Long idRestaurante;
+
+    public ItensCardapio(Long id, String nome, double preco) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+    }
 }

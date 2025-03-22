@@ -1,11 +1,8 @@
 package br.com.techchallenge.domain.useCase.itensCardapio;
 
 import br.com.techchallenge.domain.entity.ItensCardapio;
-import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioBuscarPorIdInterface;
-import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;
 
-import java.util.List;
 import java.util.Optional;
 
 public class BuscarPorIdItensCardapioUseCase {
