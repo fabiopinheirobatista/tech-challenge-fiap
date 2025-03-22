@@ -1,6 +1,5 @@
 package br.com.techchallenge.infra.adapter.repository.donoRestaurante;
 
-import br.com.techchallenge.domain.exception.ClienteNaoEncontradoException;
 import br.com.techchallenge.domain.exception.DonoRestauranteNaoEncontradoException;
 import br.com.techchallenge.domain.gateway.donoRestaurante.DeletarDonoRestauranteInterface;
 import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
