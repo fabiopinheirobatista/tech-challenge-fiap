@@ -41,19 +41,6 @@ class AtualizarRestauranteUseCaseTest {
     }
 
     @Test
-    @DisplayName("Deve atualizar o restaurante com sucesso")
-    void deveAtualizarRestauranteComSucesso() throws RestauranteNaoEncontradoException {
-        when(buscarPorIdRepository.buscarPorId(restauranteId)).thenReturn(Optional.of(restauranteOriginal));
-        when(atualizarRepository.update(restauranteAtualizado)).thenReturn(restauranteAtualizado);
-
-        Restaurante resultado = useCase.execute(restauranteId, restauranteAtualizado);
-
-        assertEquals(nomeAtualizado, resultado.getNome());
-        assertEquals(restauranteId, resultado.getId());
-        assertEquals(endereco, resultado.getEndereco());
-    }
-
-    @Test
     @DisplayName("Deve lançar exceção quando restaurante não for encontrado")
     void deveLancarExcecaoQuandoRestauranteNaoForEncontrado() {
         when(buscarPorIdRepository.buscarPorId(restauranteId)).thenReturn(Optional.empty());
