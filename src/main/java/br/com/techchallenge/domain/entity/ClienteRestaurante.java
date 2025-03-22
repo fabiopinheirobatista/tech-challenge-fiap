@@ -15,4 +15,10 @@ public class ClienteRestaurante {
     private String email;
     private String login;
     private String senha;
+
+    public ClienteRestaurante(long l, String s, String s1) {
+        this.id = l;
+        this.nome = s;
+        this.email = s1;
+    }
 }

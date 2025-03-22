@@ -15,4 +15,9 @@ public class Restaurante {
     private String tipoCozinha;
     private DonoRestaurante donoRestaurante;
 
+    public Restaurante(Long restauranteId, String nomeOriginal, String endereco) {
+        this.id = restauranteId;
+        this.nome = nomeOriginal;
+        this.endereco = new Endereco(endereco);
+    }
 }

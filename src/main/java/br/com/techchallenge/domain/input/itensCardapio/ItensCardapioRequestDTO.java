@@ -18,4 +18,37 @@ public record ItensCardapioRequestDTO(
         String fotoPrato,
         @NotNull(message = "O ID do restaurante não pode ser nulo")
         Long idRestaurante
-) {}
+) {
+        public ItensCardapioRequestDTO(String nome, String descricao, double preco, String disponibilidade, String fotoPrato, Long idRestaurante) {
+                this.nome = nome;
+                this.descricao = descricao;
+                this.preco = preco;
+                this.disponibilidade = disponibilidade;
+                this.fotoPrato = fotoPrato;
+                this.idRestaurante = idRestaurante;
+        }
+
+        public String getNome() {
+                return nome;
+        }
+
+        public String getDescricao() {
+                return descricao;
+        }
+
+        public double getPreco() {
+                return preco;
+        }
+
+        public String getDisponibilidade() {
+                return disponibilidade;
+        }
+
+        public String getFotoPrato() {
+                return fotoPrato;
+        }
+
+        public Long getIdRestaurante() {
+                return idRestaurante;
+        }
+}
