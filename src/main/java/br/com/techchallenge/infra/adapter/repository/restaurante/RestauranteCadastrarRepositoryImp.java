@@ -1,8 +1,8 @@
 package br.com.techchallenge.infra.adapter.repository.restaurante;
 
+import br.com.techchallenge.domain.entity.DonoRestaurante;
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteSalvarInterface;
-import br.com.techchallenge.domain.useCase.donoRestaurante.DonoRestaurante;
 import br.com.techchallenge.infra.converter.donoRestaurante.DonoRestauranteDTOConverter;
 import br.com.techchallenge.infra.converter.restaurante.RestauranteDTOConverter;
 import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
