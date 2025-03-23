@@ -2,7 +2,6 @@ package br.com.techchallenge.domain.useCase.restaurante;
 
 import br.com.techchallenge.domain.entity.Restaurante;
 import br.com.techchallenge.domain.gateway.restaurante.RestauranteBuscarPorIdInterface;
-import br.com.techchallenge.domain.useCase.restaurante.BuscarRestaurantePorIdUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

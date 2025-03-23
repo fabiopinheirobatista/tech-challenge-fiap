@@ -1,8 +1,8 @@
-package br.com.techchallenge.application.controller.donoRestaurante;
+package br.com.techchallenge.application.controller.cliente;
 
 import br.com.techchallenge.TechChallengeApplication;
-import br.com.techchallenge.infra.entity.DonoRestauranteEntity;
-import br.com.techchallenge.infra.repository.DonoRestauranteRepository;
+import br.com.techchallenge.infra.entity.ClienteRestauranteEntity;
+import br.com.techchallenge.infra.repository.ClienteRestauranteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,34 +20,33 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @Transactional
 @ActiveProfiles("test")
-class DonoRestauranteListarTodosControllerTestIT {
+class BuscarTodosOsClientesControllerTestIT {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private DonoRestauranteRepository donoRestauranteRepository;
-
-    private DonoRestauranteEntity donoExistente;
+    private ClienteRestauranteRepository clienteRepository;
 
     @BeforeEach
     void setUp() {
-        donoRestauranteRepository.deleteAll();
-        donoExistente = donoRestauranteRepository.save(new DonoRestauranteEntity(
-                null,
-                "Maria Silva",
-                "Rua Principal, 123",
-                "maria@example.com",
-                "maria.silva",
-                "SenhaAntiga@123",
-                null
-        ));
+        clienteRepository.deleteAll();
     }
 
     @Test
-    void deveListarTodosDonosRestaurante() throws Exception {
-        mockMvc.perform(get("/api/donos-restaurante/listar-todos"))
+    void deveListarTodosClientes() throws Exception {
+        clienteRepository.save(new ClienteRestauranteEntity(null, "Cliente 1", "cliente1@teste.com", "login1", "senha1"));
+        clienteRepository.save(new ClienteRestauranteEntity(null, "Cliente 2", "cliente2@teste.com", "login2", "senha2"));
+
+        mockMvc.perform(get("/api/cliente-restaurante/buscar-todos"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].nome").value("Maria Silva"));
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(2));
+    }
+
+    @Test
+    void deveRetornar404_QuandoNenhumClienteCadastrado() throws Exception {
+        mockMvc.perform(get("/api/cliente-restaurante/buscar-todos"))
+                .andExpect(status().isNotFound());
     }
 }

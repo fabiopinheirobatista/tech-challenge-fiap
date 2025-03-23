@@ -2,7 +2,6 @@ package br.com.techchallenge.domain.useCase.itensCardapio;
 
 import br.com.techchallenge.domain.entity.ItensCardapio;
 import br.com.techchallenge.domain.gateway.itensCardapio.ItensCardapioBuscarTodosInterface;
-import br.com.techchallenge.domain.useCase.itensCardapio.BuscarTodosItensCardapioUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
