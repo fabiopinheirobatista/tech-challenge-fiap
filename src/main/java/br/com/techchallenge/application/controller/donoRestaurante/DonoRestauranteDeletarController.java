@@ -25,7 +25,7 @@ public class DonoRestauranteDeletarController {
             return ResponseEntity.ok("Dono de Restaurante deletado com sucesso");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Erro ao deletar Dono de Restaurante");
+                    .body("Não existe Dono de Restaurante com o ID informado");
         }
     }
 
