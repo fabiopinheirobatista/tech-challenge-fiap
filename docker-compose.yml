@@ -22,7 +22,7 @@ services:
   app:
     build: .
     ports:
-      - "9090:9090"
+      - "9093:9093"
     depends_on:
       mysql:
         condition: service_healthy
