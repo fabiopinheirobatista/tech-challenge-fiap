@@ -57,6 +57,6 @@ class DonoRestauranteExcluirControllerTestIT {
         mockMvc.perform(delete("/api/donos-restaurante/excluir/{id}", 999L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string("Erro ao deletar Dono de Restaurante"));
+                .andExpect(content().string("Não existe Dono de Restaurante com o ID informado"));
     }
 }
