@@ -1,6 +1,5 @@
 package br.com.techchallenge.domain.input.donoRestaurante;
 
-import br.com.techchallenge.domain.input.donoRestaurante.DonoRestauranteValidarLoginRequestDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
