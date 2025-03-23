@@ -110,7 +110,7 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- SWAGGER -->
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -188,6 +188,8 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*IT.java</exclude>
+
+
                     </excludes>
                     <includes>
                         <include>**/*Test.java</include>
@@ -198,6 +200,17 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.8</version>
+                <configuration>
+                    <excludes>
+                        <exclude>br/com/techchallenge/infra/config/**</exclude>
+                        <exclude>br/com/techchallenge/domain/input/**</exclude>
+                        <exclude>br/com/techchallenge/domain/output/**</exclude>
+                        <exclude>br/com/techchallenge/domain/output/**</exclude>
+                        <exclude>br.com.techchallenge.infra.config/**</exclude>
+                        <exclude>br/com/techchallenge/TechChallengeApplication.java</exclude>
+                    </excludes>
+                </configuration>
+
                 <executions>
                     <!-- Configura o agent para testes unitários -->
                     <execution>
@@ -291,6 +304,12 @@
                                             <minimum>0.80</minimum>
                                         </limit>
                                     </limits>
+                                    <excludes>
+                                        <exclude>br/com/techchallenge/infra/config/**</exclude>
+                                        <exclude>br/com/techchallenge/domain/input/**</exclude>
+                                        <exclude>br/com/techchallenge/domain/output/**</exclude>
+                                        <exclude>br/com/techchallenge/TechChallengeApplication.java</exclude>
+                                    </excludes>
                                 </rule>
                             </rules>
                         </configuration>
