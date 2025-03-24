@@ -30,11 +30,11 @@
     mvn spring-boot:run
     ```
 
-2. A aplicação estará disponível na porta `9093`
+2. A aplicação estará disponível na porta `9090`
 
 ## Portas
 
-- **API local**: `9091`
+- **API local**: `9090`
 - **Banco de Dados (MySQL)**: `3307`
 
 ## Acesso ao BD
@@ -48,36 +48,36 @@ Claro! Aqui estão todos os endpoints listados no seu arquivo Postman, organizad
 
 **Cliente:**
 
-* `POST http://localhost:9093/api/cliente-restaurante/cadastrar` (Salvar Cliente)
-* `GET http://localhost:9093/api/cliente-restaurante/buscar-todos` (Pesquisar Todos os Clientes)
-* `PUT http://localhost:9093/api/cliente-restaurante/atualizar/{id}` (Atualizar Cliente) - Exemplo: `http://localhost:9093/api/cliente-restaurante/atualizar/3`
-* `GET http://localhost:9093/api/cliente-restaurante/listar/{id}` (Pesquisar Cliente Único) - Exemplo: `http://localhost:9093/api/cliente-restaurante/listar/1`
-* `DELETE http://localhost:9093/api/cliente-restaurante/deletar/{id}` (Excluir Cliente) - Exemplo: `http://localhost:9093/api/cliente-restaurante/deletar/4`
+* `POST http://localhost:9090/api/cliente-restaurante/cadastrar` (Salvar Cliente)
+* `GET http://localhost:9090/api/cliente-restaurante/buscar-todos` (Pesquisar Todos os Clientes)
+* `PUT http://localhost:9090/api/cliente-restaurante/atualizar/{id}` (Atualizar Cliente) - Exemplo: `http://localhost:9090/api/cliente-restaurante/atualizar/3`
+* `GET http://localhost:9090/api/cliente-restaurante/listar/{id}` (Pesquisar Cliente Único) - Exemplo: `http://localhost:9090/api/cliente-restaurante/listar/1`
+* `DELETE http://localhost:9090/api/cliente-restaurante/deletar/{id}` (Excluir Cliente) - Exemplo: `http://localhost:9090/api/cliente-restaurante/deletar/4`
 
 **Dono:**
 
-* `POST http://localhost:9093/api/donos-restaurante/cadastrar` (Criar Dono)
-* `GET http://localhost:9093/api/donos-restaurante/listar-todos` (Buscar Donos)
-* `GET http://localhost:9093/api/donos-restaurante/listar/{id}` (Buscar Dono por ID) - Exemplo: `http://localhost:9093/api/donos-restaurante/listar/3`
-* `PUT http://localhost:9093/api/donos-restaurante/atualizar/{id}` (Atualizar Dono) - Exemplo: `http://localhost:9093/api/donos-restaurante/atualizar/4`
-* `PUT http://localhost:9093/api/donos-restaurante/alterar-senha` (Alterar Senha do Dono)
-* `DELETE http://localhost:9093/api/donos-restaurante/excluir/{id}` (Deletar Dono) - Exemplo: `http://localhost:9093/api/donos-restaurante/excluir/1`
+* `POST http://localhost:9090/api/donos-restaurante/cadastrar` (Criar Dono)
+* `GET http://localhost:9090/api/donos-restaurante/listar-todos` (Buscar Donos)
+* `GET http://localhost:9090/api/donos-restaurante/listar/{id}` (Buscar Dono por ID) - Exemplo: `http://localhost:9090/api/donos-restaurante/listar/3`
+* `PUT http://localhost:9090/api/donos-restaurante/atualizar/{id}` (Atualizar Dono) - Exemplo: `http://localhost:9090/api/donos-restaurante/atualizar/4`
+* `PUT http://localhost:9090/api/donos-restaurante/alterar-senha` (Alterar Senha do Dono)
+* `DELETE http://localhost:9090/api/donos-restaurante/excluir/{id}` (Deletar Dono) - Exemplo: `http://localhost:9090/api/donos-restaurante/excluir/1`
 
 **Restaurante:**
 
-* `POST http://localhost:9093/api/restaurante/cadastrar` (Criar Restaurante)
-* `GET http://localhost:9093/api/restaurante/listar-todos` (Buscar Restaurantes)
-* `GET http://localhost:9093/api/restaurante/listar/{id}` (Buscar Restaurante por ID) - Exemplo: `http://localhost:9093/api/restaurante/listar/3`
-* `PUT http://localhost:9093/api/restaurante/atualizar/{id}` (Atualizar Restaurante) - Exemplo: `http://localhost:9093/api/restaurante/atualizar/3`
-* `DELETE http://localhost:9093/api/restaurante/{id}` (Deletar Restaurante) - Exemplo: `http://localhost:9093/api/restaurante/3`
+* `POST http://localhost:9090/api/restaurante/cadastrar` (Criar Restaurante)
+* `GET http://localhost:9090/api/restaurante/listar-todos` (Buscar Restaurantes)
+* `GET http://localhost:9090/api/restaurante/listar/{id}` (Buscar Restaurante por ID) - Exemplo: `http://localhost:9090/api/restaurante/listar/3`
+* `PUT http://localhost:9090/api/restaurante/atualizar/{id}` (Atualizar Restaurante) - Exemplo: `http://localhost:9090/api/restaurante/atualizar/3`
+* `DELETE http://localhost:9090/api/restaurante/{id}` (Deletar Restaurante) - Exemplo: `http://localhost:9090/api/restaurante/3`
 
 **Cardápio (Itens Cardápio):**
 
-* `POST http://localhost:9093/api/itens-cardapio/cadastrar` (Criar Cardápio/Item)
-* `GET http://localhost:9093/api/itens-cardapio/listar-todos` (Buscar Itens do Cardápio)
-* `GET http://localhost:9093/api/itens-cardapio/listar/{id}` (Buscar Item do Cardápio por ID) - Exemplo: `http://localhost:9093/api/itens-cardapio/listar/1`
-* `PUT http://localhost:9093/api/itens-cardapio/atualizar/{id}` (Atualizar Item do Cardápio) - Exemplo: `http://localhost:9093/api/itens-cardapio/atualizar/4`
-* `DELETE http://localhost:9093/api/itens-cardapio/deletar/{id}` (Deletar Item do Cardápio) - Exemplo: `http://localhost:9093/api/itens-cardapio/deletar/4`
+* `POST http://localhost:9090/api/itens-cardapio/cadastrar` (Criar Cardápio/Item)
+* `GET http://localhost:9090/api/itens-cardapio/listar-todos` (Buscar Itens do Cardápio)
+* `GET http://localhost:9090/api/itens-cardapio/listar/{id}` (Buscar Item do Cardápio por ID) - Exemplo: `http://localhost:9090/api/itens-cardapio/listar/1`
+* `PUT http://localhost:9090/api/itens-cardapio/atualizar/{id}` (Atualizar Item do Cardápio) - Exemplo: `http://localhost:9090/api/itens-cardapio/atualizar/4`
+* `DELETE http://localhost:9090/api/itens-cardapio/deletar/{id}` (Deletar Item do Cardápio) - Exemplo: `http://localhost:9090/api/itens-cardapio/deletar/4`
 
 ## Tecnologias utilizadas
 
